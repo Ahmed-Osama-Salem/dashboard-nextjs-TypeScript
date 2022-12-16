@@ -1,0 +1,91 @@
+@tailwind base;
+
+a {
+  @apply text-blue-700;
+}
+
+a:hover {
+  @apply border-b-2 border-blue-700;
+}
+
+@tailwind components;
+
+@tailwind utilities;
+
+.content p {
+  @apply my-6;
+}
+
+.content ul {
+  @apply my-6;
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px #E3E3E3E3;
+; 
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #999999;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: gray; 
+  }
+
+
+  .fit-logo-round {
+    animation-name: roundAnimate;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate-reverse;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes roundAnimate {
+    from {
+      rotate: 0deg;
+    }
+    to {
+      rotate: 360deg;
+    }
+  }
+  
+  .logo-two-pre {
+    animation-name: logoTwo;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes logoTwo {
+    100% {
+      opacity: 1;
+    }75% {
+      opacity: 0.8;
+    }50% {
+      opacity: 0.5;
+    }
+    25% {
+      opacity: 0.3;
+    }
+    
+    
+    0% {
+      opacity: 0.1;
+    }
+  }
+  
