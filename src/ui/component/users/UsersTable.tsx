@@ -1,4 +1,5 @@
 import { Field, Form, Formik } from 'formik';
+import { motion } from 'framer-motion';
 import React from 'react';
 
 import type { ITableApiData } from '@/app/interface/tableApiData';
@@ -86,10 +87,20 @@ const UsersTabel = () => {
         return (
           <Form>
             <section className="mt-16 flex w-full flex-row-reverse  gap-10 dark:bg-dark-gray">
-              <div className=" grid w-[50%] grid-cols-2 gap-8 rounded-[30px] bg-white  p-[30px] shadow-lg shadow-red-600/20 dark:bg-light-gray">
+              <motion.div
+                initial={{ opacity: 0, y: -100 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
+                className=" grid w-[50%] grid-cols-2 gap-8 rounded-[30px] bg-white  p-[30px] shadow-lg shadow-red-600/20 dark:bg-light-gray"
+              >
                 {fieldsData.map((field, i) => {
                   return (
-                    <div key={i}>
+                    <motion.div
+                      initial={{ opacity: 0, y: -30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.7 }}
+                      key={i}
+                    >
                       <label
                         htmlFor={field.name}
                         className="flex justify-end text-xl dark:text-white"
@@ -102,17 +113,17 @@ const UsersTabel = () => {
                         type="text"
                         placeholder={field.label}
                       />
-                    </div>
+                    </motion.div>
                   );
                 })}
-              </div>
+              </motion.div>
+
               <div className="flex w-[50%] flex-col gap-10">
                 <div className=" grid h-[200px] w-[100%] grid-cols-2 gap-6  rounded-[30px] bg-white p-[30px] shadow-lg shadow-red-600/20 dark:bg-light-gray">
                   <SelectField
                     name={'allText.topics'}
                     data={selectTopicsFields}
                     label={'نـوع المصنـعيـات'}
-                    // showErrors={!!(errors.topics && touched.topics)}
                     width={'w-[400px]'}
                     required={false}
                     setFieldValue={setFieldValue}
@@ -121,7 +132,6 @@ const UsersTabel = () => {
                     name={'allText.contractType'}
                     data={selectContractTypeFields}
                     label={'نـوع المقـاولة'}
-                    // showErrors={!!(errors.contractType && touched.contractType)}
                     width={'w-[400px]'}
                     required={false}
                     setFieldValue={setFieldValue}

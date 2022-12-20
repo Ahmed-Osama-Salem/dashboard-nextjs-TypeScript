@@ -7,7 +7,7 @@ export interface ITableApiData {
   textMosad: { mosadName: string; mosadJob: string }[];
 }
 
-interface IAllText {
+export interface IAllText {
   dateNow: string;
   time: string;
   rkmElw7da: string;

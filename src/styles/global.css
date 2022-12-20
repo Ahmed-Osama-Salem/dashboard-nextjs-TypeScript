@@ -23,7 +23,11 @@ a:hover {
 
 ::-webkit-scrollbar {
   width: 8px;
-  border-radius: 1px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
 }
 
 ::-webkit-scrollbar-track {
@@ -33,16 +37,22 @@ a:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #999999;
+  background: rgb(138, 12, 12);
   border-radius: 10px;
+  transition: all ease-in-out 2s;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+  -webkit-transition: all ease-in-out 2s;
+  -moz-transition: all ease-in-out 2s;
+  -ms-transition: all ease-in-out 2s;
+  -o-transition: all ease-in-out 2s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: gray; 
+  background: #be1d1d; 
+  
   }
 
 
@@ -88,4 +98,9 @@ a:hover {
       opacity: 0.1;
     }
   }
+  
+  body {
+    scroll-behavior: smooth;
+  }
+
   

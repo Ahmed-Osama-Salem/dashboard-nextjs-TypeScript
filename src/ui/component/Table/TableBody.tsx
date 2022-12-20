@@ -5,15 +5,31 @@ import type {
   ReactFragment,
   ReactPortal,
 } from 'react';
+import { useSelector } from 'react-redux';
 
 import type { ITableApiData } from '@/app/interface/tableApiData';
+import { removeCellTable } from '@/app/redux/store/slice/tableDataSlice';
+import type { RootState } from '@/app/redux/store/store';
+import { useDispatch } from '@/app/redux/store/store';
 
-const TableBody = ({ dataBody }: { dataBody: ITableApiData[] }) => {
-  // const [timeNow] = useState();
+const TableBody = () => {
+  const tableData = useSelector((state: RootState) => state.tableData.table);
+  const dispatch = useDispatch();
+  const handelRemoveCell = (id: string) => {
+    // dispatch(
+    //   setTableData(
+    //     tableData.filter((_item: ITableApiData, i: number) => {
+    //       console.log(_item);
+    //       return i !== id;
+    //     })
+    //   )
+    // );
+    dispatch(removeCellTable(id));
+  };
 
   return (
-    <tbody>
-      {dataBody.map((item: ITableApiData, i: number) => {
+    <tbody className="">
+      {tableData.map((item: ITableApiData, i: number) => {
         return (
           <tr
             key={item._id}
@@ -117,12 +133,14 @@ const TableBody = ({ dataBody }: { dataBody: ITableApiData[] }) => {
               >
                 Edit
               </a>
-              <a
-                href="#"
+              <button
+                onClick={() => {
+                  if (item._id !== undefined) handelRemoveCell(item._id);
+                }}
                 className="font-medium text-red-600 hover:underline dark:text-red-500"
               >
                 Remove
-              </a>
+              </button>
             </td>
           </tr>
         );

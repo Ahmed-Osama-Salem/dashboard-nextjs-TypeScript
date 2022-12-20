@@ -6,6 +6,8 @@ import {
 
 // eslint-disable-next-line import/no-named-as-default
 import sidebarSlice from './slice/sidebarSlice';
+// eslint-disable-next-line import/no-named-as-default
+import tableDataSlice from './slice/tableDataSlice';
 
 /**
  * Creates a store and includes all the slices as reducers.
@@ -13,6 +15,7 @@ import sidebarSlice from './slice/sidebarSlice';
 export const store = configureStore({
   reducer: {
     sidebar: sidebarSlice,
+    tableData: tableDataSlice,
   },
 });
 
