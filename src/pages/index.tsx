@@ -27,12 +27,12 @@ const Index = ({ data }: { data: ITableApiData[] }) => {
     <Main
       meta={
         <Meta
-          title="Suiiz Tech Team"
+          title="EL-FiT Group"
           description="Suiiz Tech Team Next.js Boilerplate is the perfect starter code for your project. Build your React application with the Next.js framework."
         />
       }
     >
-      <div>
+      <div className="overflow-x-hidden">
         <Dashboard>
           <ChartSection data={data} />
           <UsersTabel />

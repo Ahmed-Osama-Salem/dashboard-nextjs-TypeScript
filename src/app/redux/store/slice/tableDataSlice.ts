@@ -44,6 +44,7 @@ const initialState: ITableApiData[] | any = {
       ],
     },
   ],
+  cellID: [],
 };
 
 /**
@@ -58,20 +59,27 @@ export const tableDataSlice = createSlice({
   reducers: {
     setTableData: (
       state: Draft<typeof initialState>,
-      action: PayloadAction<typeof initialState>
+      action: PayloadAction<typeof initialState.table>
     ) => {
       // eslint-disable-next-line no-param-reassign
       state.table = action.payload;
     },
     removeCellTable: (
       state: Draft<typeof initialState>,
-      action: PayloadAction<typeof initialState>
+      action: PayloadAction<typeof initialState.table>
     ) => {
       // eslint-disable-next-line no-param-reassign
       state.table = state.table.filter(
         // eslint-disable-next-line no-underscore-dangle
         (table: { _id: string }) => table._id !== action.payload
       );
+    },
+    setCellID: (
+      state: Draft<typeof initialState>,
+      action: PayloadAction<typeof initialState.table>
+    ) => {
+      // eslint-disable-next-line no-param-reassign
+      state.cellID = action.payload;
     },
   },
 });
@@ -80,6 +88,7 @@ export const tableDataSlice = createSlice({
 // export const getUserState = (state: { user: UserState }) => state.user;
 
 // Exports all actions
-export const { setTableData, removeCellTable } = tableDataSlice.actions;
+export const { setTableData, removeCellTable, setCellID } =
+  tableDataSlice.actions;
 
 export default tableDataSlice.reducer;

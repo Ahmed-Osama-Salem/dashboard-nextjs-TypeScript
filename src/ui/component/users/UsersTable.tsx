@@ -85,8 +85,8 @@ const UsersTabel = () => {
     >
       {({ setFieldValue, values }) => {
         return (
-          <Form>
-            <section className="mt-16 flex w-full flex-row-reverse  gap-10 dark:bg-dark-gray">
+          <Form className="px-10">
+            <section className="mt-16 flex w-full flex-row-reverse  gap-10  dark:bg-dark-gray">
               <motion.div
                 initial={{ opacity: 0, y: -100 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -173,7 +173,7 @@ const UsersTabel = () => {
                 </div>
               </div>
             </section>
-            <div className=" mt-[40px] grid h-full w-[100%] grid-cols-2  gap-10 rounded-[30px] bg-white p-[30px] shadow-lg shadow-red-600/20 dark:bg-light-gray">
+            <div className="mt-[40px] grid h-full w-[100%] grid-cols-2 gap-10  rounded-[30px] bg-white p-[30px] px-10 shadow-lg shadow-red-600/20 dark:bg-light-gray">
               <DyFieldArray
                 name={'text'}
                 values={values.text}

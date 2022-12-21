@@ -8,24 +8,15 @@ import type {
 import { useSelector } from 'react-redux';
 
 import type { ITableApiData } from '@/app/interface/tableApiData';
-import { removeCellTable } from '@/app/redux/store/slice/tableDataSlice';
+import { setIsTouched } from '@/app/redux/store/slice/modalSlice';
+import { setCellID } from '@/app/redux/store/slice/tableDataSlice';
 import type { RootState } from '@/app/redux/store/store';
 import { useDispatch } from '@/app/redux/store/store';
 
 const TableBody = () => {
   const tableData = useSelector((state: RootState) => state.tableData.table);
+
   const dispatch = useDispatch();
-  const handelRemoveCell = (id: string) => {
-    // dispatch(
-    //   setTableData(
-    //     tableData.filter((_item: ITableApiData, i: number) => {
-    //       console.log(_item);
-    //       return i !== id;
-    //     })
-    //   )
-    // );
-    dispatch(removeCellTable(id));
-  };
 
   return (
     <tbody className="">
@@ -127,15 +118,14 @@ const TableBody = () => {
             <td className="py-4 ">{item.allText.notes}</td>
             <td className="py-4 px-24">{item.allText.twqi3}</td>
             <td className="flex items-center space-x-3 py-4 px-24">
-              <a
-                href="#"
-                className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-              >
+              <button className="font-medium text-blue-600 hover:underline dark:text-blue-500">
                 Edit
-              </a>
+              </button>
               <button
                 onClick={() => {
-                  if (item._id !== undefined) handelRemoveCell(item._id);
+                  dispatch(setIsTouched(true));
+                  // if (item._id !== undefined) handelRemoveCell(item._id);
+                  dispatch(setCellID(item._id));
                 }}
                 className="font-medium text-red-600 hover:underline dark:text-red-500"
               >

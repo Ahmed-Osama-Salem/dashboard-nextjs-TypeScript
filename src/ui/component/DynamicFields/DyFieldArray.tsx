@@ -6,7 +6,7 @@ import Button from '../toggleBtn/Button';
 
 const DyFieldArray = ({ name, values, obj, firstLable, secondLable }: any) => {
   return (
-    <div>
+    <div className="">
       <FieldArray name={name}>
         {({ remove, push }) => (
           <div>
