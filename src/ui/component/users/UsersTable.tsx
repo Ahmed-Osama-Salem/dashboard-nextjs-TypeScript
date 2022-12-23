@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import React from 'react';
 
 import type { ITableApiData } from '@/app/interface/tableApiData';
+import { pushTableData } from '@/app/redux/store/slice/tableDataSlice';
+import type { RootState } from '@/app/redux/store/store';
+import { useDispatch, useSelector } from '@/app/redux/store/store';
 import {
   fieldsData,
   MosadObject,
@@ -20,6 +23,9 @@ import Button from '../toggleBtn/Button';
 const UsersTabel = () => {
   const currentDate = new Date();
   const time = currentDate.toLocaleTimeString();
+
+  const { table } = useSelector((state: RootState) => state.tableData);
+  const dispatch = useDispatch();
 
   const initialValues: ITableApiData = {
     allText: {
@@ -64,8 +70,8 @@ const UsersTabel = () => {
 
     return ApiClientLocal.post('/api/insert', singleData)
       .then((data) => {
-        console.log(data.data);
-
+        console.log('postApi', table);
+        dispatch(pushTableData(singleData));
         return data.data;
       })
       .catch((err) => {
@@ -110,7 +116,7 @@ const UsersTabel = () => {
                       <Field
                         className="my-2 h-[40px] w-[100%] rounded-lg  bg-[#ece5e5] px-2 text-right outline-[0.6px] outline-red-600 transition-all duration-300 ease-linear focus:translate-y-[-4px] focus:shadow-lg focus:shadow-black/40 dark:bg-black/30 dark:outline-[0.6px] dark:outline-white"
                         name={`allText.${field.name}`}
-                        type="text"
+                        type={field.type}
                         placeholder={field.label}
                       />
                     </motion.div>
@@ -138,7 +144,11 @@ const UsersTabel = () => {
                   />
                 </div>
                 <div className="relative grid h-full w-[100%] grid-cols-2 gap-6  rounded-[30px] bg-white p-[30px]  shadow-lg shadow-red-600/20 dark:bg-light-gray">
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7 }}
+                  >
                     <label
                       htmlFor="notes"
                       className="flex justify-end text-xl dark:text-white"
@@ -152,8 +162,12 @@ const UsersTabel = () => {
                       as="textarea"
                       placeholder=""
                     />
-                  </div>
-                  <div>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7 }}
+                  >
                     <label
                       htmlFor=""
                       className="flex justify-end text-xl dark:text-white"
@@ -166,13 +180,15 @@ const UsersTabel = () => {
                       type="text"
                       placeholder=""
                     />
-                  </div>
+                  </motion.div>
+
                   <div className="absolute top-[150px] right-[50px]">
                     <Preloader />
                   </div>
                 </div>
               </div>
             </section>
+
             <div className="mt-[40px] grid h-full w-[100%] grid-cols-2 gap-10  rounded-[30px] bg-white p-[30px] px-10 shadow-lg shadow-red-600/20 dark:bg-light-gray">
               <DyFieldArray
                 name={'text'}

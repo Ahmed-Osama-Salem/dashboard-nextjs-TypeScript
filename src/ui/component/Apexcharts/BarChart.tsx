@@ -1,24 +1,28 @@
 import dynamic from 'next/dynamic';
+import { useSelector } from 'react-redux';
 
 import type { ITableApiData } from '@/app/interface/tableApiData';
+import type { RootState } from '@/app/redux/store/store';
 
 const ReactApexChart = dynamic(() => import('react-apexcharts'), {
   ssr: false,
 });
-const BarChart = ({ data }: { data: ITableApiData[] | any }) => {
+const BarChart = () => {
+  const tableData = useSelector((state: RootState) => state.tableData.table);
+
   const chart = {
     series: [
       {
         name: 'نسبة انجاز',
         type: 'column',
-        data: data.map((item: ITableApiData) => {
+        data: tableData.map((item: ITableApiData) => {
           return item.allText.angaz;
         }),
       },
       {
         name: 'Social Media',
         type: 'line',
-        data: data.map((item: ITableApiData) => {
+        data: tableData.map((item: ITableApiData) => {
           return item.allText.angaz;
         }),
       },
@@ -26,15 +30,15 @@ const BarChart = ({ data }: { data: ITableApiData[] | any }) => {
     options: {
       chart: {
         height: 350,
-        type: 'line',
+        // type: 'line',
         color: ['#be1d1d'],
       },
       plotOptions: {
         bar: {
           borderRadius: 8,
-          dataLabels: {
-            position: ['top'],
-          },
+          // dataLabels: {
+          //   position: ['top', 'left'],
+          // },
         },
       },
       colors: ['#FDC800', '#2D2E83'],
@@ -53,15 +57,15 @@ const BarChart = ({ data }: { data: ITableApiData[] | any }) => {
         formatter(val: string) {
           return `${val}%`;
         },
-        style: {
-          color: '#be1d1d',
-        },
+        // style: {
+        //   color: '#be1d1d',
+        // },
       },
-      labels: data.map((item: ITableApiData) => {
+      labels: tableData.map((item: ITableApiData) => {
         return item.allText.dateNow;
       }),
       xaxis: {
-        type: data.map((item: ITableApiData) => {
+        type: tableData.map((item: ITableApiData) => {
           return item.allText.dateNow;
         }),
       },

@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 
 import type { ITableApiData } from '@/app/interface/tableApiData';
 import { setTableData } from '@/app/redux/store/slice/tableDataSlice';
-import type { RootState } from '@/app/redux/store/store';
-import { useDispatch, useSelector } from '@/app/redux/store/store';
+import { useDispatch } from '@/app/redux/store/store';
 import { getTableData } from '@/app/server/read/getTabledata';
 import { Meta } from '@/layouts/Meta';
 import { Dashboard } from '@/templates/Dashboard';
@@ -15,13 +14,11 @@ import ChartSection from '@/ui/sections/ChartSection';
 const Index = ({ data }: { data: ITableApiData[] }) => {
   const dispatch = useDispatch();
 
-  const tableData = useSelector((state: RootState) => state.tableData.table);
+  // const tableData = useSelector((state: RootState) => state.tableData.table);
 
   useEffect(() => {
     dispatch(setTableData(data));
   }, []);
-
-  console.log('redux', tableData);
 
   return (
     <Main
@@ -34,7 +31,7 @@ const Index = ({ data }: { data: ITableApiData[] }) => {
     >
       <div className="overflow-x-hidden">
         <Dashboard>
-          <ChartSection data={data} />
+          <ChartSection />
           <UsersTabel />
           <TableConstract />
         </Dashboard>

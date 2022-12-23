@@ -81,6 +81,17 @@ export const tableDataSlice = createSlice({
       // eslint-disable-next-line no-param-reassign
       state.cellID = action.payload;
     },
+    pushTableData: (
+      state: Draft<typeof initialState>,
+      action: PayloadAction<typeof initialState.table>
+    ) => {
+      // eslint-disable-next-line no-param-reassign
+      // state.table = state.table.push(...state.table, action.payload);
+      return {
+        ...state,
+        table: [...state.table, action.payload],
+      };
+    },
   },
 });
 
@@ -88,7 +99,7 @@ export const tableDataSlice = createSlice({
 // export const getUserState = (state: { user: UserState }) => state.user;
 
 // Exports all actions
-export const { setTableData, removeCellTable, setCellID } =
+export const { setTableData, removeCellTable, setCellID, pushTableData } =
   tableDataSlice.actions;
 
 export default tableDataSlice.reducer;

@@ -1,26 +1,28 @@
 import dynamic from 'next/dynamic';
+import { useSelector } from 'react-redux';
 
 import type { ITableApiData } from '@/app/interface/tableApiData';
+import type { RootState } from '@/app/redux/store/store';
 
 const ReactApexChart = dynamic(() => import('react-apexcharts'), {
   ssr: false,
 });
-const LineChart = ({ data }: { data: ITableApiData[] }) => {
-  console.log(data);
+const LineChart = () => {
+  const tableData = useSelector((state: RootState) => state.tableData.table);
 
   const chart = {
     series: [
       {
         type: 'line',
         name: 'عـدد الفنين	',
-        data: data.map((item) => {
+        data: tableData.map((item: ITableApiData) => {
           return item.allText.techNumber;
         }),
       },
       {
         type: 'line',
         name: 'عدد المســاعدين	',
-        data: data.map((item) => {
+        data: tableData.map((item: ITableApiData) => {
           return item.allText.mosadNumber;
         }),
       },
@@ -38,7 +40,7 @@ const LineChart = ({ data }: { data: ITableApiData[] }) => {
       },
 
       dataLabels: {
-        enabled: false,
+        enabled: true,
       },
 
       title: {
@@ -111,7 +113,7 @@ const LineChart = ({ data }: { data: ITableApiData[] }) => {
       },
 
       xaxis: {
-        categories: data.map((item) => {
+        categories: tableData.map((item: ITableApiData) => {
           return item.allText.dateNow;
         }),
       },

@@ -12,6 +12,11 @@ import { setIsTouched } from '@/app/redux/store/slice/modalSlice';
 import { setCellID } from '@/app/redux/store/slice/tableDataSlice';
 import type { RootState } from '@/app/redux/store/store';
 import { useDispatch } from '@/app/redux/store/store';
+import {
+  handelTime,
+  subtractMin,
+  subtractTimes,
+} from '@/app/server/mangeTime/TimeManegment';
 
 const TableBody = () => {
   const tableData = useSelector((state: RootState) => state.tableData.table);
@@ -36,7 +41,6 @@ const TableBody = () => {
             <td className="py-4 px-24">{item.allText.topics}</td>
             <td className="py-4 px-24">{item.allText.contractType}</td>
             <td className="py-4 px-24">{item.allText.techNumber}</td>
-
             {item.text.map(
               (t: {
                 text1:
@@ -61,14 +65,15 @@ const TableBody = () => {
                 return (
                   // <ul key={i} className="w-full">
                   <>
-                    <td className="py-4 px-24 text-center">{t.text1}</td>
-                    <td className="py-4 px-24 text-center">{t.text2}</td>
+                    <td className="  py-4 px-24 text-center">{t.text1}</td>
+                    <td className="  py-4 px-24 text-center">{t.text2}</td>
                   </>
 
                   // </ul>
                 );
               }
             )}
+
             <td className="py-4 px-24 text-center">
               {item.allText.mosadNumber}
             </td>
@@ -102,14 +107,13 @@ const TableBody = () => {
               }
             )}
 
-            <td className="py-4 px-24">{item.allText.from}</td>
-            <td className="py-4 px-24">{item.allText.to}</td>
+            <td className="py-4 px-24">{handelTime(item.allText.from)}</td>
+            <td className="py-4 px-24">{handelTime(item.allText.to)}</td>
             <td className="py-4 px-24">
-              {/* {`${subtractTimes(
-            item.allText.from,
-            item.allText.to
-          )}:${subtractMin(item.allText.from, item.allText.to)}`} */}
-              fr2 el w2t
+              {`${subtractTimes(
+                item.allText.from,
+                item.allText.to
+              )}:${subtractMin(item.allText.from, item.allText.to)}`}
             </td>
             <td className="py-4 px-24">{item.allText.noteAdd}</td>
             <td className="py-4 px-24">{item.allText.kmiatMon}</td>
@@ -124,7 +128,6 @@ const TableBody = () => {
               <button
                 onClick={() => {
                   dispatch(setIsTouched(true));
-                  // if (item._id !== undefined) handelRemoveCell(item._id);
                   dispatch(setCellID(item._id));
                 }}
                 className="font-medium text-red-600 hover:underline dark:text-red-500"
