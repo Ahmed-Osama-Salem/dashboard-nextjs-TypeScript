@@ -39,93 +39,20 @@ export const tableHeader: ITableHeader[] = [
     title: 'عـدد الفنين ',
     classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
   },
-  // {
-  //   id: 8,
-  //   title: 'اسـم الفنى',
-  //   classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-  // },
-  // {
-  //   id: 9,
-  //   title: 'الاعمال',
-  //   classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-  // },
-  // {
-  //   id: 10,
-  //   title: 'عدد المســاعدين',
-  //   classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-  // },
-  // {
-  //   id: 11,
-  //   title: 'اسم المساعد',
-  //   classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-  // },
-  // {
-  //   id: 12,
-  //   title: 'الاعمال',
-  //   classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-  // },
-  // {
-  //   id: 13,
-  //   title: 'من',
-  //   classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-  // },
-  // {
-  //   id: 14,
-  //   title: 'الى',
-  //   classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-  // },
-  // {
-  //   id: 15,
-  //   title: 'عدد الساعات',
-  //   classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-  // },
-  // {
-  //   id: 16,
-  //   title: 'مذكرة الخصم / الاضافة',
-  //   classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-  // },
-  // {
-  //   id: 16,
-  //   title: 'كميات المون',
-  //   classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-  // },
-  // {
-  //   id: 17,
-  //   title: 'الموقف التنفيذى',
-  //   classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-  // },
-  // {
-  //   id: 18,
-  //   title: 'نسبة الانجاز',
-  //   classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-  // },
-  // {
-  //   id: 19,
-  //   title: 'ملاحظات',
-  //   classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-  // },
-  // {
-  //   id: 20,
-  //   title: 'التوقيعات',
-  //   classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-  // },
-  // {
-  //   id: 21,
-  //   title: 'تعديلات',
-  //   classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-  // },
 ];
 
 export const TechHeaders: ITableHeader[] = [
   {
     id: 8,
     title: 'اسـم الفنى',
-    classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
+    classname:
+      'py-3 px-24 text-center text-lg flex items-center justify-center ',
   },
   {
     id: 9,
     title: 'الاعمال',
-    classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
+    classname:
+      'py-3 px-24 text-center text-lg flex items-center justify-center ',
   },
 ];
 
