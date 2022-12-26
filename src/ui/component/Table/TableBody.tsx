@@ -3,8 +3,11 @@
 import { useSelector } from 'react-redux';
 
 import type { ITableApiData } from '@/app/interface/tableApiData';
-import { setIsTouched } from '@/app/redux/store/slice/modalSlice';
-import { setCellID } from '@/app/redux/store/slice/tableDataSlice';
+import {
+  setIsTouched,
+  setIsUpdateModal,
+} from '@/app/redux/store/slice/modalSlice';
+import { setCellData, setCellID } from '@/app/redux/store/slice/tableDataSlice';
 import type { RootState } from '@/app/redux/store/store';
 import { useDispatch } from '@/app/redux/store/store';
 import {
@@ -17,6 +20,7 @@ const TableBody = () => {
   const tableData = useSelector((state: RootState) => state.tableData.table);
 
   const dispatch = useDispatch();
+  // const router = useRouter();
 
   return (
     <tbody className="">
@@ -39,8 +43,8 @@ const TableBody = () => {
             {item.text.map((t: { text1: string; text2: string }) => {
               return (
                 <td key={i} className="grid grid-cols-2">
-                  <a className="  py-8 px-24 text-center">{t.text1}</a>
-                  <a className="  py-8 px-24 text-center">{t.text2}</a>
+                  <a className="  py-2 px-24 text-center">{t.text1}</a>
+                  <a className="  py-2 px-24 text-center">{t.text2}</a>
                 </td>
               );
             })}
@@ -52,8 +56,8 @@ const TableBody = () => {
               (m: { mosadName: string; mosadJob: string }) => {
                 return (
                   <td key={i} className="grid grid-cols-2">
-                    <a className="py-8 px-24 text-center">{m.mosadName}</a>
-                    <a className="py-8 px-24 text-center">{m.mosadJob}</a>
+                    <a className="py-2 px-24 text-center">{m.mosadName}</a>
+                    <a className="py-2 px-24 text-center">{m.mosadJob}</a>
                   </td>
                 );
               }
@@ -73,8 +77,15 @@ const TableBody = () => {
             <td className="py-8 px-24">{item.allText.angaz} %</td>
             <td className="py-8 ">{item.allText.notes}</td>
             <td className="py-8 px-24">{item.allText.twqi3}</td>
-            <td className="flex items-center justify-between  space-x-3 py-8 px-24">
-              <button className="font-medium text-blue-600 hover:underline dark:text-blue-500">
+            <td className="flex items-center justify-between space-x-3 py-8 px-24">
+              <button
+                onClick={() => {
+                  dispatch(setCellData(item));
+                  // router.push('/update');
+                  dispatch(setIsUpdateModal(true));
+                }}
+                className="font-medium text-blue-600 hover:underline dark:text-blue-500"
+              >
                 تعديل
               </button>
               <button

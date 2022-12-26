@@ -3,13 +3,16 @@ import { useSelector } from '@/app/redux/store/store';
 import { tableHeader } from '@/app/server/TableData/tableHeader';
 
 import Modal from '../Modal/Modal';
+import UpdateModal from '../Modal/UpdateModal';
 import TableBody from './TableBody';
 import TableHead from './TableHead';
 
 const TableConstract = () => {
-  const { isTouched } = useSelector((state: RootState) => state.modal);
+  const { isTouched, isUpdateModal } = useSelector(
+    (state: RootState) => state.modal
+  );
   // const dispatch = useDispatch();
-  console.log(isTouched);
+  // console.log(isTouched);
 
   return (
     <>
@@ -22,6 +25,7 @@ const TableConstract = () => {
         </div>
       </div>
       {isTouched ? <Modal /> : null}
+      {isUpdateModal ? <UpdateModal /> : null}
     </>
   );
 };

@@ -42,7 +42,7 @@ const TableHead = ({ dataHead }: { dataHead: ITableHeader[] }) => {
           );
         })}
         <th
-          className="flex translate-y-10 flex-row items-center justify-center"
+          className="flex translate-y-6 flex-row items-center justify-center"
           scope="col"
         >
           {TechHeaders.map((head) => {
@@ -64,7 +64,7 @@ const TableHead = ({ dataHead }: { dataHead: ITableHeader[] }) => {
           );
         })}
         <th
-          className="flex translate-y-10 flex-row items-center justify-center"
+          className="flex translate-y-6 flex-row items-center justify-center"
           scope="col"
         >
           {MosadHeaders.map((head) => {

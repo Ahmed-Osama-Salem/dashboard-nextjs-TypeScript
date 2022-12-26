@@ -24,8 +24,11 @@ const UsersTabel = () => {
   const currentDate = new Date();
   const time = currentDate.toLocaleTimeString();
 
-  const { table } = useSelector((state: RootState) => state.tableData);
+  const { table, cellData } = useSelector(
+    (state: RootState) => state.tableData
+  );
   const dispatch = useDispatch();
+  console.log(cellData);
 
   const initialValues: ITableApiData = {
     allText: {
@@ -82,13 +85,7 @@ const UsersTabel = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      // onSubmit={(values) => {
-      //   console.log(values);
-      // }}
-      onSubmit={handelInsertData}
-    >
+    <Formik initialValues={initialValues} onSubmit={handelInsertData}>
       {({ setFieldValue, values }) => {
         return (
           <Form className="px-10">

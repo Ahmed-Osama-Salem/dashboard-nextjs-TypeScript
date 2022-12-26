@@ -45,6 +45,7 @@ const initialState: ITableApiData[] | any = {
     },
   ],
   cellID: [],
+  cellData: {},
 };
 
 /**
@@ -92,14 +93,23 @@ export const tableDataSlice = createSlice({
         table: [...state.table, action.payload],
       };
     },
+    setCellData: (
+      state: Draft<typeof initialState>,
+      action: PayloadAction<typeof initialState.cellData>
+    ) => {
+      // eslint-disable-next-line no-param-reassign
+      state.cellData = action.payload;
+    },
   },
 });
 
-// A small helper of user state for `useSelector` function.
-// export const getUserState = (state: { user: UserState }) => state.user;
-
 // Exports all actions
-export const { setTableData, removeCellTable, setCellID, pushTableData } =
-  tableDataSlice.actions;
+export const {
+  setTableData,
+  removeCellTable,
+  setCellID,
+  pushTableData,
+  setCellData,
+} = tableDataSlice.actions;
 
 export default tableDataSlice.reducer;

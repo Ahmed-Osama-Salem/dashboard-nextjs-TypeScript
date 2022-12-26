@@ -4,8 +4,9 @@ import { createSlice } from '@reduxjs/toolkit';
 /**
  * Default state object with initial values.
  */
-const initialState: { isTouched: boolean } = {
+const initialState: { isTouched: boolean; isUpdateModal: boolean } = {
   isTouched: false,
+  isUpdateModal: false,
 };
 
 /**
@@ -25,6 +26,13 @@ export const modalSlice = createSlice({
       // eslint-disable-next-line no-param-reassign
       state.isTouched = action.payload;
     },
+    setIsUpdateModal: (
+      state: Draft<typeof initialState>,
+      action: PayloadAction<typeof initialState.isUpdateModal>
+    ) => {
+      // eslint-disable-next-line no-param-reassign
+      state.isUpdateModal = action.payload;
+    },
   },
 });
 
@@ -32,6 +40,6 @@ export const modalSlice = createSlice({
 // export const getUserState = (state: { user: UserState }) => state.user;
 
 // Exports all actions
-export const { setIsTouched } = modalSlice.actions;
+export const { setIsTouched, setIsUpdateModal } = modalSlice.actions;
 
 export default modalSlice.reducer;
