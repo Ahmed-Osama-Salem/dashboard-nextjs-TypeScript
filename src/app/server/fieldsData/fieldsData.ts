@@ -105,3 +105,79 @@ export interface IFields {
   type: string;
   placeholder: string;
 }
+
+export const fieldsUpdate: IFields[] = [
+  {
+    label: 'تاريخ',
+    name: 'dateNowUpdate',
+    type: 'text',
+    placeholder: 'dateNow',
+  },
+  {
+    label: 'الوقت',
+    name: 'timeUpdate',
+    type: 'text',
+    placeholder: 'time',
+  },
+  {
+    label: 'الوحــدة',
+    name: 'rkmElw7daUpdate',
+    type: 'text',
+    placeholder: 'rkmElw7da',
+  },
+  {
+    label: 'البنــد',
+    name: 'elbndUpdate',
+    type: 'text',
+    placeholder: 'elbnd',
+  },
+
+  {
+    label: 'الفنـيـن',
+    name: 'techNumberUpdate',
+    type: 'text',
+    placeholder: 'techNumber',
+  },
+  {
+    label: 'المســاعدين',
+    name: 'mosadNumberUpdate',
+    type: 'text',
+    placeholder: 'mosadNumber',
+  },
+  {
+    label: 'من',
+    name: 'fromUpdate',
+    type: 'time',
+    placeholder: 'from',
+  },
+  {
+    label: 'الى',
+    name: 'toUpdate',
+    type: 'time',
+    placeholder: 'to',
+  },
+  {
+    label: 'مذكرة',
+    name: 'noteAddUpdate',
+    type: 'text',
+    placeholder: 'noteAdd',
+  },
+  {
+    label: 'المون',
+    name: 'kmiatMonUpdate',
+    type: 'text',
+    placeholder: 'kmiatMon',
+  },
+  {
+    label: 'الموقف',
+    name: 'tnfizStateUpdate',
+    type: 'text',
+    placeholder: 'tnfizState',
+  },
+  {
+    label: 'الانجاز',
+    name: 'angazUpdate',
+    type: 'text',
+    placeholder: 'angaz',
+  },
+];

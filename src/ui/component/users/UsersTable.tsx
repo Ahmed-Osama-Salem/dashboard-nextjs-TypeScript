@@ -122,7 +122,7 @@ const UsersTabel = () => {
               </motion.div>
 
               <div className="flex w-[50%] flex-col gap-10">
-                <div className=" grid h-[200px] w-[100%] grid-cols-2 gap-6  rounded-[30px] bg-white p-[30px] shadow-lg shadow-red-600/20 dark:bg-light-gray">
+                <div className=" z-10 grid h-[200px] w-[100%] grid-cols-2 gap-6  rounded-[30px] bg-white p-[30px] shadow-lg shadow-red-600/20 dark:bg-light-gray">
                   <SelectField
                     name={'allText.topics'}
                     data={selectTopicsFields}
@@ -140,7 +140,7 @@ const UsersTabel = () => {
                     setFieldValue={setFieldValue}
                   />
                 </div>
-                <div className="relative grid h-full w-[100%] grid-cols-2 gap-6  rounded-[30px] bg-white p-[30px]  shadow-lg shadow-red-600/20 dark:bg-light-gray">
+                <div className="relative z-0 grid h-full w-[100%] grid-cols-2 gap-6  rounded-[30px] bg-white p-[30px]  shadow-lg shadow-red-600/20 dark:bg-light-gray">
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}

@@ -20,7 +20,6 @@ const TableBody = () => {
   const tableData = useSelector((state: RootState) => state.tableData.table);
 
   const dispatch = useDispatch();
-  // const router = useRouter();
 
   return (
     <tbody className="">

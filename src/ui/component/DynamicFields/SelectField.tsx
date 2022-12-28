@@ -83,14 +83,14 @@ const SelectField = ({
         <div
           className={
             showList
-              ? `absolute left-5 z-40 mx-auto mt-1 h-[220px] w-[90%] max-w-[450px] translate-y-0 scale-[1]  overflow-y-scroll rounded-[10px] bg-white opacity-100  shadow-lg shadow-black/50 transition-all duration-200 ease-linear dark:bg-light-gray`
-              : `absolute left-5 z-40 mx-auto mt-1 h-[0px] w-[90%] max-w-[450px] translate-y-[-20px] scale-[0.5] overflow-y-scroll rounded-[10px] bg-white opacity-0  transition-all duration-300 ease-linear dark:bg-light-gray`
+              ? `absolute left-5 z-[999] mx-auto mt-1 h-[220px] w-[90%] max-w-[450px] translate-y-0 scale-[1]  overflow-y-scroll rounded-[10px] bg-white opacity-100  shadow-lg shadow-black/50 transition-all duration-200 ease-linear dark:bg-light-gray`
+              : `absolute left-5 z-[999] mx-auto mt-1 h-[0px] w-[90%] max-w-[450px] translate-y-[-20px] scale-[0.5] overflow-y-scroll rounded-[10px] bg-white opacity-0  transition-all duration-300 ease-linear dark:bg-light-gray`
           }
         >
           <ul className="w-full dark:bg-light-gray">
             {data.map((item) => {
               return (
-                <label key={item.id} htmlFor={item.name}>
+                <label key={item.id}>
                   <div
                     onClick={() => {
                       setSelectItem(item.id);
@@ -127,7 +127,7 @@ const SelectField = ({
                     <Field
                       type="radio"
                       required={required}
-                      id={item.name}
+                      // id={item.name}
                       name={name}
                       value={selectItem !== 0 ? connectField : ''}
                       className="opacity-0"
