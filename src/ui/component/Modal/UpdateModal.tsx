@@ -39,17 +39,17 @@ const UpdateModal = () => {
 
   const handleUpdateCells = async (values: any) => {
     const updateValues = {
-      newConstrDate: values.twqi3Update,
-      dateNowUpdate: values.dateNowUpdate,
-      rkmElw7daUpdate: values.rkmElw7daUpdate,
-      elbndUpdate: values.elbndUpdate,
-      techNumberUpdate: values.techNumberUpdate,
-      mosadNumberUpdate: values.mosadNumberUpdate,
-      noteAddUpdate: values.noteAddUpdate,
-      kmiatMonUpdate: values.kmiatMonUpdate,
-      tnfizStateUpdate: values.tnfizStateUpdate,
-      angazUpdate: values.angazUpdate,
-      notesUpdate: values.notesUpdate,
+      newConstrDate: values.allText.twqi3Update,
+      dateNowUpdate: values.allText.dateNowUpdate,
+      rkmElw7daUpdate: values.allText.rkmElw7daUpdate,
+      elbndUpdate: values.allText.elbndUpdate,
+      techNumberUpdate: values.allText.techNumberUpdate,
+      mosadNumberUpdate: values.allText.mosadNumberUpdate,
+      noteAddUpdate: values.allText.noteAddUpdate,
+      kmiatMonUpdate: values.allText.kmiatMonUpdate,
+      tnfizStateUpdate: values.allText.tnfizStateUpdate,
+      angazUpdate: values.allText.angazUpdate,
+      notesUpdate: values.allText.notesUpdate,
     };
     const newCell = getChangedValues(updateValues, initialValues);
 
@@ -61,6 +61,8 @@ const UpdateModal = () => {
         return data.data;
       })
       .catch((err) => {
+        console.log(err);
+
         return err;
       });
   };
