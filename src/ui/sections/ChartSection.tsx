@@ -3,10 +3,11 @@ import LineChart from '../component/Apexcharts/LineChart';
 
 const ChartSection = () => {
   return (
-    <section className="flex w-full gap-10  px-10">
-      <LineChart />
-      <BarChart />
-      {/* <PieChart /> */}
+    <section className=" mt-16 w-full px-10">
+      <div className="flex gap-10">
+        <LineChart />
+        <BarChart />
+      </div>
     </section>
   );
 };

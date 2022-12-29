@@ -1,18 +1,22 @@
 import ApiClient from '@/app/utils/ApiClient';
 
 export const updateCell = async (
-  id: any,
-  newConstrDate: any,
-  dateNowUpdate: any,
-  rkmElw7daUpdate: any,
-  elbndUpdate: any,
-  techNumberUpdate: any,
-  mosadNumberUpdate: any,
-  noteAddUpdate: any,
-  kmiatMonUpdate: any,
-  tnfizStateUpdate: any,
-  angazUpdate: any,
-  notesUpdate: any
+  id: string | string[] | undefined,
+  newConstrDate: string,
+  dateNowUpdate: string,
+  rkmElw7daUpdate: string,
+  elbndUpdate: string,
+  techNumberUpdate: string,
+  mosadNumberUpdate: string,
+  noteAddUpdate: string,
+  kmiatMonUpdate: string,
+  tnfizStateUpdate: string,
+  angazUpdate: string,
+  notesUpdate: string,
+  fromUpdate: string,
+  toUpdate: string,
+  topicsUpdate: string,
+  contractTypeUpdate: string
 ) => {
   return ApiClient.put(`/update/${id}`, {
     newConstrDate,
@@ -26,6 +30,10 @@ export const updateCell = async (
     tnfizStateUpdate,
     angazUpdate,
     notesUpdate,
+    fromUpdate,
+    toUpdate,
+    topicsUpdate,
+    contractTypeUpdate,
   })
     .then((data) => {
       return data.data;

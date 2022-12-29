@@ -28,6 +28,10 @@ export default async function handler(
     tnfizStateUpdate,
     angazUpdate,
     notesUpdate,
+    fromUpdate,
+    toUpdate,
+    topicsUpdate,
+    contractTypeUpdate,
   } = req.body;
 
   const updateOfCells = await updateCell(
@@ -42,7 +46,11 @@ export default async function handler(
     kmiatMonUpdate,
     tnfizStateUpdate,
     angazUpdate,
-    notesUpdate
+    notesUpdate,
+    fromUpdate,
+    toUpdate,
+    topicsUpdate,
+    contractTypeUpdate
   );
   console.log(updateOfCells);
 

@@ -5,15 +5,20 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setIsUpdateModal } from '@/app/redux/store/slice/modalSlice';
 import type { RootState } from '@/app/redux/store/store';
-import { fieldsUpdate } from '@/app/server/fieldsData/fieldsData';
+import {
+  fieldsUpdate,
+  selectContractTypeFields,
+  selectTopicsFields,
+} from '@/app/server/fieldsData/fieldsData';
 import ApiClientLocal from '@/app/utils/ApiClientLocal';
 import getChangedValues from '@/app/utils/Update';
+
+import SelectField from '../DynamicFields/SelectField';
 
 const UpdateModal = () => {
   const { cellData } = useSelector((state: RootState) => state.tableData);
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { _id } = cellData;
-  console.log(_id);
 
   const dispatch = useDispatch();
   const initialValues: any = {
@@ -50,12 +55,16 @@ const UpdateModal = () => {
       tnfizStateUpdate: values.allText.tnfizStateUpdate,
       angazUpdate: values.allText.angazUpdate,
       notesUpdate: values.allText.notesUpdate,
+      fromUpdate: values.allText.fromUpdate,
+      toUpdate: values.allText.toUpdate,
+      topicsUpdate: values.allText.topicsUpdate,
+      contractTypeUpdate: values.allText.contractTypeUpdate,
     };
     const newCell = getChangedValues(updateValues, initialValues);
 
     return ApiClientLocal.put(`/api/update/${_id}`, { ...newCell }, {})
       .then((data) => {
-        console.log(data.data);
+        console.log(data);
         console.log(newCell);
 
         return data.data;
@@ -69,7 +78,9 @@ const UpdateModal = () => {
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleUpdateCells}>
-      {({ values }) => {
+      {({ setFieldValue, values }) => {
+        console.log(values);
+
         return (
           <section className="fixed top-0 z-[999] mx-auto h-screen w-screen bg-black/60 transition-all duration-200 ease-in-out ">
             <div className="flex h-screen items-center justify-center">
@@ -125,7 +136,7 @@ const UpdateModal = () => {
                         );
                       })}
                     </motion.div>
-                    <div className="relative z-0 mt-3 grid h-full w-[100%] grid-cols-2 gap-6  rounded-[30px] bg-white p-[30px]  shadow-lg shadow-red-600/20 dark:bg-light-gray">
+                    <div className="relative z-0 mt-3 grid h-full w-[100%] grid-cols-2   gap-6 rounded-[30px] bg-white p-[30px]  shadow-lg shadow-red-600/20 dark:bg-light-gray">
                       <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -163,6 +174,22 @@ const UpdateModal = () => {
                           placeholder=""
                         />
                       </motion.div>
+                      <SelectField
+                        name={'allText.topicsUpdate'}
+                        data={selectTopicsFields}
+                        label={'نـوع المصنـعيـات'}
+                        width={'w-[600px]'}
+                        required={false}
+                        setFieldValue={setFieldValue}
+                      />
+                      <SelectField
+                        name={'allText.contractTypeUpdate'}
+                        data={selectContractTypeFields}
+                        label={'نـوع المقـاولة'}
+                        width={'w-[600px]'}
+                        required={false}
+                        setFieldValue={setFieldValue}
+                      />
                     </div>
                     <div className="my-4 flex flex-row-reverse justify-center gap-5">
                       <button

@@ -89,7 +89,7 @@ const UsersTabel = () => {
       {({ setFieldValue, values }) => {
         return (
           <Form className="px-10">
-            <section className="mt-16 flex w-full flex-row-reverse  gap-10  dark:bg-dark-gray">
+            <section className="mt-12 flex w-full flex-row-reverse  gap-10  dark:bg-dark-gray">
               <motion.div
                 initial={{ opacity: 0, y: -100 }}
                 animate={{ opacity: 1, y: 0 }}

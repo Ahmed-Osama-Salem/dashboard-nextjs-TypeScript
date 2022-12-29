@@ -45,7 +45,7 @@ const SelectField = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.7 }}
     >
-      <main className={`${width} relative min-w-[250px] max-w-[500px]`}>
+      <main className={`${width} relative min-w-[250px] max-w-[full]`}>
         <p className="flex justify-end text-xl dark:text-white">{label}</p>
         {showErrors && (
           <div className="text-red-500">

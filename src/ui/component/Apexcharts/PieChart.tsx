@@ -73,7 +73,7 @@ const PieChart = () => {
   };
 
   return (
-    <div className="h-[296.97px] w-[full] rounded-2xl bg-white p-[20px]">
+    <div className="h-[378.62px] w-[50%] rounded-3xl bg-white p-[20px] dark:bg-light-gray dark:text-white">
       <h1 className="text-[20.87px] font-semibold text-[#00157F]">
         Lorem ipsum dolor sit{' '}
       </h1>
@@ -83,7 +83,7 @@ const PieChart = () => {
           options={pie.options}
           series={pie.series}
           type="polarArea"
-          width={560}
+          width={660}
         />
       </div>
     </div>
