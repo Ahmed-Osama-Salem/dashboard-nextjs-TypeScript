@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { FaSortUp } from 'react-icons/fa';
 
-import type { RootState } from '@/app/redux/store/store';
-import { useSelector } from '@/app/redux/store/store';
 import type { ITableHeader } from '@/app/server/TableData/tableHeader';
 import {
   LastHeaders,
@@ -13,13 +11,10 @@ import {
 
 const TableHead = ({ dataHead }: { dataHead: ITableHeader[] }) => {
   const [isClicked, setIsClicked] = useState(false);
-  const { table } = useSelector((state: RootState) => state.tableData);
+  // const dispatch = useDispatch();
+  // const { table } = useSelector((state: RootState) => state.tableData);
   const handelSortTable = () => {
-    setIsClicked(!isClicked);
-    const sortTable = [...table].sort((a, b) =>
-      a.allText.techNumber < b.allText.techNumber ? -1 : 1
-    );
-    return sortTable.map((s) => console.log(s.allText.techNumber));
+    setIsClicked((prev) => !prev);
   };
   return (
     <thead className=" rounded-xl bg-gray-300/40 text-xs uppercase text-gray-700 dark:bg-red-700 dark:text-gray-400">

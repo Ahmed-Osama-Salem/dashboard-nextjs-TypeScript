@@ -3,6 +3,7 @@ export const tableHeader: ITableHeader[] = [
     id: 0,
     title: 'الرقم المسلسل',
     classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
+    reefer: 'num',
   },
   {
     id: 1,
@@ -134,4 +135,5 @@ export interface ITableHeader {
   id: number;
   title: string;
   classname: string;
+  reefer?: string;
 }

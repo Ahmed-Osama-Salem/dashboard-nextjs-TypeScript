@@ -6,7 +6,11 @@ import type { ITableApiData } from '@/app/interface/tableApiData';
 /**
  * Default state object with initial values.
  */
-const initialState: ITableApiData[] | any = {
+const initialState: {
+  table: ITableApiData[] | any;
+  cellID: string | string[] | ITableApiData;
+  cellData: object;
+} = {
   table: [
     {
       __v: 0,

@@ -5,6 +5,8 @@ import {
 } from 'react-redux';
 
 // eslint-disable-next-line import/no-named-as-default
+import filterSlice from './slice/filterSlice';
+// eslint-disable-next-line import/no-named-as-default
 import modalSlice from './slice/modalSlice';
 // eslint-disable-next-line import/no-named-as-default
 import sidebarSlice from './slice/sidebarSlice';
@@ -19,6 +21,7 @@ export const store = configureStore({
     sidebar: sidebarSlice,
     tableData: tableDataSlice,
     modal: modalSlice,
+    filter: filterSlice,
   },
 });
 
