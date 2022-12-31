@@ -1,15 +1,22 @@
 export const fieldsData: IFields[] = [
   {
+    label: 'الوقت',
+    name: 'time',
+    type: 'text',
+    placeholder: 'time',
+  },
+  {
     label: 'تاريخ',
     name: 'dateNow',
     type: 'text',
     placeholder: 'dateNow',
   },
+
   {
-    label: 'الوقت',
-    name: 'time',
+    label: 'البنــد',
+    name: 'elbnd',
     type: 'text',
-    placeholder: 'time',
+    placeholder: 'elbnd',
   },
   {
     label: 'الوحــدة',
@@ -17,24 +24,12 @@ export const fieldsData: IFields[] = [
     type: 'text',
     placeholder: 'rkmElw7da',
   },
-  {
-    label: 'البنــد',
-    name: 'elbnd',
-    type: 'text',
-    placeholder: 'elbnd',
-  },
 
   {
-    label: 'الفنـيـن',
-    name: 'techNumber',
-    type: 'text',
-    placeholder: 'techNumber',
-  },
-  {
-    label: 'المســاعدين',
-    name: 'mosadNumber',
-    type: 'text',
-    placeholder: 'mosadNumber',
+    label: 'الى',
+    name: 'to',
+    type: 'time',
+    placeholder: 'to',
   },
   {
     label: 'من',
@@ -43,34 +38,41 @@ export const fieldsData: IFields[] = [
     placeholder: 'from',
   },
   {
-    label: 'الى',
-    name: 'to',
-    type: 'time',
-    placeholder: 'to',
-  },
-  {
-    label: 'مذكرة',
+    label: 'مذكرة الخصم / الاضافة',
     name: 'noteAdd',
     type: 'text',
     placeholder: 'noteAdd',
   },
   {
-    label: 'المون',
+    label: 'كمية المون',
     name: 'kmiatMon',
     type: 'text',
     placeholder: 'kmiatMon',
   },
+
   {
-    label: 'الموقف',
+    label: 'نسبة الانجاز',
+    name: 'angaz',
+    type: 'text',
+    placeholder: 'angaz',
+  },
+  {
+    label: 'الموقف التنفيذى',
     name: 'tnfizState',
     type: 'text',
     placeholder: 'tnfizState',
   },
   {
-    label: 'الانجاز',
-    name: 'angaz',
+    label: ' عدد الفنـيـن',
+    name: 'techNumber',
     type: 'text',
-    placeholder: 'angaz',
+    placeholder: 'techNumber',
+  },
+  {
+    label: 'عدد المســاعدين',
+    name: 'mosadNumber',
+    type: 'text',
+    placeholder: 'mosadNumber',
   },
 ];
 

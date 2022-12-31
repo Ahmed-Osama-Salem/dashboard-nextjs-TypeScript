@@ -29,18 +29,9 @@ const Navbar = () => {
         <nav>
           <ol className="mr-12 flex flex-wrap rounded-lg bg-transparent pt-1 sm:mr-16">
             <li className="text-sm leading-normal">
-              <a
-                className="text-2xl font-bold tracking-[0.06rem] text-red-700"
-                href="#"
-              >
+              <a className="text-2xl font-bold tracking-[0.06rem] text-red-700">
                 EL-FiT Group system
               </a>
-            </li>
-            <li
-              className="pl-2  text-2xl capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']"
-              aria-current="page"
-            >
-              {router.pathname.split('/')[1]}
             </li>
           </ol>
           <h6 className="mb-0 font-bold capitalize">

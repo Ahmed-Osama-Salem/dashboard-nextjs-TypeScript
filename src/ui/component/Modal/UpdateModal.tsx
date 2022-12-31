@@ -1,5 +1,6 @@
 import { Field, Form, Formik } from 'formik';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -19,6 +20,7 @@ const UpdateModal = () => {
   const { cellData } = useSelector((state: RootState) => state.tableData);
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { _id } = cellData;
+  const router = useRouter();
 
   const dispatch = useDispatch();
   const initialValues: any = {
@@ -66,12 +68,14 @@ const UpdateModal = () => {
       .then((data) => {
         console.log(data);
         console.log(newCell);
-
+        if (data) {
+          setTimeout(() => {
+            router.reload();
+          }, 6000);
+        }
         return data.data;
       })
       .catch((err) => {
-        console.log(err);
-
         return err;
       });
   };

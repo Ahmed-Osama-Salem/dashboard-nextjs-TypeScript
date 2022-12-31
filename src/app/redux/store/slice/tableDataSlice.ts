@@ -9,7 +9,7 @@ import type { ITableApiData } from '@/app/interface/tableApiData';
 const initialState: {
   table: ITableApiData[] | any;
   cellID: string | string[] | ITableApiData;
-  cellData: object;
+  cellData: object | any;
 } = {
   table: [
     {

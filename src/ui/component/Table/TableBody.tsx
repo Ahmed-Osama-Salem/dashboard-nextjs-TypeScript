@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 
 import moment from 'moment';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import type { ITableApiData } from '@/app/interface/tableApiData';
@@ -24,6 +25,10 @@ const TableBody = () => {
   );
 
   const dispatch = useDispatch();
+  const currentDate = new Date();
+
+  const timeLocal = currentDate.toLocaleTimeString();
+  const [currentTime] = useState(timeLocal);
 
   return (
     <tbody className="">
@@ -48,11 +53,13 @@ const TableBody = () => {
               key={item._id}
               className="border-b bg-white text-center text-[1.1rem] text-gray-600 transition-all duration-300 ease-in-out  hover:bg-gray-50 hover:transition-transform hover:duration-75 hover:ease-in-out dark:border-gray-700 dark:bg-light-gray dark:hover:bg-gray-800"
             >
-              <td scope="col" className="py-8 px-24">
+              <td scope="col" className="py-8 px-24 print:p-0">
                 {i + 1}
               </td>
               <td className="py-8 px-24">{item.allText.dateNow}</td>
-              <td className="py-8 px-24">{item.time}</td>
+              <td className="py-8 px-24">
+                {item.time !== undefined ? item.time : currentTime}
+              </td>
               <td className="py-8 px-24">{item.allText.rkmElw7da}</td>
               <td className="py-10 px-12">{item.allText.elbnd}</td>
               <td className="py-8 px-24">{item.allText.topics}</td>
@@ -95,11 +102,10 @@ const TableBody = () => {
               <td className="py-8 px-24">{item.allText.angaz} %</td>
               <td className="py-8 ">{item.allText.notes}</td>
               <td className="py-8 px-24">{item.allText.twqi3}</td>
-              <td className="flex items-center justify-between space-x-3 py-8 px-24">
+              <td className="flex items-center justify-between space-x-3 py-8 px-24 print:hidden">
                 <button
                   onClick={() => {
                     dispatch(setCellData(item));
-                    // router.push('/update');
                     dispatch(setIsUpdateModal(true));
                   }}
                   className="font-medium text-blue-600 hover:underline dark:text-blue-500"

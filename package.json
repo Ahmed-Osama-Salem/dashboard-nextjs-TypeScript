@@ -23,6 +23,7 @@
     "@reduxjs/toolkit": "^1.8.5",
     "apexcharts": "^3.36.3",
     "axios": "^0.27.2",
+    "clsx": "^1.2.1",
     "cookies-next": "^2.1.1",
     "formik": "^2.2.9",
     "framer-motion": "^7.10.2",
@@ -37,7 +38,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
     "react-redux": "^8.0.4",
-    "react-table": "^7.8.0"
+    "react-table": "^7.8.0",
+    "tailwind-merge": "^1.8.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",

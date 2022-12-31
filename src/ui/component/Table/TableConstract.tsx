@@ -15,13 +15,11 @@ const TableConstract = () => {
   const { table } = useSelector((state: RootState) => state.tableData);
   console.log(table);
 
-  // const dispatch = useDispatch();
-
   return (
     <>
       <div className="px-10">
         <TableFilters />
-        <div className="relative my-6 overflow-x-auto  rounded-2xl  shadow-md">
+        <div className="relative my-6 overflow-x-auto rounded-2xl shadow-md  print:overflow-auto">
           <table className="relative w-full rounded-xl text-left text-sm text-gray-500 dark:text-gray-400">
             <TableHead dataHead={tableHeader} />
             <TableBody />

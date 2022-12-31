@@ -2,7 +2,7 @@ import { Field, FieldArray } from 'formik';
 import { motion } from 'framer-motion';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
-import Button from '../toggleBtn/Button';
+import DynamicButton from '../toggleBtn/DynamicButton';
 
 const DyFieldArray = ({ name, values, obj, firstLable, secondLable }: any) => {
   return (
@@ -70,7 +70,12 @@ const DyFieldArray = ({ name, values, obj, firstLable, secondLable }: any) => {
               className="mx-auto mt-3 flex h-16 w-64  items-center justify-center duration-700"
               onClick={() => push(obj)}
             >
-              <Button label={`اضافة ${firstLable}`} type="button" />
+              <DynamicButton
+                width="w-[170px]"
+                label={`اضافة ${firstLable}`}
+                type="button"
+                loader={false}
+              />
             </div>
           </div>
         )}

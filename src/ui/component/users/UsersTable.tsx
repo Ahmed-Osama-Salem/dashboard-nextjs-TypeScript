@@ -1,11 +1,10 @@
 import { Field, Form, Formik } from 'formik';
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { useState } from 'react';
 
 import type { ITableApiData } from '@/app/interface/tableApiData';
 import { pushTableData } from '@/app/redux/store/slice/tableDataSlice';
-import type { RootState } from '@/app/redux/store/store';
-import { useDispatch, useSelector } from '@/app/redux/store/store';
+import { useDispatch } from '@/app/redux/store/store';
 import {
   fieldsData,
   MosadObject,
@@ -18,17 +17,16 @@ import ApiClientLocal from '@/app/utils/ApiClientLocal';
 import DyFieldArray from '../DynamicFields/DyFieldArray';
 import SelectField from '../DynamicFields/SelectField';
 import Preloader from '../preloader/PreLoader';
-import Button from '../toggleBtn/Button';
+import DynamicButton from '../toggleBtn/DynamicButton';
 
 const UsersTabel = () => {
   const currentDate = new Date();
   const time = currentDate.toLocaleTimeString();
-
-  const { table, cellData } = useSelector(
-    (state: RootState) => state.tableData
-  );
+  const [isLoading, setIsLoading] = useState(false);
+  // const { table, cellData } = useSelector(
+  //   (state: RootState) => state.tableData
+  // );
   const dispatch = useDispatch();
-  console.log(cellData);
 
   const initialValues: ITableApiData = {
     allText: {
@@ -70,11 +68,12 @@ const UsersTabel = () => {
       text: values.text,
       textMosad: values.textMosad,
     };
+    setIsLoading(true);
 
     return ApiClientLocal.post('/api/insert', singleData)
       .then((data) => {
-        console.log('postApi', table);
         dispatch(pushTableData(singleData));
+        setIsLoading(false);
         return data.data;
       })
       .catch((err) => {
@@ -89,7 +88,7 @@ const UsersTabel = () => {
       <Formik initialValues={initialValues} onSubmit={handelInsertData}>
         {({ setFieldValue, values }) => {
           return (
-            <Form className="px-10">
+            <Form className="px-10 print:hidden">
               <section className="mt-12 flex w-full flex-row-reverse  gap-10  dark:bg-dark-gray">
                 <motion.div
                   initial={{ opacity: 0, y: -100 }}
@@ -112,7 +111,7 @@ const UsersTabel = () => {
                           {field.label}
                         </label>
                         <Field
-                          className="my-2 h-[40px] w-[100%] rounded-lg  bg-[#ece5e5] px-2 text-right outline-[0.6px] outline-red-600 transition-all duration-300 ease-linear focus:translate-y-[-4px] focus:shadow-lg focus:shadow-black/40 dark:bg-black/30 dark:outline-[0.6px] dark:outline-white"
+                          className="my-2 h-[40px] w-[100%] rounded-lg  bg-[#ece5e5] px-2 text-right outline-[0.6px] outline-red-600 transition-all duration-300 ease-linear focus:translate-y-[-4px] focus:shadow-lg focus:shadow-black/40 dark:bg-black/30 dark:text-white dark:outline-[0.6px] dark:outline-white"
                           name={`allText.${field.name}`}
                           type={field.type}
                           placeholder={field.label}
@@ -135,7 +134,7 @@ const UsersTabel = () => {
                     <SelectField
                       name={'allText.contractType'}
                       data={selectContractTypeFields}
-                      label={'نـوع المقـاولة'}
+                      label={'نـوع المقـــاولة'}
                       width={'w-[400px]'}
                       required={false}
                       setFieldValue={setFieldValue}
@@ -199,12 +198,18 @@ const UsersTabel = () => {
                   name={'textMosad'}
                   values={values.textMosad}
                   obj={MosadObject}
-                  firstLable="اسـم المساعد"
+                  firstLable=" المساعد"
                   secondLable="الاعمــال"
                 />
               </div>
+
               <div className="flex justify-center">
-                <Button label={'اضافة خلية'} type="submit" />
+                <DynamicButton
+                  label={'اضافة خلية'}
+                  type="submit"
+                  loader={!!isLoading}
+                  width="w-[160px]"
+                />
               </div>
             </Form>
           );

@@ -2,8 +2,7 @@ export const tableHeader: ITableHeader[] = [
   {
     id: 0,
     title: 'الرقم المسلسل',
-    classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
-    reefer: 'num',
+    classname: 'py-3 px-24 text-center text-lg !sticky top-0 print:px-12 ',
   },
   {
     id: 1,
@@ -127,7 +126,7 @@ export const LastHeaders: ITableHeader[] = [
   {
     id: 21,
     title: 'تعديلات',
-    classname: 'py-3 px-24 text-center text-lg !sticky top-0 ',
+    classname: 'py-3 px-24 text-center text-lg !sticky top-0 print:hidden',
   },
 ];
 
@@ -135,5 +134,4 @@ export interface ITableHeader {
   id: number;
   title: string;
   classname: string;
-  reefer?: string;
 }

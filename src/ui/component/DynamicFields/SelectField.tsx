@@ -29,7 +29,9 @@ const SelectField = ({
 
   const handelDeleteItem = () => {
     setSelectItem(0);
-    setFieldValue(name, '');
+    if (name === 'allText.contractType' || name === 'allText.topics') {
+      setFieldValue(name, '');
+    }
     setConnectField('');
     setShowSelectItem('');
     setShowList(false);
@@ -46,7 +48,7 @@ const SelectField = ({
       transition={{ duration: 0.5, delay: 0.7 }}
     >
       <main className={`${width} relative min-w-[250px] max-w-[full]`}>
-        <p className="flex justify-end text-xl dark:text-white">{label}</p>
+        <p className="mb-2 flex justify-end text-xl dark:text-white">{label}</p>
         {showErrors && (
           <div className="text-red-500">
             <ErrorMessage name={name} />

@@ -7,6 +7,8 @@ import {
 } from '@/app/redux/store/slice/filterSlice';
 import { useDispatch } from '@/app/redux/store/store';
 
+import DynamicButton from '../../toggleBtn/DynamicButton';
+
 const TableFilters = () => {
   const [showFilters, setShowFilters] = useState(false);
   // const { initialDateValue, selectedDateValue } = useSelector(
@@ -16,18 +18,19 @@ const TableFilters = () => {
   const dispatch = useDispatch();
 
   return (
-    <section className="mb-2 px-10">
-      <div className="my-6 text-end">
-        <button
-          onClick={() => {
+    <section className="mb-2 px-10 print:hidden">
+      <div className="my-6 flex justify-end text-end">
+        <DynamicButton
+          width="w-[200px]"
+          label="استخراج فلاتر الجدول"
+          loader={false}
+          handleClick={() => {
             setShowFilters((prev) => !prev);
             dispatch(setInitialDateValue(''));
             dispatch(SetSelectedDate(''));
           }}
-          className="rounded-xl bg-green-600 bg-gradient-to-br  from-red-400 to-red-600 p-2  text-white"
-        >
-          استخراج فلاتر الجدول
-        </button>
+          type={'button'}
+        />
       </div>
       <div
         className={
