@@ -1,9 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+
+import { setTheme } from '@/app/redux/store/slice/darkThemeSlice';
+import type { RootState } from '@/app/redux/store/store';
+import { useDispatch, useSelector } from '@/app/redux/store/store';
 
 export default function ToogleBtn() {
-  const [theme, setTheme] = useState<string>(
-    typeof window !== 'undefined' ? localStorage.theme : 'dark'
-  );
+  const { theme } = useSelector((state: RootState) => state.theme);
+  // const [theme, setTheme] = useState<string>(
+  //   typeof window !== 'undefined' ? localStorage.theme : 'dark'
+  // );
+  const dispatch = useDispatch();
   const colorTheme = theme === 'dark' ? 'light' : 'dark';
 
   useEffect(() => {
@@ -18,7 +24,7 @@ export default function ToogleBtn() {
   }, [theme]);
 
   const setLightMode = () => {
-    return setTheme('light');
+    return dispatch(setTheme('light'));
   };
 
   return (
@@ -45,7 +51,7 @@ export default function ToogleBtn() {
         </svg>
       ) : (
         <svg
-          onClick={() => setTheme('dark')}
+          onClick={() => dispatch(setTheme('dark'))}
           xmlns="http://www.w3.org/2000/svg"
           className="h-8 w-8"
           fill="none"

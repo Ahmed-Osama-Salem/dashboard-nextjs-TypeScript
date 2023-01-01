@@ -89,12 +89,12 @@ const UsersTabel = () => {
         {({ setFieldValue, values }) => {
           return (
             <Form className="px-10 print:hidden">
-              <section className="mt-12 flex w-full flex-row-reverse  gap-10  dark:bg-dark-gray">
+              <section className="mt-12 flex w-full flex-col gap-10 dark:bg-dark-gray md:flex-col xl:flex-row-reverse">
                 <motion.div
                   initial={{ opacity: 0, y: -100 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
-                  className=" grid w-[50%] grid-cols-2 gap-8 rounded-[30px] bg-white  p-[30px] shadow-lg shadow-red-600/20 dark:bg-light-gray"
+                  className=" grid w-full gap-8 rounded-[30px] bg-white p-[30px] shadow-lg shadow-red-600/20 dark:bg-light-gray  md:w-full md:grid-cols-1 xl:w-[50%] xl:grid-cols-2"
                 >
                   {fieldsData.map((field, i) => {
                     return (
@@ -121,13 +121,13 @@ const UsersTabel = () => {
                   })}
                 </motion.div>
 
-                <div className="flex w-[50%] flex-col gap-10">
-                  <div className=" z-10 grid h-[200px] w-[100%] grid-cols-2 gap-6  rounded-[30px] bg-white p-[30px] shadow-lg shadow-red-600/20 dark:bg-light-gray">
+                <div className="flex w-full flex-col gap-10 md:w-full xl:w-[50%]">
+                  <div className=" z-10 h-[200px] w-[100%] gap-6 rounded-[30px] bg-white  p-[30px] shadow-lg shadow-red-600/20 dark:bg-light-gray xl:grid xl:grid-cols-2">
                     <SelectField
                       name={'allText.topics'}
                       data={selectTopicsFields}
                       label={'نـوع المصنـعيـات'}
-                      width={'w-[400px]'}
+                      width={'w-[100px] xl:w-[400px]'}
                       required={false}
                       setFieldValue={setFieldValue}
                     />
@@ -135,7 +135,7 @@ const UsersTabel = () => {
                       name={'allText.contractType'}
                       data={selectContractTypeFields}
                       label={'نـوع المقـــاولة'}
-                      width={'w-[400px]'}
+                      width={'w-[100px] xl:w-[400px]'}
                       required={false}
                       setFieldValue={setFieldValue}
                     />

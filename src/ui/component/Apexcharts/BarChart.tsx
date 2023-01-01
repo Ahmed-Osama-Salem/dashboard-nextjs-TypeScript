@@ -20,7 +20,7 @@ const BarChart = () => {
         }),
       },
       {
-        name: 'Social Media',
+        name: 'نسبة انجاز',
         type: 'line',
         data: tableData.map((item: ITableApiData) => {
           return item.allText.angaz;
@@ -28,27 +28,33 @@ const BarChart = () => {
       },
     ],
     options: {
+      tooltip: {
+        theme: 'dark',
+      },
+      markers: {
+        colors: ['#F44336', '#E91E63', '#9C27B0'],
+      },
       chart: {
         height: 350,
         // type: 'line',
         color: ['#be1d1d'],
+        foreColor: '#e5d3d3',
       },
       plotOptions: {
         bar: {
           borderRadius: 8,
-          // dataLabels: {
-          //   position: ['top', 'left'],
-          // },
         },
       },
-      colors: ['#FDC800', '#2D2E83'],
+      colors: ['#9b311f', '#2D2E83'],
       stroke: {
         width: [0, 2],
       },
       title: {
         text: 'احصائيات نسبة انجاز البنود',
         style: {
-          color: '#2D2E83',
+          color: '#9b311f',
+          fontSize: '22',
+          fontFamily: 'Alexandria, sans-serif',
         },
       },
       dataLabels: {
@@ -76,12 +82,22 @@ const BarChart = () => {
         {
           title: {
             text: 'نسبة انجاز',
+            style: {
+              color: '#9b311f',
+              fontSize: '12',
+              fontFamily: 'Alexandria, sans-serif',
+            },
           },
         },
         {
           opposite: true,
           title: {
             text: 'نسبة انجاز',
+            style: {
+              color: '#9b311f',
+              fontSize: '12',
+              fontFamily: 'Alexandria, sans-serif',
+            },
           },
         },
       ],

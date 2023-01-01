@@ -9,6 +9,7 @@ const ReactApexChart = dynamic(() => import('react-apexcharts'), {
 });
 const LineChart = () => {
   const tableData = useSelector((state: RootState) => state.tableData.table);
+  const { theme } = useSelector((state: RootState) => state.theme);
 
   const chart = {
     series: [
@@ -25,14 +26,19 @@ const LineChart = () => {
         data: tableData.map((item: ITableApiData) => {
           return item.allText.mosadNumber;
         }),
+        fillColor: '#1fc900',
       },
     ],
     options: {
+      tooltip: {
+        theme: theme ? 'dark' : '#fffff',
+      },
       chart: {
         height: 350,
         zoom: {
           enabled: true,
         },
+        foreColor: theme ? '#e5d3d3' : '#fffff',
       },
 
       stroke: {
@@ -46,7 +52,9 @@ const LineChart = () => {
       title: {
         text: 'احصائيات اعداد الفنين و المساعدين',
         style: {
-          color: '#2D2E83  ',
+          color: '#9b311f',
+          fontSize: '22',
+          fontFamily: 'Alexandria, sans-serif',
         },
       },
       grid: {
@@ -72,7 +80,7 @@ const LineChart = () => {
               },
               {
                 offset: 20,
-                color: '#FED70F',
+                color: '#e2610b',
                 opacity: 1,
               },
               {
@@ -127,7 +135,7 @@ const LineChart = () => {
 
   return (
     <div className="h-[378.62px] w-[50%] rounded-3xl bg-white p-[20px] dark:bg-light-gray dark:text-white">
-      <div id="chart">
+      <div id="chart" className="text-white">
         <ReactApexChart
           options={chart.options}
           series={chart.series}

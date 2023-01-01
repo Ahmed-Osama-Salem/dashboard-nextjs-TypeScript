@@ -5,6 +5,8 @@ import {
 } from 'react-redux';
 
 // eslint-disable-next-line import/no-named-as-default
+import darkThemeSlice from './slice/darkThemeSlice';
+// eslint-disable-next-line import/no-named-as-default
 import filterSlice from './slice/filterSlice';
 // eslint-disable-next-line import/no-named-as-default
 import modalSlice from './slice/modalSlice';
@@ -22,6 +24,7 @@ export const store = configureStore({
     tableData: tableDataSlice,
     modal: modalSlice,
     filter: filterSlice,
+    theme: darkThemeSlice,
   },
 });
 
