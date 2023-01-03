@@ -19,7 +19,7 @@ const TableFilters = () => {
 
   return (
     <section className="mb-2 px-10 print:hidden">
-      <div className="my-6 flex justify-end text-end">
+      <div className="my-6 flex justify-end text-center md:text-end lg:text-end">
         <DynamicButton
           width="w-[200px]"
           label="استخراج فلاتر الجدول"
@@ -35,8 +35,8 @@ const TableFilters = () => {
       <div
         className={
           showFilters
-            ? 'flex h-[10rem] flex-row-reverse items-center justify-center gap-[10rem]  rounded-3xl px-10 text-end shadow-lg shadow-red-600/20 transition-all duration-300 ease-linear dark:bg-light-gray'
-            : 'flex h-[0rem] flex-row-reverse items-center justify-center gap-[10rem]  rounded-3xl px-10 text-end shadow-lg shadow-red-600/20 transition-all duration-300 ease-linear dark:bg-light-gray'
+            ? 'flex h-[10rem] flex-col items-center justify-center rounded-3xl px-10 text-end shadow-lg  shadow-red-600/20 transition-all duration-300 ease-linear dark:bg-light-gray md:flex-row-reverse md:gap-[2rem] lg:flex-row-reverse lg:gap-[10rem]'
+            : 'flex h-[0rem] flex-col items-center justify-center rounded-3xl px-10 text-end shadow-lg shadow-red-600/20 transition-all duration-300 ease-linear dark:bg-light-gray md:flex-row-reverse md:gap-[2rem] lg:flex-row-reverse lg:gap-[10rem]'
         }
       >
         {showFilters ? (

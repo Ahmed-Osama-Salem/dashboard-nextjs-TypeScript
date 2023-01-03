@@ -2,6 +2,7 @@ import { Field, Form, Formik } from 'formik';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 
+import { TableSchema } from '@/app/forms/tableSchema';
 import type { ITableApiData } from '@/app/interface/tableApiData';
 import { pushTableData } from '@/app/redux/store/slice/tableDataSlice';
 import { useDispatch } from '@/app/redux/store/store';
@@ -85,8 +86,14 @@ const UsersTabel = () => {
 
   return (
     <>
-      <Formik initialValues={initialValues} onSubmit={handelInsertData}>
+      <Formik
+        validationSchema={TableSchema}
+        initialValues={initialValues}
+        onSubmit={handelInsertData}
+      >
         {({ setFieldValue, values }) => {
+          // console.log(errors);
+
           return (
             <Form className="px-10 print:hidden">
               <section className="mt-12 flex w-full flex-col gap-10 dark:bg-dark-gray md:flex-col xl:flex-row-reverse">
@@ -110,6 +117,7 @@ const UsersTabel = () => {
                         >
                           {field.label}
                         </label>
+
                         <Field
                           className="my-2 h-[40px] w-[100%] rounded-lg  bg-[#ece5e5] px-2 text-right outline-[0.6px] outline-red-600 transition-all duration-300 ease-linear focus:translate-y-[-4px] focus:shadow-lg focus:shadow-black/40 dark:bg-black/30 dark:text-white dark:outline-[0.6px] dark:outline-white"
                           name={`allText.${field.name}`}
@@ -121,13 +129,13 @@ const UsersTabel = () => {
                   })}
                 </motion.div>
 
-                <div className="flex w-full flex-col gap-10 md:w-full xl:w-[50%]">
-                  <div className=" z-10 h-[200px] w-[100%] gap-6 rounded-[30px] bg-white  p-[30px] shadow-lg shadow-red-600/20 dark:bg-light-gray xl:grid xl:grid-cols-2">
+                <div className="flex w-full flex-col gap-10 md:w-full lg:w-full lg:flex-row  xl:w-[50%] xl:flex-col">
+                  <div className=" z-10 h-[200px] w-[100%] grid-cols-1 gap-6 rounded-[30px] bg-white  p-[30px] shadow-lg shadow-red-600/20 dark:bg-light-gray md:grid-cols-2 xl:grid xl:grid-cols-2">
                     <SelectField
                       name={'allText.topics'}
                       data={selectTopicsFields}
                       label={'نـوع المصنـعيـات'}
-                      width={'w-[100px] xl:w-[400px]'}
+                      width={'w-[100px] md:w-[300px] lg:w-[400px] xl:w-[400px]'}
                       required={false}
                       setFieldValue={setFieldValue}
                     />
@@ -135,12 +143,12 @@ const UsersTabel = () => {
                       name={'allText.contractType'}
                       data={selectContractTypeFields}
                       label={'نـوع المقـــاولة'}
-                      width={'w-[100px] xl:w-[400px]'}
+                      width={'w-[100px] md:w-[300px] lg:w-[400px] xl:w-[400px]'}
                       required={false}
                       setFieldValue={setFieldValue}
                     />
                   </div>
-                  <div className="relative z-0 grid h-full w-[100%] grid-cols-2 gap-6  rounded-[30px] bg-white p-[30px]  shadow-lg shadow-red-600/20 dark:bg-light-gray">
+                  <div className="relative z-0 grid h-full w-[100%] grid-cols-1 gap-6  rounded-[30px] bg-white p-[30px]  shadow-lg shadow-red-600/20 dark:bg-light-gray xl:grid-cols-2">
                     <motion.div
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -179,14 +187,14 @@ const UsersTabel = () => {
                       />
                     </motion.div>
 
-                    <div className="absolute top-[150px] right-[50px]">
+                    <div className="absolute xl:right-[50px] xl:top-[150px]">
                       <Preloader />
                     </div>
                   </div>
                 </div>
               </section>
 
-              <div className="mt-[40px] grid h-full w-[100%] grid-cols-2 gap-10  rounded-[30px] bg-white p-[30px] px-10 shadow-lg shadow-red-600/20 dark:bg-light-gray">
+              <div className="mt-[40px] grid h-full w-[100%] gap-10 rounded-[30px] bg-white  p-[30px] px-10 shadow-lg shadow-red-600/20 dark:bg-light-gray md:grid-cols-1 xl:grid-cols-2">
                 <DyFieldArray
                   name={'text'}
                   values={values.text}

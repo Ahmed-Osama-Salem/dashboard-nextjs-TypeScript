@@ -28,6 +28,24 @@ const BarChart = () => {
       },
     ],
     options: {
+      responsive: [
+        {
+          breakpoint: 300,
+          options: {
+            // chart: {
+            //   width: 100,
+            // },
+            plotOptions: {
+              bar: {
+                horizontal: true,
+              },
+            },
+          },
+        },
+      ],
+      legend: {
+        fontSize: '18',
+      },
       tooltip: {
         theme: 'dark',
       },
@@ -74,6 +92,11 @@ const BarChart = () => {
         type: tableData.map((item: ITableApiData) => {
           return item.allText.dateNow;
         }),
+        labels: {
+          style: {
+            fontSize: '13px',
+          },
+        },
       },
       fill: {
         colors: ['#be1d1d'],
@@ -86,6 +109,11 @@ const BarChart = () => {
               color: '#9b311f',
               fontSize: '12',
               fontFamily: 'Alexandria, sans-serif',
+            },
+          },
+          labels: {
+            style: {
+              fontSize: '13px',
             },
           },
         },
@@ -105,7 +133,7 @@ const BarChart = () => {
   };
 
   return (
-    <div className="h-[378.62px] w-[50%] rounded-3xl bg-white p-[20px]  dark:bg-light-gray">
+    <div className="h-[378.62px] w-full rounded-3xl bg-white p-[20px] dark:bg-light-gray  lg:w-[50%]">
       <div id="chart">
         <ReactApexChart
           options={chart.options}

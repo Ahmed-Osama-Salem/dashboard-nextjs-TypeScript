@@ -1,5 +1,3 @@
-import { deleteCookie, getCookie } from 'cookies-next';
-import { useRouter } from 'next/router';
 import React from 'react';
 import { AiOutlineMenu, AiOutlineUser } from 'react-icons/ai';
 
@@ -9,34 +7,20 @@ import { useDispatch, useSelector } from '@/app/redux/store/store';
 import ToogleBtn from './toggleBtn/ToggleBtn';
 
 const Navbar = () => {
-  const cookies = getCookie('Token');
-  const router = useRouter();
-  // const cookiesChecker = cookies.Token
-  const c = cookies !== null || undefined;
-  const logout = () => {
-    if (c) {
-      deleteCookie('Token');
-      router.push('/');
-    }
-  };
-
   const openSidebar = useSelector((state) => state.sidebar.isOpen);
   const dispatch = useDispatch();
 
   return (
-    <nav className="relative mx-6 flex flex-wrap items-center justify-between rounded-2xl bg-white px-0 py-2  shadow-lg  shadow-red-600/20 transition-all dark:bg-light-gray lg:flex-nowrap lg:justify-start">
+    <nav className="relative mx-6 flex  flex-wrap items-center justify-between rounded-2xl bg-white px-0 py-2 shadow-lg  shadow-red-600/20 transition-all dark:bg-light-gray  xl:flex-nowrap xl:justify-start">
       <div className="mx-auto flex w-full flex-wrap items-center justify-between px-4 py-1">
         <nav>
           <ol className="mr-12 flex flex-wrap rounded-lg bg-transparent pt-1 sm:mr-16">
             <li className="text-sm leading-normal">
-              <a className="text-2xl font-bold tracking-[0.06rem] text-red-700">
+              <a className="text-xl font-bold tracking-[0.06rem] text-red-700  lg:text-2xl">
                 EL-FiT Group system
               </a>
             </li>
           </ol>
-          <h6 className="mb-0 font-bold capitalize">
-            {router.pathname.split('/')[2]}
-          </h6>
         </nav>
 
         <div className="mt-2 flex grow items-center sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
@@ -53,14 +37,6 @@ const Navbar = () => {
           <ul className="md-max:w-full mx-2 mb-0  flex list-none flex-row justify-end pl-0">
             <li className="flex items-center gap-1">
               <AiOutlineUser size={25} />
-              {c && (
-                <span
-                  className="mr-2 hidden cursor-pointer sm:inline"
-                  onClick={() => logout()}
-                >
-                  Sign Out
-                </span>
-              )}
             </li>
             <li className="flex items-center px-1">
               <AiOutlineMenu

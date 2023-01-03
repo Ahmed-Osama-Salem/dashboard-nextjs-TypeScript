@@ -6,8 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setIsTouched } from '@/app/redux/store/slice/modalSlice';
 import { removeCellTable } from '@/app/redux/store/slice/tableDataSlice';
 import type { RootState } from '@/app/redux/store/store';
+import { successNotify } from '@/app/server/notify/setNotify';
 import ApiClientLocal from '@/app/utils/ApiClientLocal';
 import warrn from '@/public/assets/json/warrn.json';
+
+import SuccessNotify from '../notify/SuccessNotify';
 
 const Modal = () => {
   const { cellID } = useSelector((state: RootState) => state.tableData);
@@ -18,7 +21,7 @@ const Modal = () => {
     return ApiClientLocal.delete(`/api/delete/${id}`)
       .then((data) => {
         console.log(data);
-
+        successNotify('تم حذف الخلية بنجاح');
         return data.data;
       })
       .catch((err) => {
@@ -28,17 +31,20 @@ const Modal = () => {
 
   const handelRemoveCell = () => {
     dispatch(removeCellTable(cellID));
-    dispatch(setIsTouched(false));
+    // setTimeout(() => {
+    //   dispatch(setIsTouched(false));
+    // }, 1600);
     deleteCellDB(cellID);
   };
   return (
     <section className="fixed top-0 z-[999] mx-auto h-screen w-screen bg-black/60 transition-all duration-200 ease-in-out ">
+      <SuccessNotify />
       <div className="flex h-screen items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
-          className=" h-[auto] w-[40rem] rounded-2xl bg-white p-3"
+          className=" h-[auto] rounded-2xl bg-white p-3 dark:bg-light-gray lg:w-[40rem]"
         >
           <div>
             <AiFillCloseCircle
@@ -51,8 +57,14 @@ const Modal = () => {
             />
           </div>
           <div className="flex flex-col items-center justify-center ">
-            <Lottie loop animationData={warrn} className={' w-[14rem]'} />
-            <p className=" text-3xl">هل انت متاكد من مسح هذه الخلية؟</p>
+            <Lottie
+              loop
+              animationData={warrn}
+              className={'w-[8rem] lg:w-[14rem]'}
+            />
+            <p className=" dark:text-white lg:text-3xl">
+              هل انت متاكد من مسح هذه الخلية؟
+            </p>
           </div>
           <div className="my-4 flex flex-row-reverse justify-center gap-5">
             <button

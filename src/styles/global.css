@@ -50,7 +50,11 @@
   background: #be1d1d; 
   
   }
-
+  @media only screen and (max-device-width: 600px) {
+    .apexcharts-title-text{
+     display: none;
+    }
+}
   
 
   .fit-logo-round {

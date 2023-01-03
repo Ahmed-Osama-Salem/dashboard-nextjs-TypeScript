@@ -13,7 +13,7 @@ const Dashboard = (props: IDashboardProps) => (
     {props.meta}
 
     <div className="bg-white dark:bg-dark-gray ">
-      <div className="fixed top-0 z-50 w-full print:hidden">
+      <div className="fixed top-0 z-50  w-[98%] print:hidden xl:w-full">
         <Navbar />
       </div>
 

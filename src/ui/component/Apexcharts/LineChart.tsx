@@ -30,6 +30,19 @@ const LineChart = () => {
       },
     ],
     options: {
+      legend: {
+        fontSize: '18',
+      },
+      responsive: [
+        {
+          breakpoint: 300,
+          options: {
+            chart: {
+              width: 100,
+            },
+          },
+        },
+      ],
       tooltip: {
         theme: theme ? 'dark' : '#fffff',
       },
@@ -124,6 +137,11 @@ const LineChart = () => {
         categories: tableData.map((item: ITableApiData) => {
           return item.allText.dateNow;
         }),
+        labels: {
+          style: {
+            fontSize: '13px',
+          },
+        },
       },
       yaxis: {
         min: 0,
@@ -134,7 +152,7 @@ const LineChart = () => {
   };
 
   return (
-    <div className="h-[378.62px] w-[50%] rounded-3xl bg-white p-[20px] dark:bg-light-gray dark:text-white">
+    <div className="h-[378.62px] w-full rounded-3xl bg-white p-[20px] dark:bg-light-gray dark:text-white lg:w-[50%]">
       <div id="chart" className="text-white">
         <ReactApexChart
           options={chart.options}

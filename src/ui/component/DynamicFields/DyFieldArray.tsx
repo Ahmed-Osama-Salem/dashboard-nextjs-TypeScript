@@ -20,7 +20,7 @@ const DyFieldArray = ({ name, values, obj, firstLable, secondLable }: any) => {
                     key={index}
                   >
                     <div
-                      className="flex flex-row-reverse items-center justify-center gap-5"
+                      className="flex flex-col items-center  justify-center gap-5 md:flex-row-reverse lg:flex-row-reverse xl:flex-row-reverse"
                       key={index}
                     >
                       <div className="">

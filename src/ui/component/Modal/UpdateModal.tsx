@@ -11,10 +11,12 @@ import {
   selectContractTypeFields,
   selectTopicsFields,
 } from '@/app/server/fieldsData/fieldsData';
+import { successNotify } from '@/app/server/notify/setNotify';
 import ApiClientLocal from '@/app/utils/ApiClientLocal';
 import getChangedValues from '@/app/utils/Update';
 
 import SelectField from '../DynamicFields/SelectField';
+import SuccessNotify from '../notify/SuccessNotify';
 
 const UpdateModal = () => {
   const { cellData } = useSelector((state: RootState) => state.tableData);
@@ -66,13 +68,14 @@ const UpdateModal = () => {
 
     return ApiClientLocal.put(`/api/update/${_id}`, { ...newCell }, {})
       .then((data) => {
-        console.log(data);
-        console.log(newCell);
+        // console.log(data);
+        // console.log(newCell);
         if (data) {
           setTimeout(() => {
             router.reload();
           }, 6000);
         }
+        successNotify('تم تعديل الخلية بنجاح');
         return data.data;
       })
       .catch((err) => {
@@ -87,12 +90,13 @@ const UpdateModal = () => {
 
         return (
           <section className="fixed top-0 z-[999] mx-auto h-screen w-screen bg-black/60 transition-all duration-200 ease-in-out ">
+            <SuccessNotify />
             <div className="flex h-screen items-center justify-center">
               <motion.div
                 initial={{ opacity: 0, y: -100 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
-                className=" h-[auto] w-[90rem] rounded-2xl bg-white p-3"
+                className=" h-[auto] w-[90rem] rounded-2xl bg-white p-3 dark:bg-dark-gray"
               >
                 <div>
                   <AiFillCloseCircle
