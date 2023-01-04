@@ -1,4 +1,4 @@
-import { Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 
@@ -13,10 +13,12 @@ import {
   selectTopicsFields,
   TechObject,
 } from '@/app/server/fieldsData/fieldsData';
+import { successNotify } from '@/app/server/notify/setNotify';
 import ApiClientLocal from '@/app/utils/ApiClientLocal';
 
 import DyFieldArray from '../DynamicFields/DyFieldArray';
 import SelectField from '../DynamicFields/SelectField';
+import SuccessNotify from '../notify/SuccessNotify';
 import Preloader from '../preloader/PreLoader';
 import DynamicButton from '../toggleBtn/DynamicButton';
 
@@ -75,6 +77,7 @@ const UsersTabel = () => {
       .then((data) => {
         dispatch(pushTableData(singleData));
         setIsLoading(false);
+        successNotify('تم إضافة خلية جديدة بنجاح');
         return data.data;
       })
       .catch((err) => {
@@ -86,13 +89,14 @@ const UsersTabel = () => {
 
   return (
     <>
+      <SuccessNotify />
       <Formik
         validationSchema={TableSchema}
         initialValues={initialValues}
         onSubmit={handelInsertData}
       >
-        {({ setFieldValue, values }) => {
-          // console.log(errors);
+        {({ setFieldValue, values, errors, isValid, isSubmitting }) => {
+          console.log(errors);
 
           return (
             <Form className="px-10 print:hidden">
@@ -111,12 +115,17 @@ const UsersTabel = () => {
                         transition={{ duration: 0.5, delay: 0.7 }}
                         key={i}
                       >
-                        <label
-                          htmlFor={field.name}
-                          className="flex justify-end text-xl dark:text-white"
-                        >
-                          {field.label}
-                        </label>
+                        <div className="flex flex-row-reverse gap-10 ">
+                          <label
+                            htmlFor={field.name}
+                            className="flex justify-end text-xl dark:text-white"
+                          >
+                            {field.label}
+                          </label>
+                          <div className="!text-red-600 dark:text-red-600">
+                            <ErrorMessage name={`allText.${field.name}`} />
+                          </div>
+                        </div>
 
                         <Field
                           className="my-2 h-[40px] w-[100%] rounded-lg  bg-[#ece5e5] px-2 text-right outline-[0.6px] outline-red-600 transition-all duration-300 ease-linear focus:translate-y-[-4px] focus:shadow-lg focus:shadow-black/40 dark:bg-black/30 dark:text-white dark:outline-[0.6px] dark:outline-white"
@@ -130,21 +139,23 @@ const UsersTabel = () => {
                 </motion.div>
 
                 <div className="flex w-full flex-col gap-10 md:w-full lg:w-full lg:flex-row  xl:w-[50%] xl:flex-col">
-                  <div className=" z-10 h-[200px] w-[100%] grid-cols-1 gap-6 rounded-[30px] bg-white  p-[30px] shadow-lg shadow-red-600/20 dark:bg-light-gray md:grid-cols-2 xl:grid xl:grid-cols-2">
+                  <div className=" z-10 h-auto  w-[100%] grid-cols-1 gap-11 rounded-[30px] bg-white p-[30px]  shadow-lg shadow-red-600/20 dark:bg-light-gray md:grid-cols-2 md:gap-6 xl:grid xl:h-[200px] xl:grid-cols-2 xl:gap-6">
                     <SelectField
                       name={'allText.topics'}
                       data={selectTopicsFields}
                       label={'نـوع المصنـعيـات'}
-                      width={'w-[100px] md:w-[300px] lg:w-[400px] xl:w-[400px]'}
-                      required={false}
+                      width={
+                        'w-[100%] md:w-[100%] lg:w-[100%] xl:w-[100%] mb-11 z-[999]'
+                      }
+                      required={true}
                       setFieldValue={setFieldValue}
                     />
                     <SelectField
                       name={'allText.contractType'}
                       data={selectContractTypeFields}
                       label={'نـوع المقـــاولة'}
-                      width={'w-[100px] md:w-[300px] lg:w-[400px] xl:w-[400px]'}
-                      required={false}
+                      width={'w-[100%] md:w-[100%] lg:w-[100%] xl:w-[100%]'}
+                      required={true}
                       setFieldValue={setFieldValue}
                     />
                   </div>
@@ -217,6 +228,7 @@ const UsersTabel = () => {
                   type="submit"
                   loader={!!isLoading}
                   width="w-[160px]"
+                  isDisabled={!isValid || isSubmitting}
                 />
               </div>
             </Form>

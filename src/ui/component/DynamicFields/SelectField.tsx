@@ -47,8 +47,10 @@ const SelectField = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.7 }}
     >
-      <main className={`${width} relative min-w-[250px] max-w-[full]`}>
-        <p className="mb-2 flex justify-end text-xl dark:text-white">{label}</p>
+      <main className={`${width}  relative max-w-[full]`}>
+        <p className="mb-2 flex justify-end dark:text-white lg:text-xl">
+          {label}
+        </p>
         {showErrors && (
           <div className="text-red-500">
             <ErrorMessage name={name} />
@@ -85,8 +87,8 @@ const SelectField = ({
         <div
           className={
             showList
-              ? `absolute left-5 z-[999] mx-auto mt-1 h-[220px] w-[90%] max-w-[450px] translate-y-0 scale-[1]  overflow-y-scroll rounded-[10px] bg-white opacity-100  shadow-lg shadow-black/50 transition-all duration-200 ease-linear dark:bg-light-gray`
-              : `absolute left-5 z-[999] mx-auto mt-1 h-[0px] w-[90%] max-w-[450px] translate-y-[-20px] scale-[0.5] overflow-y-scroll rounded-[10px] bg-white opacity-0  transition-all duration-300 ease-linear dark:bg-light-gray`
+              ? `left-5 z-[999] mx-auto mt-1 h-[220px] w-[90%] max-w-[450px] translate-y-0 scale-[1] overflow-y-scroll  rounded-[10px] bg-white opacity-100 shadow-lg  shadow-black/50 transition-all duration-200 ease-linear dark:bg-light-gray lg:absolute`
+              : `left-5 z-[999] mx-auto mt-1 h-[0px] w-[90%] max-w-[450px] translate-y-[-20px] scale-[0.5] overflow-y-scroll rounded-[10px] bg-white opacity-0 transition-all  duration-300 ease-linear dark:bg-light-gray lg:absolute`
           }
         >
           <ul className="w-full dark:bg-light-gray">

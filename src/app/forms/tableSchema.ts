@@ -1,6 +1,9 @@
-import * as yup from 'yup';
+import * as Yup from 'yup';
 
-export const TableSchema = yup.object().shape({
-  angaz: yup.string().required('You must add angaz'),
-  // password: yup.string().required('You must add a password'),
+export const TableSchema = Yup.object({
+  allText: Yup.object({
+    angaz: Yup.string().required('يرجى ادخال نسبة الانجاز'),
+    techNumber: Yup.string().required('يرجى ادخال عدد الفنين'),
+    mosadNumber: Yup.string().required('يرجى ادخال عدد المساعدين'),
+  }),
 });
