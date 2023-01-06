@@ -33,7 +33,6 @@ const TableBody = () => {
   return (
     <tbody className="">
       {tableData
-        // eslint-disable-next-line array-callback-return, consistent-return
         .filter((val: ITableApiData) => {
           if (initialDateValue === '' || selectedDateValue === '') {
             return val;
@@ -46,6 +45,7 @@ const TableBody = () => {
           ) {
             return val;
           }
+          return 0;
         })
         .map((item: ITableApiData, i: number) => {
           return (

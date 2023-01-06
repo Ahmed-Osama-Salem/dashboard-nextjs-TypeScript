@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
 
 import type { ITableApiData } from '@/app/interface/tableApiData';
-import { setTableData } from '@/app/redux/store/slice/tableDataSlice';
+import {
+  setMosadRate,
+  setTableData,
+  setTechRate,
+} from '@/app/redux/store/slice/tableDataSlice';
 import { useDispatch } from '@/app/redux/store/store';
 import { getTableData } from '@/app/server/read/getTabledata';
 import { Meta } from '@/layouts/Meta';
@@ -10,11 +14,29 @@ import { Main } from '@/templates/Main';
 import TableConstract from '@/ui/component/Table/TableConstract';
 import UsersTabel from '@/ui/component/users/UsersTable';
 import ChartSection from '@/ui/sections/ChartSection';
+import StatisticsCards from '@/ui/sections/statisticscards/StatisticsCards';
 
 const Index = ({ data }: { data: ITableApiData[] }) => {
   const dispatch = useDispatch();
 
-  // const tableData = useSelector((state: RootState) => state.tableData.table);
+  const getTechRate = () => {
+    const rateOfTech = data
+      .map((a: ITableApiData) => parseInt(a.allText.techNumber, 10))
+      .reduce((a: number, b: number) => a + b);
+    dispatch(setTechRate(rateOfTech));
+  };
+
+  const getMosadRate = () => {
+    const rateOfMosad = data
+      .map((a: ITableApiData) => parseInt(a.allText.mosadNumber, 10))
+      .reduce((a: number, b: number) => a + b);
+    dispatch(setMosadRate(rateOfMosad));
+  };
+
+  useEffect(() => {
+    getTechRate();
+    getMosadRate();
+  }, [data]);
 
   useEffect(() => {
     dispatch(setTableData(data));
@@ -32,6 +54,7 @@ const Index = ({ data }: { data: ITableApiData[] }) => {
       <div className="overflow-x-hidden">
         <Dashboard>
           <ChartSection />
+          <StatisticsCards />
           <UsersTabel />
           <TableConstract />
         </Dashboard>

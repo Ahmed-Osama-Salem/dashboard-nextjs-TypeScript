@@ -1,6 +1,6 @@
 function Preloader() {
   return (
-    <div className="relative hidden xl:block  xl:w-[20rem]">
+    <div className="relative hidden xl:block xl:w-[17rem]">
       <img
         src="https://raw.githubusercontent.com/Ahmed-Osama-Salem/EL-FiT-GroupManegment_System/main/public/images/elfitlogoone.png"
         alt="fit-logo"

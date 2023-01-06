@@ -12,8 +12,6 @@ const TableConstract = () => {
   const { isTouched, isUpdateModal } = useSelector(
     (state: RootState) => state.modal
   );
-  const { table } = useSelector((state: RootState) => state.tableData);
-  console.log(table);
 
   return (
     <>

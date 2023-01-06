@@ -198,7 +198,7 @@ const UsersTabel = () => {
                       />
                     </motion.div>
 
-                    <div className="absolute xl:right-[50px] xl:top-[150px]">
+                    <div className="absolute xl:right-[7%] xl:top-[150px]">
                       <Preloader />
                     </div>
                   </div>

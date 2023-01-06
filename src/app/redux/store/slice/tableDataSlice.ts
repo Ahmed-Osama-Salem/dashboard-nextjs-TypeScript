@@ -10,6 +10,8 @@ const initialState: {
   table: ITableApiData[] | any;
   cellID: string | string[] | ITableApiData | any;
   cellData: object | any;
+  techRate: number;
+  mosadRate: number;
 } = {
   table: [
     {
@@ -50,6 +52,8 @@ const initialState: {
   ],
   cellID: [],
   cellData: {},
+  techRate: 0,
+  mosadRate: 0,
 };
 
 /**
@@ -104,6 +108,20 @@ export const tableDataSlice = createSlice({
       // eslint-disable-next-line no-param-reassign
       state.cellData = action.payload;
     },
+    setTechRate: (
+      state: Draft<typeof initialState>,
+      action: PayloadAction<typeof initialState.techRate>
+    ) => {
+      // eslint-disable-next-line no-param-reassign
+      state.techRate = action.payload;
+    },
+    setMosadRate: (
+      state: Draft<typeof initialState>,
+      action: PayloadAction<typeof initialState.mosadRate>
+    ) => {
+      // eslint-disable-next-line no-param-reassign
+      state.mosadRate = action.payload;
+    },
   },
 });
 
@@ -114,6 +132,8 @@ export const {
   setCellID,
   pushTableData,
   setCellData,
+  setTechRate,
+  setMosadRate,
 } = tableDataSlice.actions;
 
 export default tableDataSlice.reducer;
