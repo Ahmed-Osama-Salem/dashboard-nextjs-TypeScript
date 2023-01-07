@@ -1,6 +1,8 @@
 import React from 'react';
 import { AiOutlineMenu, AiOutlineUser } from 'react-icons/ai';
+import { MdOutlineHelp } from 'react-icons/md';
 
+import { setIsHelpModal } from '@/app/redux/store/slice/modalSlice';
 import { setIsOpen } from '@/app/redux/store/slice/sidebarSlice';
 import { useDispatch, useSelector } from '@/app/redux/store/store';
 
@@ -8,6 +10,7 @@ import ToogleBtn from './toggleBtn/ToggleBtn';
 
 const Navbar = () => {
   const openSidebar = useSelector((state) => state.sidebar.isOpen);
+
   const dispatch = useDispatch();
 
   return (
@@ -26,6 +29,11 @@ const Navbar = () => {
         <div className="mt-2 flex grow items-center sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
           <div className="flex items-center gap-4 md:ml-auto md:pr-4">
             <ToogleBtn />
+            <MdOutlineHelp
+              size={40}
+              className="cursor-pointer dark:text-white"
+              onClick={() => dispatch(setIsHelpModal(true))}
+            />
             <div className=" relative flex w-full flex-wrap items-stretch rounded-lg transition-all">
               <input
                 type="text"

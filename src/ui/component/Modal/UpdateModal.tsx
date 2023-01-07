@@ -18,9 +18,12 @@ import getChangedValues from '@/app/utils/Update';
 
 import SelectField from '../DynamicFields/SelectField';
 import SuccessNotify from '../notify/SuccessNotify';
+import DynamicButton from '../toggleBtn/DynamicButton';
 
 const UpdateModal = () => {
   const { cellData } = useSelector((state: RootState) => state.tableData);
+  const [isLoading, setIsLoading] = useState(false);
+
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const { _id } = cellData;
   const router = useRouter();
@@ -66,11 +69,9 @@ const UpdateModal = () => {
       contractTypeUpdate: values.allText.contractTypeUpdate,
     };
     const newCell = getChangedValues(updateValues, initialValues);
-
+    setIsLoading(true);
     return ApiClientLocal.put(`/api/update/${_id}`, { ...newCell }, {})
       .then((data) => {
-        // console.log(data);
-        // console.log(newCell);
         if (data) {
           setTimeout(() => {
             router.reload();
@@ -80,7 +81,7 @@ const UpdateModal = () => {
         setTimeout(() => {
           successNotify(' يرجى الانتظار سوف يتم اعادة تشغيل الصفحة ');
         }, 1600);
-
+        setIsLoading(false);
         return data.data;
       })
       .catch((err) => {
@@ -90,7 +91,7 @@ const UpdateModal = () => {
   const [showTwo, setShowTwo] = useState('one');
   return (
     <Formik initialValues={initialValues} onSubmit={handleUpdateCells}>
-      {({ setFieldValue, values }) => {
+      {({ setFieldValue, values, isValid, isSubmitting }) => {
         console.log(values);
 
         return (
@@ -235,18 +236,13 @@ const UpdateModal = () => {
                       </div>
                     ) : null}
                     <div className="my-4 flex flex-row-reverse justify-center gap-5">
-                      <button
+                      <DynamicButton
+                        label={'تعديل'}
                         type="submit"
-                        className="cursor-pointer rounded-lg border-2 border-red-600 px-3 py-2 text-red-400 transition-all duration-200 ease-linear hover:bg-red-600 hover:text-red-200"
-                      >
-                        متاكد
-                      </button>
-                      <button
-                        onClick={() => dispatch(setIsUpdateModal(false))}
-                        className="cursor-pointer rounded-lg border-2 border-green-600 px-3 py-2 text-green-400 transition-all duration-200 ease-linear hover:bg-green-600 hover:text-green-200"
-                      >
-                        لا
-                      </button>
+                        loader={!!isLoading}
+                        width="w-[160px]"
+                        isDisabled={!isValid || isSubmitting}
+                      />
                     </div>
                   </Form>
                 </div>

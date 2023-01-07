@@ -6,11 +6,13 @@ import {
   setTableData,
   setTechRate,
 } from '@/app/redux/store/slice/tableDataSlice';
-import { useDispatch } from '@/app/redux/store/store';
+import type { RootState } from '@/app/redux/store/store';
+import { useDispatch, useSelector } from '@/app/redux/store/store';
 import { getTableData } from '@/app/server/read/getTabledata';
 import { Meta } from '@/layouts/Meta';
 import { Dashboard } from '@/templates/Dashboard';
 import { Main } from '@/templates/Main';
+import HelpModal from '@/ui/component/Modal/HelpModal';
 import TableConstract from '@/ui/component/Table/TableConstract';
 import UsersTabel from '@/ui/component/users/UsersTable';
 import ChartSection from '@/ui/sections/ChartSection';
@@ -18,6 +20,7 @@ import StatisticsCards from '@/ui/sections/statisticscards/StatisticsCards';
 
 const Index = ({ data }: { data: ITableApiData[] }) => {
   const dispatch = useDispatch();
+  const { isHelpModal } = useSelector((state: RootState) => state.modal);
 
   const getTechRate = () => {
     const rateOfTech = data
@@ -58,6 +61,7 @@ const Index = ({ data }: { data: ITableApiData[] }) => {
           <UsersTabel />
           <TableConstract />
         </Dashboard>
+        {isHelpModal ? <HelpModal /> : null}
       </div>
     </Main>
   );
