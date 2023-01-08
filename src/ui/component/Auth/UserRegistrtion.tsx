@@ -1,13 +1,16 @@
 import { Form, Formik } from 'formik';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 import ApiClientLocal from '@/app/utils/ApiClientLocal';
 
+import DynamicButton from '../toggleBtn/DynamicButton';
 // import useUserRegistration from '@/hooks/Auth/useUserRegistration';
 import TextFeild from './TextField';
 
 const UserRegistrtion = () => {
+  const router = useRouter();
   const initialValuesSignUp = {
     name: '',
     email: '',
@@ -25,7 +28,10 @@ const UserRegistrtion = () => {
       job: value.job,
     })
       .then((data) => {
-        console.log(data.data, 'local');
+        if (data.data.message === 'Welcome ,you are successfully signed up') {
+          router.push('/login');
+        }
+        console.log(data, 'local');
 
         return data.data;
       })
@@ -41,27 +47,25 @@ const UserRegistrtion = () => {
       initial={{ opacity: 0, x: 30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
-      className=" max-h-[50rem]  bg-white"
     >
       <Formik
         // validationSchema={SignUpFormSchema}
         initialValues={initialValuesSignUp}
         onSubmit={handleRegsiterSubmit}
       >
-        {({ errors, touched }) => {
+        {({ errors, touched, isSubmitting, isValid }) => {
           return (
             <Form>
-              <section className="h-[41rem]" data-testid="form-signup">
+              <section className=" h-[41rem]" data-testid="form-signup">
                 <div className=" px-[30px] lg:pt-[5px] xl:pt-[20px]">
-                  <h2 className="text-center text-[22px] font-semibold text-red-600 lg:text-start">
+                  <h2 className="text-center text-3xl font-semibold text-red-600 ">
                     Create Account
                   </h2>
                 </div>
-                <div className=" flex  flex-col gap-1 lg:mt-[5px] xl:w-[423px] xl:gap-3 ">
-                  <div className="pl-7"></div>
+                <div className=" mt-[5px] flex w-full flex-col  ">
                   <div className=" mx-auto">
                     <TextFeild
-                      width={'w-[363.24px]'}
+                      width={'w-[21rem]'}
                       label="Name"
                       name="name"
                       placeholder="your name"
@@ -70,7 +74,7 @@ const UserRegistrtion = () => {
                     />
 
                     <TextFeild
-                      width={'w-[363.24px]'}
+                      width={'w-[21rem]'}
                       label="Phone"
                       name="phone"
                       placeholder="your Phone"
@@ -78,23 +82,17 @@ const UserRegistrtion = () => {
                       showError={!!(touched.phone && errors.phone)}
                     />
 
-                    <motion.div
-                      initial={{ opacity: 0, y: -30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <TextFeild
-                        width={'w-[363.24px]'}
-                        label="Email"
-                        name="email"
-                        placeholder="email"
-                        type="email"
-                        showError={!!(touched.email && errors.email)}
-                      />
-                    </motion.div>
+                    <TextFeild
+                      width={'w-[21rem]'}
+                      label="Email"
+                      name="email"
+                      placeholder="email"
+                      type="email"
+                      showError={!!(touched.email && errors.email)}
+                    />
 
                     <TextFeild
-                      width={'w-[363.24px]'}
+                      width={'w-[21rem]'}
                       label="Password"
                       name="password"
                       placeholder="password"
@@ -103,7 +101,7 @@ const UserRegistrtion = () => {
                     />
 
                     <TextFeild
-                      width={'w-[363.24px]'}
+                      width={'w-[21rem]'}
                       label="job"
                       name="job"
                       placeholder="job"
@@ -112,11 +110,13 @@ const UserRegistrtion = () => {
                     />
                   </div>
 
-                  <div className="mx-auto ">
-                    <button type="submit" className="w-24 bg-slate-500">
-                      submit
-                    </button>
-                  </div>
+                  <DynamicButton
+                    label={'Sign up'}
+                    type="submit"
+                    // loader={!!isLoading}
+                    width="w-[160px]"
+                    isDisabled={!isValid || isSubmitting}
+                  />
                 </div>
               </section>
             </Form>

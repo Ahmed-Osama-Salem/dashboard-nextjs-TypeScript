@@ -11,7 +11,7 @@ const DynamicButton = ({
   label: string;
   width: string;
   type: 'submit' | 'button' | 'reset';
-  loader: boolean;
+  loader?: boolean;
   handleClick?: () => any;
   isDisabled?: boolean;
 }) => {

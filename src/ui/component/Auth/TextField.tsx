@@ -28,12 +28,12 @@ const TextFeild = ({
   // );
   return (
     <div
-      className="relative  mb-[5px] min-w-[250px] max-w-full"
+      className="relative mb-[30px] min-w-[250px] "
       data-testid="field-label"
     >
       <label
         htmlFor={name}
-        className="mb-[7px] flex justify-between gap-3 text-[18px] font-medium text-[#524c4c] dark:text-white lg:text-[15px] xl:text-[18px]"
+        className="mb-[7px] flex justify-between gap-3 text-[18px] font-medium text-black dark:text-white lg:text-[15px] xl:text-[18px]"
         data-testid="field-label"
       >
         {label}
