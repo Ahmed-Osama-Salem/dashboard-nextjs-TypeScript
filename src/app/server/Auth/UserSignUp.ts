@@ -1,11 +1,18 @@
 import ApiClient from '@/app/utils/ApiClient';
 
-export const userSignUp = async ({ name, email, password, job }: any) => {
+export const userSignUp = async ({
+  name,
+  email,
+  password,
+  job,
+  phone,
+}: any) => {
   return ApiClient.post('/register', {
     name,
     email,
     password,
     job,
+    phone,
   })
     .then((data) => {
       console.log(data.data);
@@ -13,6 +20,10 @@ export const userSignUp = async ({ name, email, password, job }: any) => {
       return data.data;
     })
     .catch((err) => {
-      return err;
+      return {
+        // code: err.code,
+        message: err.response.data.message,
+        status: err.response.status,
+      };
     });
 };

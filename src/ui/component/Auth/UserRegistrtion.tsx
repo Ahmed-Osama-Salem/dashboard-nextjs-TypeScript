@@ -11,6 +11,7 @@ const UserRegistrtion = () => {
   const initialValuesSignUp = {
     name: '',
     email: '',
+    phone: '',
     password: '',
     job: '',
   };
@@ -19,16 +20,17 @@ const UserRegistrtion = () => {
     return ApiClientLocal.post('/api/register', {
       name: value.name,
       email: value.email,
+      phone: value.phone,
       password: value.password,
       job: value.job,
     })
       .then((data) => {
-        console.log(data, 'local');
+        console.log(data.data, 'local');
 
         return data.data;
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data, 'err local');
 
         return err;
       });
@@ -39,7 +41,7 @@ const UserRegistrtion = () => {
       initial={{ opacity: 0, x: 30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
-      className=" "
+      className=" max-h-[50rem]  bg-white"
     >
       <Formik
         // validationSchema={SignUpFormSchema}
@@ -49,14 +51,14 @@ const UserRegistrtion = () => {
         {({ errors, touched }) => {
           return (
             <Form>
-              <section className="" data-testid="form-signup">
+              <section className="h-[41rem]" data-testid="form-signup">
                 <div className=" px-[30px] lg:pt-[5px] xl:pt-[20px]">
-                  <h2 className="text-center text-[22px] font-semibold text-[#524c4c] lg:text-start">
+                  <h2 className="text-center text-[22px] font-semibold text-red-600 lg:text-start">
                     Create Account
                   </h2>
                 </div>
-                <div className=" flex h-[443px] flex-col gap-1 lg:mt-[5px] xl:w-[423px] xl:gap-3 ">
-                  <div className="pl-7 "></div>
+                <div className=" flex  flex-col gap-1 lg:mt-[5px] xl:w-[423px] xl:gap-3 ">
+                  <div className="pl-7"></div>
                   <div className=" mx-auto">
                     <TextFeild
                       width={'w-[363.24px]'}
@@ -65,6 +67,15 @@ const UserRegistrtion = () => {
                       placeholder="your name"
                       type="name"
                       showError={!!(touched.name && errors.name)}
+                    />
+
+                    <TextFeild
+                      width={'w-[363.24px]'}
+                      label="Phone"
+                      name="phone"
+                      placeholder="your Phone"
+                      type="text"
+                      showError={!!(touched.phone && errors.phone)}
                     />
 
                     <motion.div
@@ -102,30 +113,10 @@ const UserRegistrtion = () => {
                   </div>
 
                   <div className="mx-auto ">
-                    {/* <Button
-                      btnStyle="btn-auth"
-                      btnText="Sign up"
-                      btnType="submit"
-                      btnWidth="w-[363px]"
-                      // isDisabled={!isValid || isSubmitting}
-                    /> */}
-                    <button type="submit">submit</button>
+                    <button type="submit" className="w-24 bg-slate-500">
+                      submit
+                    </button>
                   </div>
-
-                  <div className="lg:hidden xl:block">
-                    {/* <SocialContainer /> */}
-                  </div>
-
-                  {/* <div className="pl-[30px]">
-                    <p className="text-[14px] text-[#5d5656]">
-                      Already,Have an account?
-                      <Link href={'/signin'}>
-                        <span className="cursor-pointer text-[#034290]">
-                          Sign in
-                        </span>
-                      </Link>
-                    </p>
-                  </div> */}
                 </div>
               </section>
             </Form>

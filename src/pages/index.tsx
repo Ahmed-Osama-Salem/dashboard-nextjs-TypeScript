@@ -1,5 +1,6 @@
 import { Meta } from '@/layouts/Meta';
 import { Main } from '@/templates/Main';
+import RegistrationLayout from '@/templates/RegistrationLayout';
 import UserRegistrtion from '@/ui/component/Auth/UserRegistrtion';
 
 const Index = () => {
@@ -12,9 +13,9 @@ const Index = () => {
         />
       }
     >
-      <div className="overflow-x-hidden">
-        <UserRegistrtion />
-      </div>
+      <main className=" flex h-screen  w-full items-center justify-center overflow-hidden bg-[#e6e8ea]">
+        <RegistrationLayout authComponent={<UserRegistrtion />} />
+      </main>
     </Main>
   );
 };

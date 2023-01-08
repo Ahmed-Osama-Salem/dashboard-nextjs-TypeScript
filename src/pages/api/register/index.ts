@@ -15,10 +15,21 @@ export default async function handler(
     console.log(err);
   });
 
-  const { name, email, password, job } = req.body;
+  const { name, email, password, job, phone } = req.body;
 
-  const userData = await userSignUp({ name, email, password, job });
+  const userData = await userSignUp({ name, email, password, job, phone });
   console.log(userData, 'res');
 
-  res.status(200).json(userData);
+  if (userData.status === 400) {
+    console.log(userData, '400 err');
+
+    return res.status(400).json(userData.message);
+  }
+  if (userData.status === 422) {
+    console.log(userData, '422 err');
+
+    return res.status(422).json(userData.message);
+  }
+
+  return res.status(200).json(userData);
 }

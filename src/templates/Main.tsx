@@ -6,7 +6,7 @@ type IMainProps = {
 };
 
 const Main = (props: IMainProps) => (
-  <div className="w-full pt-10 text-gray-700 antialiased dark:bg-dark-gray">
+  <div className="w-full  text-gray-700 antialiased dark:bg-dark-gray">
     {props.meta}
 
     <div className="">{props.children}</div>
