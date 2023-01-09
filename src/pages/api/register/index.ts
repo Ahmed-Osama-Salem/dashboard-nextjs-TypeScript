@@ -15,9 +15,16 @@ export default async function handler(
     console.log(err);
   });
 
-  const { name, email, password, job, phone } = req.body;
+  const { name, email, password, job, phone, image } = req.body;
 
-  const userData = await userSignUp({ name, email, password, job, phone });
+  const userData = await userSignUp({
+    name,
+    email,
+    password,
+    job,
+    phone,
+    image,
+  });
   console.log(userData, 'res');
 
   if (userData.status === 400) {

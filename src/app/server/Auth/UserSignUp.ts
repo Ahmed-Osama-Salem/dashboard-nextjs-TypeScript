@@ -6,6 +6,7 @@ export const userSignUp = async ({
   password,
   job,
   phone,
+  image,
 }: any) => {
   return ApiClient.post('/register', {
     name,
@@ -13,6 +14,7 @@ export const userSignUp = async ({
     password,
     job,
     phone,
+    image,
   })
     .then((data) => {
       console.log(data.data);

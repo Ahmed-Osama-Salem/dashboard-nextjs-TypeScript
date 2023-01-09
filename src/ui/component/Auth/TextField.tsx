@@ -28,7 +28,7 @@ const TextFeild = ({
   // );
   return (
     <div
-      className="relative mb-[30px] min-w-[250px] "
+      className="relative mb-[20px] min-w-[250px] "
       data-testid="field-label"
     >
       <label
@@ -44,8 +44,7 @@ const TextFeild = ({
           </div>
         )}
       </label>
-
-      {icon}
+      <span className="absolute bottom-[0.6rem] left-2">{icon}</span>
 
       <Field
         type={!showPassword ? type : 'text'}

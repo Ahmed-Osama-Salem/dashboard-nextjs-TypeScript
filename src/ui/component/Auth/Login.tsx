@@ -1,8 +1,12 @@
 /* eslint-disable @typescript-eslint/dot-notation */
-import { Field, Form, Formik } from 'formik';
+import { setCookie } from 'cookies-next';
+import { Form, Formik } from 'formik';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { BiLockAlt } from 'react-icons/bi';
+import { BsFacebook, BsGithub, BsGoogle, BsLinkedin } from 'react-icons/bs';
+import { HiOutlineMail } from 'react-icons/hi';
 
 import ApiClientLocal from '@/app/utils/ApiClientLocal';
 
@@ -10,7 +14,7 @@ import DynamicButton from '../toggleBtn/DynamicButton';
 import TextFeild from './TextField';
 
 const Login = () => {
-  // const router = useRouter();
+  const router = useRouter();
   const initialValues = {
     email: '',
     password: '',
@@ -22,9 +26,12 @@ const Login = () => {
       password: values.password,
     })
       .then((data) => {
-        // if (data.data.data !== '') {
-        //   router.push('/elfitgroupdashboard');
-        // }
+        if (data.data.code === 200) {
+          router.push('/elfitgroupdashboard');
+          localStorage.setItem('user', JSON.stringify(data.data.user));
+          const { user } = data.data;
+          setCookie('user', user.name);
+        }
         console.log(data, 'local');
 
         return data.data;
@@ -50,34 +57,31 @@ const Login = () => {
         {({ errors, touched, isValid, isSubmitting }) => {
           return (
             <Form>
-              <section data-testid="form-signin">
+              <section className="w-full" data-testid="form-signin">
                 <div className=" flex items-center justify-center border-b-[1px] border-[#E2E2E2] px-[29px] lg:h-[50px] lg:items-end lg:justify-between xl:h-[90px]">
                   <h1
                     className={
-                      ' relative cursor-pointer text-[20px] font-semibold text-[#00157F] transition-all duration-200 after:bottom-[-1px]'
+                      ' relative cursor-pointer text-2xl font-semibold text-red-600 transition-all duration-200 after:bottom-[-1px]'
                     }
                   >
-                    Sign in with phone
+                    Sign in with email
                   </h1>
                 </div>
-                <div className=" flex h-full w-full flex-col pt-[22px] lg:h-[443px] lg:w-[423px]">
-                  <div className="pl-7"></div>
-                  <div className="mx-auto">
-                    <div className="relative ml-[55px] mb-[15px] w-[423px] lg:mb-[5px] lg:ml-7 ">
-                      <TextFeild
-                        width={'w-[363.24px]'}
-                        label="Email"
-                        name="email"
-                        placeholder="email"
-                        type={'email'}
-                        showError={!!(touched.email && errors.email)}
-                        icon={<BiLockAlt size={25} />}
-                      />
-                    </div>
-                  </div>
-                  <div className="relative mx-auto mb-[15px]">
+                <div className="flex h-full w-full flex-col items-center justify-center pt-[22px] ">
+                  <div className="mt-7">
                     <TextFeild
-                      width={'w-[363.24px]'}
+                      width={'w-[24rem]'}
+                      label="Email"
+                      name="email"
+                      placeholder="email"
+                      type={'email'}
+                      showError={!!(touched.email && errors.email)}
+                      icon={<HiOutlineMail size={25} />}
+                    />
+                  </div>
+                  <div className="mt-7">
+                    <TextFeild
+                      width={'w-[24rem]'}
                       label="Password"
                       name="password"
                       placeholder="password"
@@ -85,16 +89,6 @@ const Login = () => {
                       showError={!!(touched.password && errors.password)}
                       icon={<BiLockAlt size={25} />}
                     />
-                  </div>
-                  <div className=" flex items-center justify-center gap-4 pb-[10px] lg:justify-start lg:pl-[35px] ">
-                    <Field
-                      type={'checkbox'}
-                      name={'checkbox'}
-                      className="scale-[1.15]"
-                    />
-                    <span className="text-[#CCCCCC] lg:text-[14px]">
-                      Save Password
-                    </span>
                   </div>
 
                   <motion.div whileTap={{ scale: 0.9 }} className="mx-auto">
@@ -107,25 +101,48 @@ const Login = () => {
                     />
                   </motion.div>
 
-                  <div className="pl-[30px]">
-                    <p className="text-[#CCCCCC] lg:text-[14px]">
+                  <div className="mt-2 pl-[30px]">
+                    <p className="text-[#CCCCCC] lg:text-[20px]">
                       Do you have any problem with Sign in?
                       {/* <Link href={'/forgetpassword'}> */}
-                      <span className="ml-1 cursor-pointer text-[#034290]">
+                      <span className="ml-1 cursor-pointer text-red-700">
                         tell us
                       </span>
                       {/* </Link> */}
                     </p>
-                    <p className="mt-[10px] text-[#CCCCCC] lg:text-[14px]">
-                      Login with
-                    </p>
                   </div>
 
-                  <div className="px-[30px]">
-                    <p className=" text-center text-[#CCCCCC] lg:text-[12px] xl:mt-[10px]">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Ut voluptas adipisci quas et enim magnam excepturi
-                    </p>
+                  <div className=" flex w-full justify-center px-[30px] pt-10">
+                    <div className="relative hidden xl:block xl:w-[12rem]">
+                      <img
+                        src="https://raw.githubusercontent.com/Ahmed-Osama-Salem/EL-FiT-GroupManegment_System/main/public/images/elfitlogoone.png"
+                        alt="fit-logo"
+                        className="fit-logo-round absolute"
+                      />
+                      <img
+                        src="https://raw.githubusercontent.com/Ahmed-Osama-Salem/EL-FiT-GroupManegment_System/main/public/images/logotwo.png"
+                        alt="fit-logo"
+                        className="logo-two-pre absolute"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex translate-y-[17rem] justify-center gap-8">
+                    <BsFacebook
+                      size={40}
+                      className="transalate-y-0 cursor-pointer text-red-500 transition-all duration-200 ease-linear hover:-translate-y-1 "
+                    />
+                    <BsGithub
+                      size={40}
+                      className="transalate-y-0 cursor-pointer text-red-500 transition-all duration-200 ease-linear hover:-translate-y-1 "
+                    />
+                    <BsLinkedin
+                      size={40}
+                      className="transalate-y-0 cursor-pointer text-red-500 transition-all duration-200 ease-linear hover:-translate-y-1 "
+                    />
+                    <BsGoogle
+                      size={40}
+                      className="transalate-y-0 cursor-pointer text-red-500 transition-all duration-200 ease-linear hover:-translate-y-1 "
+                    />
                   </div>
                 </div>
               </section>

@@ -10,13 +10,14 @@ const RegistrationLayout = ({
 }) => {
   const router = useRouter();
   const [pathUrl, setPathUrl] = useState(router.pathname);
-  console.log(pathUrl);
 
   return (
     <section className="relative mx-auto  h-screen w-full overflow-hidden ">
-      <div className="flex h-screen flex-row items-center justify-start ">
-        <div className="z-[999] flex h-screen w-[30%] flex-col justify-center  border-t-2 border-red-500 bg-white px-10 shadow-md shadow-black">
-          <div className="flex justify-center gap-20">
+      <div className="flex h-screen flex-row-reverse items-center justify-start ">
+        <div className="z-[999] h-screen w-screen bg-black/50"></div>
+
+        <div className="z-[999] flex h-screen w-[40%] flex-col justify-start  border-t-2 border-red-500 bg-white px-10 shadow-md shadow-black">
+          <div className="flex justify-center gap-20 pt-2">
             <Link href={'/'}>
               <p
                 onClick={() => {
@@ -46,12 +47,17 @@ const RegistrationLayout = ({
               </p>
             </Link>
           </div>
-          <div className="flex items-center justify-center gap-[16rem] ">
+          <div className="flex w-full items-center justify-center gap-[16rem] ">
             {authComponent}
           </div>
         </div>
       </div>
-      <video autoPlay muted loop className="absolute top-0 w-full ">
+      <video
+        autoPlay
+        muted
+        loop
+        className="absolute top-0 w-screen backdrop-brightness-100 "
+      >
         <source src="/assets/vedio/authbackground.mp4" type="video/mp4" />
       </video>
     </section>
