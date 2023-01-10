@@ -6,8 +6,11 @@ import { BsCardImage } from 'react-icons/bs';
 import type { ImageListType } from 'react-images-uploading';
 import ImageUploading from 'react-images-uploading';
 
+import { errorNotify, successNotify } from '@/app/server/notify/setNotify';
 import ApiClientLocal from '@/app/utils/ApiClientLocal';
 
+import ErrorNotify from '../notify/ErrorNotify';
+import SuccessNotify from '../notify/SuccessNotify';
 import DynamicButton from '../toggleBtn/DynamicButton';
 import TextFeild from './TextField';
 
@@ -44,13 +47,23 @@ const UserRegistrtion = () => {
       .then((data) => {
         if (data.data.message === 'Welcome ,you are successfully signed up') {
           router.push('/login');
+          successNotify(data.data.message);
+        }
+        if (data.data.status === 500) {
+          errorNotify('Server Time out , please press on sign up again');
         }
         console.log(data, 'local');
 
         return data.data;
       })
       .catch((err) => {
-        console.log(err.response.data, 'err local');
+        console.log(err.response, 'err local');
+        if (err.response.status === 422) {
+          errorNotify(err.response.data);
+        }
+        if (err.response.status === 400) {
+          errorNotify(err.response.data);
+        }
 
         return err;
       });
@@ -58,7 +71,7 @@ const UserRegistrtion = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: 30 }}
+      initial={{ opacity: 0, x: -30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
     >
@@ -71,6 +84,8 @@ const UserRegistrtion = () => {
           return (
             <Form>
               <section className=" h-[41rem]" data-testid="form-signup">
+                <SuccessNotify />
+                <ErrorNotify />
                 <div className=" w-full  lg:pt-[5px] xl:pt-[20px]">
                   <h2 className="text-center text-3xl font-semibold text-red-600 ">
                     Create Account

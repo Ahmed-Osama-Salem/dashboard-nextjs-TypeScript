@@ -1,17 +1,24 @@
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { AiOutlineMenu, AiOutlineUser } from 'react-icons/ai';
+import { BiLogIn } from 'react-icons/bi';
 import { MdOutlineHelp } from 'react-icons/md';
 
 import { setIsHelpModal } from '@/app/redux/store/slice/modalSlice';
-import { setIsOpen } from '@/app/redux/store/slice/sidebarSlice';
-import { useDispatch, useSelector } from '@/app/redux/store/store';
+import { useDispatch } from '@/app/redux/store/store';
 
 import ToogleBtn from './toggleBtn/ToggleBtn';
+import UserProfile from './users/UserProfile';
 
 const Navbar = () => {
-  const openSidebar = useSelector((state) => state.sidebar.isOpen);
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState<any>({});
+  const [openNav, setOpenNav] = useState(false);
+  const router = useRouter();
   const dispatch = useDispatch();
+
+  const logOut = () => {
+    router.push('/login');
+    localStorage.removeItem('user');
+  };
 
   useEffect(() => {
     const userLocal = localStorage.getItem('user');
@@ -21,54 +28,56 @@ const Navbar = () => {
   console.log(userData, 'state');
 
   return (
-    <nav className="relative mx-6 flex  flex-wrap items-center justify-between rounded-2xl bg-white px-0 py-2 shadow-lg  shadow-red-600/20 transition-all dark:bg-light-gray  xl:flex-nowrap xl:justify-start">
-      <div className="mx-auto flex w-full flex-wrap items-center justify-between px-4 py-1">
-        <nav>
-          <ol className="mr-12 flex flex-wrap rounded-lg bg-transparent pt-1 sm:mr-16">
-            <li className="text-sm leading-normal">
-              <a className="text-xl font-bold tracking-[0.06rem] text-red-700  lg:text-2xl">
-                EL-FiT Group system
-              </a>
-            </li>
-          </ol>
-        </nav>
+    <>
+      <nav
+        className={
+          openNav
+            ? 'relative mx-6 flex h-[30vh] flex-col flex-wrap items-center justify-between rounded-2xl bg-white px-0 py-2 shadow-2xl  shadow-red-600/40 transition-all duration-300 ease-linear dark:bg-light-gray  xl:flex-nowrap xl:justify-start'
+            : 'relative mx-6 flex h-[7vh] flex-row flex-wrap items-center justify-between rounded-2xl bg-white px-0 py-2 shadow-lg  shadow-red-600/20 transition-all duration-300 ease-linear dark:bg-light-gray   xl:flex-nowrap xl:justify-start'
+        }
+      >
+        <div className="mx-auto flex w-full flex-wrap items-center justify-between px-4 py-1">
+          <nav>
+            <ol className="mr-12 flex flex-wrap rounded-lg bg-transparent pt-1 sm:mr-16">
+              <li className="text-sm leading-normal">
+                <a
+                  className={
+                    !openNav
+                      ? 'text-xl font-bold tracking-[0.06rem] text-red-700  lg:text-2xl'
+                      : 'text-xl font-bold tracking-[0.06rem] text-red-700  transition-all duration-300 ease-linear lg:text-3xl'
+                  }
+                >
+                  EL-FiT Group system
+                </a>
+              </li>
+            </ol>
+          </nav>
 
-        <div className="mt-2 flex grow items-center sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
-          <div className="flex items-center gap-4 md:ml-auto md:pr-4">
-            <p>{userData.name}</p>
-            <ToogleBtn />
-            <MdOutlineHelp
-              size={40}
-              className="cursor-pointer dark:text-white"
-              onClick={() => dispatch(setIsHelpModal(true))}
-            />
-            {/* <div className=" relative flex w-full flex-wrap items-stretch rounded-lg transition-all">
-              <input
-                type="text"
-                className="  relative -ml-px block w-1/12 min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 pl-8 pr-3 text-sm leading-5 text-gray-700 transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
-                placeholder="Type here..."
+          <div className="mt-2 flex grow items-center sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
+            <div className="flex items-center gap-4 md:ml-auto md:pr-4">
+              <p
+                onClick={() => setOpenNav((prev) => !prev)}
+                className="cursor-pointer text-xl capitalize dark:text-white"
+              >
+                {userData.name}
+              </p>
+              <ToogleBtn />
+              <MdOutlineHelp
+                size={40}
+                className="cursor-pointer dark:text-white"
+                onClick={() => dispatch(setIsHelpModal(true))}
               />
-            </div> */}
+              <BiLogIn
+                size={40}
+                onClick={logOut}
+                className="cursor-pointer transition-all duration-150 ease-linear hover:rotate-6 hover:scale-[1.1] dark:text-white"
+              />
+            </div>
           </div>
-          <ul className="md-max:w-full mx-2 mb-0  flex list-none flex-row justify-end pl-0">
-            <li className="flex items-center gap-1">
-              <AiOutlineUser size={25} />
-              {/* <img
-                src={userData.image}
-                alt=""
-                className="w-[8rem] rounded-full"
-              /> */}
-            </li>
-            <li className="flex items-center px-1">
-              <AiOutlineMenu
-                size={25}
-                onClick={() => dispatch(setIsOpen(!openSidebar))}
-              />
-            </li>
-          </ul>
         </div>
-      </div>
-    </nav>
+        {openNav ? <UserProfile user={userData} /> : null}
+      </nav>
+    </>
   );
 };
 

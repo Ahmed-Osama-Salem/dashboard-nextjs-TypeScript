@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/dot-notation */
-import { setCookie } from 'cookies-next';
 import { Form, Formik } from 'formik';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
@@ -8,8 +7,11 @@ import { BiLockAlt } from 'react-icons/bi';
 import { BsFacebook, BsGithub, BsGoogle, BsLinkedin } from 'react-icons/bs';
 import { HiOutlineMail } from 'react-icons/hi';
 
+import { errorNotify, successNotify } from '@/app/server/notify/setNotify';
 import ApiClientLocal from '@/app/utils/ApiClientLocal';
 
+import ErrorNotify from '../notify/ErrorNotify';
+import SuccessNotify from '../notify/SuccessNotify';
 import DynamicButton from '../toggleBtn/DynamicButton';
 import TextFeild from './TextField';
 
@@ -27,10 +29,16 @@ const Login = () => {
     })
       .then((data) => {
         if (data.data.code === 200) {
-          router.push('/elfitgroupdashboard');
+          setTimeout(() => {
+            router.push('/elfitgroupdashboard');
+          }, 3000);
           localStorage.setItem('user', JSON.stringify(data.data.user));
-          const { user } = data.data;
-          setCookie('user', user.name);
+          // const { user } = data.data;
+          // setCookie('user', user.name);
+          successNotify(data.data.message);
+        }
+        if (data.data.status === 500) {
+          errorNotify('Server Time out , please press on sign in again');
         }
         console.log(data, 'local');
 
@@ -38,6 +46,15 @@ const Login = () => {
       })
       .catch((err) => {
         console.log(err, 'err local');
+        if (err.response.status === 422) {
+          errorNotify(err.response.data);
+        }
+        if (err.response.status === 400) {
+          errorNotify(err.response.data);
+        }
+        if (err.response.status === 404) {
+          errorNotify(err.response.data);
+        }
 
         return err;
       });
@@ -57,6 +74,8 @@ const Login = () => {
         {({ errors, touched, isValid, isSubmitting }) => {
           return (
             <Form>
+              <ErrorNotify />
+              <SuccessNotify />
               <section className="w-full" data-testid="form-signin">
                 <div className=" flex items-center justify-center border-b-[1px] border-[#E2E2E2] px-[29px] lg:h-[50px] lg:items-end lg:justify-between xl:h-[90px]">
                   <h1

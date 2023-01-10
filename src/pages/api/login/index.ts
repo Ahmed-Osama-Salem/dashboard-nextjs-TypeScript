@@ -30,6 +30,11 @@ export default async function handler(
 
     return res.status(422).json(loginData.message);
   }
+  if (loginData.status === 400) {
+    console.log(loginData, '400 err');
+
+    return res.status(400).json(loginData.message);
+  }
 
   return res.status(200).json(loginData);
 }

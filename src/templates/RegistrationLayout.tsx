@@ -16,7 +16,7 @@ const RegistrationLayout = ({
       <div className="flex h-screen flex-row-reverse items-center justify-start ">
         <div className="z-[999] h-screen w-screen bg-black/50"></div>
 
-        <div className="z-[999] flex h-screen w-[40%] flex-col justify-start  border-t-2 border-red-500 bg-white px-10 shadow-md shadow-black">
+        <div className="z-[999] flex h-screen w-[60%] flex-col justify-start  border-t-2 border-red-500 bg-white px-10 shadow-md shadow-black">
           <div className="flex justify-center gap-20 pt-2">
             <Link href={'/'}>
               <p
