@@ -20,6 +20,7 @@ import {
 
 const TableBody = () => {
   const tableData = useSelector((state: RootState) => state.tableData.table);
+  const { userData } = useSelector((state: RootState) => state.userData);
   const { initialDateValue, selectedDateValue } = useSelector(
     (state: RootState) => state.filter
   );
@@ -102,26 +103,32 @@ const TableBody = () => {
               <td className="py-8 px-24">{item.allText.angaz} %</td>
               <td className="py-8 ">{item.allText.notes}</td>
               <td className="py-8 px-24">{item.allText.twqi3}</td>
-              <td className="flex items-center justify-between space-x-3 py-8 px-24 print:hidden">
-                <button
-                  onClick={() => {
-                    dispatch(setCellData(item));
-                    dispatch(setIsUpdateModal(true));
-                  }}
-                  className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                >
-                  تعديل
-                </button>
-                <button
-                  onClick={() => {
-                    dispatch(setIsTouched(true));
-                    dispatch(setCellID(item._id));
-                  }}
-                  className="font-medium text-red-600 hover:underline dark:text-red-500"
-                >
-                  ازالة
-                </button>
-              </td>
+              {userData && userData.role === 'Admin' ? (
+                <td className="flex items-center justify-between space-x-3 py-8 px-24 print:hidden">
+                  <button
+                    onClick={() => {
+                      dispatch(setCellData(item));
+                      dispatch(setIsUpdateModal(true));
+                    }}
+                    className="font-medium text-blue-600 hover:underline dark:text-blue-500"
+                  >
+                    تعديل
+                  </button>
+                  <button
+                    onClick={() => {
+                      dispatch(setIsTouched(true));
+                      dispatch(setCellID(item._id));
+                    }}
+                    className="font-medium text-red-600 hover:underline dark:text-red-500"
+                  >
+                    ازالة
+                  </button>
+                </td>
+              ) : (
+                <td className="flex items-center justify-between space-x-3 py-8 px-[2rem] capitalize text-red-600 print:hidden">
+                  only Eng.Mohamed osama can access this entity
+                </td>
+              )}
             </tr>
           );
         })}

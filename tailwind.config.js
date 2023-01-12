@@ -53,6 +53,9 @@ module.exports = {
         '4xl': '1700px',
         desktop: '1920px',
       },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+      },
     },
   },
   plugins: [],

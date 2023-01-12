@@ -7,9 +7,6 @@ import {
 } from '@/app/server/TableData/tableHeader';
 
 const TableHead = ({ dataHead }: { dataHead: ITableHeader[] }) => {
-  // const dispatch = useDispatch();
-  // const { table } = useSelector((state: RootState) => state.tableData);
-
   return (
     <thead className=" rounded-xl bg-gray-300/40 text-xs uppercase text-gray-700 dark:bg-red-700 dark:text-gray-400">
       <tr className="">

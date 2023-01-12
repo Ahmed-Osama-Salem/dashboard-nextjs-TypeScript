@@ -6,25 +6,26 @@ import {
 
 // eslint-disable-next-line import/no-named-as-default
 import darkThemeSlice from './slice/darkThemeSlice';
+// import darkThemeSlice from './slice/darkThemeSlice';
 // eslint-disable-next-line import/no-named-as-default
 import filterSlice from './slice/filterSlice';
 // eslint-disable-next-line import/no-named-as-default
 import modalSlice from './slice/modalSlice';
 // eslint-disable-next-line import/no-named-as-default
-import sidebarSlice from './slice/sidebarSlice';
-// eslint-disable-next-line import/no-named-as-default
 import tableDataSlice from './slice/tableDataSlice';
+// eslint-disable-next-line import/no-named-as-default
+import userDataSlice from './slice/userDataSlice';
 
 /**
  * Creates a store and includes all the slices as reducers.
  */
 export const store = configureStore({
   reducer: {
-    sidebar: sidebarSlice,
     tableData: tableDataSlice,
     modal: modalSlice,
     filter: filterSlice,
     theme: darkThemeSlice,
+    userData: userDataSlice,
   },
 });
 

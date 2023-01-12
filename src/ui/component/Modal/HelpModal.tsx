@@ -107,7 +107,7 @@ const HelpModal = () => {
           <div className={`flex w-full  items-center gap-5 p-10`}>
             <img
               src={
-                theme === 'light'
+                theme === 'dark'
                   ? '/assets/images/wrongLight.png'
                   : '/assets/images/wrongDark.png'
               }
@@ -116,7 +116,7 @@ const HelpModal = () => {
             />
             <img
               src={
-                theme === 'light'
+                theme === 'dark'
                   ? '/assets/images/rightLight.png'
                   : '/assets/images/rightDark.png'
               }

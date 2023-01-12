@@ -8,22 +8,23 @@ const ReactApexChart = dynamic(() => import('react-apexcharts'), {
   ssr: false,
 });
 const LineChart = () => {
-  const tableData = useSelector((state: RootState) => state.tableData.table);
-  const { theme } = useSelector((state: RootState) => state.theme);
+  // const { theme } = useSelector((state: RootState) => state.theme);
+  const { table } = useSelector((state: RootState) => state.tableData);
+  // console.log(table, 'datas');
 
   const chart = {
     series: [
       {
         type: 'line',
         name: 'عـدد الفنين	',
-        data: tableData.map((item: ITableApiData) => {
+        data: table.map((item: ITableApiData) => {
           return item.allText.techNumber;
         }),
       },
       {
         type: 'line',
         name: 'عدد المســاعدين	',
-        data: tableData.map((item: ITableApiData) => {
+        data: table.map((item: ITableApiData) => {
           return item.allText.mosadNumber;
         }),
         fillColor: '#1fc900',
@@ -44,14 +45,14 @@ const LineChart = () => {
         },
       ],
       tooltip: {
-        theme: theme ? 'dark' : '#fffff',
+        theme: 'dark',
       },
       chart: {
         height: 350,
         zoom: {
           enabled: true,
         },
-        foreColor: theme ? '#e5d3d3' : '#fffff',
+        foreColor: '#e5d3d3',
       },
 
       stroke: {
@@ -134,7 +135,7 @@ const LineChart = () => {
       },
 
       xaxis: {
-        categories: tableData.map((item: ITableApiData) => {
+        categories: table.map((item: ITableApiData) => {
           return item.allText.dateNow;
         }),
         labels: {

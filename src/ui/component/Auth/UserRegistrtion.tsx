@@ -15,13 +15,10 @@ import DynamicButton from '../toggleBtn/DynamicButton';
 import TextFeild from './TextField';
 
 const UserRegistrtion = () => {
-  const [images, setImages] = useState<ImageListType>([]);
+  const [images, setImages] = useState<ImageListType | any>([]);
   const maxNumber = 69;
 
-  const onChange = (
-    imageList: ImageListType,
-    addUpdateIndex: ImageListType
-  ) => {
+  const onChange = (imageList: any, addUpdateIndex: any) => {
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
   };

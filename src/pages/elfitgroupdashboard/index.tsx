@@ -6,6 +6,7 @@ import {
   setTableData,
   setTechRate,
 } from '@/app/redux/store/slice/tableDataSlice';
+import { setUserData } from '@/app/redux/store/slice/userDataSlice';
 import type { RootState } from '@/app/redux/store/store';
 import { useDispatch, useSelector } from '@/app/redux/store/store';
 import { getTableData } from '@/app/server/read/getTabledata';
@@ -42,6 +43,9 @@ const Index = ({ data }: { data: ITableApiData[] }) => {
   }, [data]);
 
   useEffect(() => {
+    const userLocal = localStorage.getItem('user');
+    const dataParse = JSON.parse(userLocal as string);
+    dispatch(setUserData(dataParse));
     dispatch(setTableData(data));
   }, []);
 

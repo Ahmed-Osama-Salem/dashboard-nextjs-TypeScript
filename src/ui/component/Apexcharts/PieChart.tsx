@@ -1,92 +1,76 @@
 import dynamic from 'next/dynamic';
+import { useSelector } from 'react-redux';
+
+import type { ITableApiData } from '@/app/interface/tableApiData';
+import type { RootState } from '@/app/redux/store/store';
 
 const ReactApexChart = dynamic(() => import('react-apexcharts'), {
   ssr: false,
 });
+const LineChartN = () => {
+  const { table } = useSelector((state: RootState) => state.tableData);
 
-const PieChart = () => {
-  const pie = {
-    series: [42, 47, 52, 58, 68],
+  const chart = {
+    series: [
+      {
+        type: 'line',
+        name: 'عـدد الفنين	',
+        data: table.map((item: ITableApiData) => {
+          return item.allText.techNumber;
+        }),
+      },
+      {
+        name: 'عدد المســاعدين	',
+        data: table.map((item: ITableApiData) => {
+          return item.allText.mosadNumber;
+        }),
+        fillColor: '#1fc900',
+      },
+    ],
     options: {
       chart: {
-        width: 310,
+        height: 350,
+        type: 'area',
       },
-      labels: [
-        ' adipisicing elit. Ipsum natus  ',
-        ' Provident vitae error rehenderit.',
-        '  Provident vitae error rehenderit.',
-        ' cupiditate  Provident vitae rehenderit.',
-        ' Provident vitae error rehenderit rehenderit.',
-      ],
-      fill: {
-        opacity: 1,
+      dataLabels: {
+        enabled: false,
       },
-
       stroke: {
-        width: 1,
-        colors: undefined,
+        curve: 'smooth',
+      },
+      tooltip: {
+        theme: 'dark',
+      },
+      xaxis: {
+        categories: table.map((item: ITableApiData) => {
+          return item.allText.dateNow;
+        }),
+        labels: {
+          style: {
+            fontSize: '13px',
+          },
+        },
       },
       yaxis: {
-        show: false,
-      },
-      legend: {
-        labels: {
-          colors: 'black',
-          useSeriesColors: false,
-        },
-      },
-      markers: {
-        width: 100,
-        height: 12,
-        strokeWidth: 2,
-        strokeColor: 'red',
-        fillColors: undefined,
-        radius: 12,
-        customHTML: undefined,
-        onClick: undefined,
-        offsetX: 0,
-        offsetY: 0,
-        labels: {
-          colors: 'red',
-          useSeriesColors: false,
-        },
-      },
-
-      plotOptions: {
-        polarArea: {
-          rings: {
-            strokeWidth: 0,
-          },
-          spokes: {
-            strokeWidth: 0,
-          },
-        },
-      },
-      theme: {
-        monochrome: {
-          color: '#008FFB',
-          enabled: true,
-          shadeIntensity: 0.5,
-        },
+        min: 0,
+        max: 20,
+        tickAmount: 10,
       },
     },
   };
 
   return (
-    <div className="h-[378.62px] w-[50%] rounded-3xl bg-white p-[20px] dark:bg-light-gray dark:text-white">
-      <h1 className="text-[20.87px] font-semibold text-[#00157F]">
-        Lorem ipsum dolor sit{' '}
-      </h1>
-
-      <div id="chart">
+    <div className="h-[378.62px] w-full rounded-3xl bg-white p-[20px] dark:bg-light-gray dark:text-white lg:w-[50%]">
+      <div id="chart" className="text-white">
         <ReactApexChart
-          options={pie.options}
-          series={pie.series}
-          type="polarArea"
-          width={660}
+          options={chart.options}
+          series={chart.series}
+          type="line"
+          height={350}
         />
       </div>
     </div>
   );
 };
-export default PieChart;
+
+export default LineChartN;
