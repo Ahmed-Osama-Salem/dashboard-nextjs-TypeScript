@@ -102,7 +102,10 @@ const ToogleBtn = () => {
       <button className="h-10 w-10 focus:outline-none" onClick={toggleMode}>
         <span className="sr-only">Color mode switch button</span>
         {darkModeActive ? ( // switch mode icon according to html class 'dark' or 'light'
-          <MdLightMode size={34} className="hover:animate-spin" />
+          <MdLightMode
+            size={34}
+            className="hover:animate-spin dark:text-white"
+          />
         ) : (
           <BsMoonFill size={34} className="hover:animate-pulse" />
         )}

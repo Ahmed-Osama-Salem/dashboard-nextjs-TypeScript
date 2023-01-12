@@ -30,8 +30,8 @@ const StatisticsCards = () => {
   ];
 
   return (
-    <div className=" m-auto mt-10 w-full items-center px-10 ">
-      <div className="mx-4 flex w-full gap-6 pb-3 md:mx-24 lg:mx-0">
+    <div className="m-auto mt-10 w-full items-center px-10">
+      <div className="flex w-full flex-col gap-6 pb-3  lg:mx-0 lg:flex-row">
         {statisticData.map((card, i) => {
           return (
             <Card

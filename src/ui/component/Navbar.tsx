@@ -30,8 +30,8 @@ const Navbar = () => {
       <nav
         className={
           openNav
-            ? 'relative mx-6 flex h-[30vh] flex-col flex-wrap items-center justify-between rounded-2xl bg-white px-0 py-2 shadow-2xl  shadow-red-600/40 transition-all duration-300 ease-linear dark:bg-light-gray  xl:flex-nowrap xl:justify-start'
-            : 'relative mx-6 flex h-[7vh]  flex-row flex-wrap items-center justify-between rounded-2xl bg-white px-0 py-2 shadow-lg  shadow-red-600/20 transition-all duration-300 ease-linear dark:bg-light-gray   xl:flex-nowrap xl:justify-start'
+            ? 'relative mx-6 flex h-[60vh] flex-wrap items-center justify-start rounded-2xl bg-white px-0 py-2 shadow-2xl shadow-red-600/40 transition-all duration-300 ease-linear  dark:bg-light-gray lg:h-[30vh] lg:flex-col lg:items-center lg:justify-between  xl:flex-nowrap xl:justify-start'
+            : 'mx-6 flex h-[16vh] items-center rounded-2xl  bg-white px-0 py-2 shadow-lg shadow-red-600/20 transition-all duration-300 ease-linear dark:bg-light-gray  lg:relative lg:h-[7vh] lg:flex-row lg:flex-wrap lg:justify-between   xl:flex-nowrap xl:justify-start'
         }
       >
         <div className="mx-auto flex w-full flex-wrap items-center justify-between px-4 py-1">
@@ -62,7 +62,7 @@ const Navbar = () => {
                 onMouseEnter={() => setShowLabelHelp(true)}
                 onMouseLeave={() => setShowLabelHelp(false)}
                 size={40}
-                className="cursor-pointer transition-all duration-200 ease-linear hover:text-red-500 dark:text-white"
+                className="hidden cursor-pointer transition-all duration-200 ease-linear hover:text-red-500 dark:text-white lg:block"
                 onClick={() => dispatch(setIsHelpModal(true))}
               />
               <BiLogIn

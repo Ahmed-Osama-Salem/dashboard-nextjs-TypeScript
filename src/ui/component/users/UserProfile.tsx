@@ -8,7 +8,7 @@ import DynamicButton from '../toggleBtn/DynamicButton';
 const UserProfile = ({ user }: any) => {
   const { image, name, email, job, role } = user;
   return (
-    <section className="flex w-full items-center justify-start ">
+    <section className="flex w-full flex-col-reverse items-center justify-center lg:flex-row lg:items-center lg:justify-start ">
       <motion.div
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
@@ -18,18 +18,20 @@ const UserProfile = ({ user }: any) => {
           stiffness: 200,
           delay: 0.3,
         }}
-        className="w-[13%]"
+        className="lg:w-[13%]"
       >
-        <h2 className="pl-11 text-3xl text-red-600 ">Profile</h2>
+        <h2 className="invisible text-red-600 lg:visible lg:pl-11 lg:text-3xl">
+          Profile
+        </h2>
 
         {role && role === 'Admin' ? (
-          <div className="flex flex-col gap-2 pl-11">
+          <div className="flex gap-2 lg:flex-col lg:pl-11">
             <div className="flex items-center gap-3 ">
               <RiUserFollowFill
                 size={23}
                 className="text-red-500 dark:text-red-600"
               />
-              <p className="text-xl capitalize dark:text-white ">
+              <p className="capitalize dark:text-white lg:text-xl ">
                 role:{''}
                 <span className="text-gray-600 dark:text-white/70"> admin</span>
               </p>
@@ -39,7 +41,7 @@ const UserProfile = ({ user }: any) => {
                 size={20}
                 className="rounded-full text-green-500 shadow-lg shadow-green-300/60"
               />
-              <p className="text-xl capitalize dark:text-white ">
+              <p className="capitalize dark:text-white lg:text-xl ">
                 <span className="text-gray-600 dark:text-white/70">
                   {' '}
                   online
@@ -51,19 +53,19 @@ const UserProfile = ({ user }: any) => {
                 size={20}
                 className="rounded-full text-green-500"
               />
-              <p className="text-lg capitalize dark:text-white/70 ">
+              <p className="capitalize dark:text-white/70 lg:text-lg ">
                 email vrefied
               </p>
             </div>
           </div>
         ) : (
-          <div className="flex flex-col gap-2 pl-11">
+          <div className="flex gap-2 pl-4 lg:flex-col lg:pl-11">
             <div className="flex items-center gap-3 ">
               <FaUserEdit
                 size={26}
                 className="text-red-500 dark:text-red-600"
               />
-              <p className="text-xl capitalize dark:text-white ">
+              <p className="capitalize dark:text-white lg:text-xl ">
                 role:{''}
                 <span className="text-gray-600 dark:text-white/70">
                   {' '}
@@ -76,7 +78,7 @@ const UserProfile = ({ user }: any) => {
                 size={20}
                 className="rounded-full text-green-500 shadow-lg shadow-green-300/60"
               />
-              <p className="text-xl capitalize dark:text-white ">
+              <p className="capitalize dark:text-white lg:text-xl ">
                 <span className="text-gray-600 dark:text-white/70">
                   {' '}
                   online
@@ -88,14 +90,14 @@ const UserProfile = ({ user }: any) => {
                 size={20}
                 className="rounded-full text-green-500"
               />
-              <p className="text-lg capitalize dark:text-white/70 ">
+              <p className="capitalize dark:text-white/70 lg:text-lg ">
                 email vrefied
               </p>
             </div>
           </div>
         )}
       </motion.div>
-      <div className="flex w-[80%] items-center justify-center gap-5">
+      <div className="flex flex-col items-center justify-start gap-5 lg:w-[80%] lg:flex-row lg:items-center lg:justify-center">
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -109,10 +111,10 @@ const UserProfile = ({ user }: any) => {
           <img
             src={image}
             alt=""
-            className="w-[10rem] rounded-full shadow-2xl"
+            className="w-[9rem] rounded-full shadow-2xl lg:w-[10rem]"
           />
         </motion.div>
-        <div>
+        <div className="text-center lg:text-start">
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -123,7 +125,7 @@ const UserProfile = ({ user }: any) => {
               delay: 0.3,
             }}
           >
-            <p className="text-2xl font-bold capitalize  dark:text-white">
+            <p className="font-bold capitalize dark:text-white  lg:text-2xl">
               {name}
             </p>
           </motion.div>
@@ -137,7 +139,7 @@ const UserProfile = ({ user }: any) => {
               delay: 0.4,
             }}
           >
-            <p className=" text-lg capitalize text-gray-600 dark:text-white">
+            <p className=" capitalize text-gray-600 dark:text-white lg:text-lg">
               {job}
             </p>
           </motion.div>
@@ -151,7 +153,7 @@ const UserProfile = ({ user }: any) => {
               delay: 0.6,
             }}
           >
-            <p className=" text-lg  dark:text-white">{email}</p>
+            <p className=" dark:text-white  lg:text-lg">{email}</p>
           </motion.div>
         </div>
       </div>
@@ -164,8 +166,9 @@ const UserProfile = ({ user }: any) => {
           stiffness: 200,
           delay: 0.6,
         }}
+        className="hidden lg:block"
       >
-        <DynamicButton label={'Edit'} type="button" width="w-[100px]" />
+        <DynamicButton label={'Edit'} type="button" width="lg:w-[100px] " />
       </motion.div>
     </section>
   );

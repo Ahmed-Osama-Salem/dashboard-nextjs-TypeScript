@@ -17,7 +17,7 @@ const Card = ({
             {icon}
           </div>
           <div className="inline-flex text-red-600 transition-all duration-300  ease-linear group-hover:text-gray-200 sm:text-base">
-            <p className="text-3xl transition-all duration-300  ease-linear group-hover:text-4xl">
+            <p className="text-lg transition-all duration-300 ease-linear group-hover:text-xl  lg:text-3xl group-hover:lg:text-4xl">
               {cardLabel}
             </p>
           </div>
