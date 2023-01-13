@@ -44,7 +44,7 @@ const TextFeild = ({
           </div>
         )}
       </label>
-      <span className="absolute bottom-[0.6rem] left-2">{icon}</span>
+      {icon}
 
       <Field
         type={!showPassword ? type : 'text'}

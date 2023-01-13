@@ -3,7 +3,7 @@ import { Form, Formik } from 'formik';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { BiLockAlt } from 'react-icons/bi';
+import { BiLockOpenAlt } from 'react-icons/bi';
 import { BsFacebook, BsGithub, BsGoogle, BsLinkedin } from 'react-icons/bs';
 import { HiOutlineMail } from 'react-icons/hi';
 
@@ -80,33 +80,51 @@ const Login = () => {
                 <div className=" flex items-center justify-center border-b-[1px] border-[#E2E2E2] px-[29px] lg:h-[50px] lg:items-end lg:justify-between xl:h-[90px]">
                   <h1
                     className={
-                      ' relative cursor-pointer text-2xl font-semibold text-red-600 transition-all duration-200 after:bottom-[-1px]'
+                      ' relative cursor-pointer text-lg font-semibold text-red-600 transition-all duration-200 after:bottom-[-1px] md:text-2xl'
                     }
                   >
                     Sign in with email
                   </h1>
                 </div>
                 <div className="flex h-full w-full flex-col items-center justify-center pt-[22px] ">
-                  <div className="mt-7">
+                  <div className="md:mt-7">
                     <TextFeild
-                      width={'w-[24rem]'}
+                      width={'w-[100%] md:w-[25rem]'}
                       label="Email"
                       name="email"
                       placeholder="email"
                       type={'email'}
                       showError={!!(touched.email && errors.email)}
-                      icon={<HiOutlineMail size={25} />}
+                      icon={
+                        <HiOutlineMail
+                          size={25}
+                          className={`${
+                            touched.email && errors.email
+                              ? 'input-icons-error'
+                              : 'input-icons-success'
+                          } input-icons`}
+                        />
+                      }
                     />
                   </div>
-                  <div className="mt-7">
+                  <div className="md:mt-7">
                     <TextFeild
-                      width={'w-[24rem]'}
+                      width={'w-[100%] md:w-[25rem]'}
                       label="Password"
                       name="password"
                       placeholder="password"
                       type={'password'}
                       showError={!!(touched.password && errors.password)}
-                      icon={<BiLockAlt size={25} />}
+                      icon={
+                        <BiLockOpenAlt
+                          size={25}
+                          className={`${
+                            touched.password && errors.password
+                              ? 'input-icons-error'
+                              : 'input-icons-success'
+                          } input-icons`}
+                        />
+                      }
                     />
                   </div>
 

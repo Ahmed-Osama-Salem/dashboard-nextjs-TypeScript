@@ -13,7 +13,7 @@ const Index = () => {
         />
       }
     >
-      <main className=" flex h-screen  w-full items-center justify-center overflow-hidden bg-[#e6e8ea]">
+      <main className=" flex h-screen w-full items-center justify-center overflow-hidden ">
         <RegistrationLayout authComponent={<Login />} />
       </main>
     </Main>
