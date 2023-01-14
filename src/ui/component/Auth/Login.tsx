@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/dot-notation */
+import { setCookie } from 'cookies-next';
 import { Form, Formik } from 'formik';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 import { BiLockOpenAlt } from 'react-icons/bi';
 import { BsFacebook, BsGithub, BsGoogle, BsLinkedin } from 'react-icons/bs';
 import { HiOutlineMail } from 'react-icons/hi';
 
+import type { IUserData } from '@/app/redux/store/slice/userDataSlice';
 import { errorNotify, successNotify } from '@/app/server/notify/setNotify';
 import ApiClientLocal from '@/app/utils/ApiClientLocal';
 
@@ -21,8 +23,10 @@ const Login = () => {
     email: '',
     password: '',
   };
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLoginSubmit = async (values: any) => {
+    setIsLoading(true);
     return ApiClientLocal.post('/api/login', {
       email: values.email,
       password: values.password,
@@ -33,14 +37,22 @@ const Login = () => {
             router.push('/elfitgroupdashboard');
           }, 3000);
           localStorage.setItem('user', JSON.stringify(data.data.user));
-          // const { user } = data.data;
-          // setCookie('user', user.name);
+          const { user }: { user: IUserData } = data.data;
+          const cookieData = {
+            email: user.email,
+            name: user.name,
+            phone: user.phone,
+            job: user.phone,
+            role: user.role,
+          };
+          setCookie('user', cookieData);
           successNotify(data.data.message);
         }
         if (data.data.status === 500) {
           errorNotify('Server Time out , please press on sign in again');
         }
         console.log(data, 'local');
+        setIsLoading(false);
 
         return data.data;
       })
@@ -55,6 +67,7 @@ const Login = () => {
         if (err.response.status === 404) {
           errorNotify(err.response.data);
         }
+        setIsLoading(false);
 
         return err;
       });
@@ -132,7 +145,7 @@ const Login = () => {
                     <DynamicButton
                       label={'Sign in'}
                       type="submit"
-                      // loader={!!isLoading}
+                      loader={!!isLoading}
                       width="w-[200px]"
                       isDisabled={!isValid || isSubmitting}
                     />

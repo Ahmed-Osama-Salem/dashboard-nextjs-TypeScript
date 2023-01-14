@@ -9,7 +9,7 @@ const Index = () => {
       meta={
         <Meta
           title="EL-FiT Group"
-          description="Suiiz Tech Team Next.js Boilerplate is the perfect starter code for your project. Build your React application with the Next.js framework."
+          description="EL-FiT GROUP has been established since 2017 , in engineering training sector and general contracting ,the CEO & the founder of this company called Eng/ Mohamed Osama EL-FiT, we are providing engineering courses for training students and also providing concrete works items for general contracting services. "
         />
       }
     >

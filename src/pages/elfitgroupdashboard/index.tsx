@@ -13,6 +13,7 @@ import { getTableData } from '@/app/server/read/getTabledata';
 import { Meta } from '@/layouts/Meta';
 import { Dashboard } from '@/templates/Dashboard';
 import { Main } from '@/templates/Main';
+import Error404 from '@/ui/component/Error404';
 import HelpModal from '@/ui/component/Modal/HelpModal';
 import TableConstract from '@/ui/component/Table/TableConstract';
 import UsersTabel from '@/ui/component/users/UsersTable';
@@ -22,7 +23,7 @@ import StatisticsCards from '@/ui/sections/statisticscards/StatisticsCards';
 const Index = ({ data }: { data: ITableApiData[] }) => {
   const dispatch = useDispatch();
   const { isHelpModal } = useSelector((state: RootState) => state.modal);
-
+  const { userData } = useSelector((state: RootState) => state.userData);
   const getTechRate = () => {
     const rateOfTech = data
       .map((a: ITableApiData) => parseInt(a.allText.techNumber, 10))
@@ -45,6 +46,9 @@ const Index = ({ data }: { data: ITableApiData[] }) => {
   useEffect(() => {
     const userLocal = localStorage.getItem('user');
     const dataParse = JSON.parse(userLocal as string);
+    // if (!userData || !userLocal) {
+    //   router.push('/login');
+    // }
     dispatch(setUserData(dataParse));
     dispatch(setTableData(data));
   }, []);
@@ -54,19 +58,23 @@ const Index = ({ data }: { data: ITableApiData[] }) => {
       meta={
         <Meta
           title="EL-FiT Group"
-          description="Suiiz Tech Team Next.js Boilerplate is the perfect starter code for your project. Build your React application with the Next.js framework."
+          description="EL-FiT GROUP has been established since 2017 , in engineering training sector and general contracting ,the CEO & the founder of this company called Eng/ Mohamed Osama EL-FiT, we are providing engineering courses for training students and also providing concrete works items for genral contracting services. "
         />
       }
     >
-      <div className="overflow-x-hidden">
-        <Dashboard>
-          <ChartSection />
-          <StatisticsCards />
-          <UsersTabel />
-          <TableConstract />
-        </Dashboard>
-        {isHelpModal ? <HelpModal /> : null}
-      </div>
+      {userData ? (
+        <div className="overflow-x-hidden">
+          <Dashboard>
+            <ChartSection />
+            <StatisticsCards />
+            <UsersTabel />
+            <TableConstract />
+          </Dashboard>
+          {isHelpModal ? <HelpModal /> : null}
+        </div>
+      ) : (
+        <Error404 />
+      )}
     </Main>
   );
 };
