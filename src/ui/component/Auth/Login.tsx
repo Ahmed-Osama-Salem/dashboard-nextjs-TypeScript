@@ -35,7 +35,7 @@ const Login = () => {
         if (data.data.code === 200) {
           setTimeout(() => {
             router.push('/elfitgroupdashboard');
-          }, 3000);
+          }, 1200);
           localStorage.setItem('user', JSON.stringify(data.data.user));
           const { user }: { user: IUserData } = data.data;
           const cookieData = {

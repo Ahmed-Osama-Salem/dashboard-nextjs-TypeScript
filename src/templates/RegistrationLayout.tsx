@@ -12,7 +12,7 @@ const RegistrationLayout = ({
   const [pathUrl, setPathUrl] = useState(router.pathname);
 
   return (
-    <section className="relative mx-auto  h-screen w-full overflow-hidden ">
+    <section className="relative mx-auto h-screen w-full overflow-hidden ">
       <div className="flex h-screen flex-row items-center justify-center lg:justify-start ">
         <div className="z-[999] flex  max-h-[90%] w-[80%] flex-col rounded-b-3xl border-t-2 border-red-500 bg-white  px-10 shadow-lg shadow-red-500/75 lg:h-screen lg:max-h-screen lg:w-[40%] lg:justify-start lg:rounded-b-none lg:bg-white">
           <div className="flex justify-center gap-20 pt-2">
@@ -50,8 +50,19 @@ const RegistrationLayout = ({
           </div>
         </div>
       </div>
+      <div className="relative z-20 block w-[7.9rem] translate-y-[-830px] translate-x-[100%] xl:hidden xl:w-[17rem]">
+        <img
+          src="https://raw.githubusercontent.com/Ahmed-Osama-Salem/EL-FiT-GroupManegment_System/main/public/images/elfitlogoone.png"
+          alt="fit-logo"
+          className="fit-logo-round absolute"
+        />
+        <img
+          src="https://raw.githubusercontent.com/Ahmed-Osama-Salem/EL-FiT-GroupManegment_System/main/public/images/logotwo.png"
+          alt="fit-logo"
+          className="logo-two-pre absolute"
+        />
+      </div>
       <div className="absolute top-0 z-10 h-screen w-screen bg-white md:bg-black/60"></div>
-
       <video
         autoPlay
         muted
