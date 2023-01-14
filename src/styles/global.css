@@ -102,15 +102,15 @@
   }
 
   .input-icons{
-    @apply pointer-events-none absolute top-[44px] left-2  text-[#807a7a];
+    @apply pointer-events-none absolute top-[31px] lg:top-[44px] left-2  text-[#807a7a];
   }
   
   .input-icons-success{
-    @apply pointer-events-none absolute top-[44px] left-2  !text-red-600;
+    @apply pointer-events-none absolute top-[31px] lg:top-[44px] left-2  !text-red-600;
   }
   
   .input-icons-error{
-    @apply pointer-events-none absolute top-[44px] left-2  !text-red-500;
+    @apply pointer-events-none absolute top-[31px] lg:top-[44px] left-2  !text-red-500;
   }
   
   

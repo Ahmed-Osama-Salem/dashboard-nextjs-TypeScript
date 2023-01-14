@@ -28,12 +28,12 @@ const TextFeild = ({
   // );
   return (
     <div
-      className="relative mb-[20px] min-w-[250px] "
+      className="relative mb-[2%] min-w-[250px] lg:mb-[20px] "
       data-testid="field-label"
     >
       <label
         htmlFor={name}
-        className="mb-[7px] flex justify-between gap-3 text-[18px] font-medium text-black dark:text-white lg:text-[15px] xl:text-[18px]"
+        className="mb-[7px] flex justify-between gap-3 text-[14px] font-medium text-black dark:text-white lg:text-[15px] xl:text-[18px]"
         data-testid="field-label"
       >
         {label}
@@ -54,7 +54,7 @@ const TextFeild = ({
           showError
             ? 'border-red-500 focus:outline-red-500'
             : 'border-[#E2E2E2] focus:outline-blue-600'
-        } h-[45px] ${width} min-w-[250px] rounded-lg border-2 border-[#E2E2E2] bg-white  px-4 pl-10 text-[18px] text-[#524c4c] dark:bg-light-gray dark:text-white  `}
+        } h-[33px] lg:h-[45px] ${width} min-w-[250px] rounded-lg border-2 border-[#E2E2E2] bg-white  px-4 pl-10 text-[18px] text-[#524c4c]  dark:text-white  `}
         placeholder={placeholder}
       />
       {type === 'password' ? (
@@ -62,12 +62,12 @@ const TextFeild = ({
           {showPassword ? (
             <HiEye
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute top-[45px] right-3 cursor-pointer text-[25px] text-[#9a9494]"
+              className="absolute top-[31px] right-3 cursor-pointer text-[25px] text-[#9a9494] lg:top-[45px]"
             />
           ) : (
             <HiEyeOff
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute top-[45px] right-3 cursor-pointer text-[25px] text-[#9a9494] transition-all duration-200 ease-linear"
+              className="absolute top-[31px] right-3 cursor-pointer text-[25px] text-[#9a9494] transition-all duration-200 ease-linear lg:top-[45px]"
             />
           )}{' '}
         </div>

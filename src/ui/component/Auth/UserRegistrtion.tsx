@@ -85,7 +85,7 @@ const UserRegistrtion = () => {
                 <SuccessNotify />
                 <ErrorNotify />
                 <div className=" w-full  lg:pt-[5px] xl:pt-[20px]">
-                  <h2 className="text-center text-3xl font-semibold text-red-600 ">
+                  <h2 className="text-center font-semibold text-red-600 lg:text-3xl ">
                     Create Account
                   </h2>
                 </div>
@@ -107,7 +107,7 @@ const UserRegistrtion = () => {
                       <div>
                         <div
                           onClick={onImageUpload}
-                          className="flex h-[6rem] w-[6rem] cursor-pointer items-center justify-center rounded-full border-2 border-red-500 bg-white p-1 shadow-xl md:h-[8rem] md:w-[8rem]"
+                          className="flex h-[4rem] w-[4rem] cursor-pointer items-center justify-center rounded-full border-2 border-red-500 bg-white p-1 shadow-xl md:h-[8rem] md:w-[8rem]"
                           {...dragProps}
                         >
                           {images.length === 0 ? (
@@ -121,7 +121,7 @@ const UserRegistrtion = () => {
                           {imageList.map((image, index) => (
                             <div
                               key={index}
-                              className="flex items-center justify-start gap-10"
+                              className="flex items-center justify-start gap-4 lg:gap-10"
                             >
                               <img
                                 src={image.data_url}
@@ -143,7 +143,7 @@ const UserRegistrtion = () => {
                     )}
                   </ImageUploading>
                 </div>
-                <div className=" mt-[5px] flex w-full flex-col  ">
+                <div className=" flex w-full flex-col lg:mt-[5px]  ">
                   <div className=" mx-auto">
                     <TextFeild
                       width={'w-[100%] md:w-[25rem]'}

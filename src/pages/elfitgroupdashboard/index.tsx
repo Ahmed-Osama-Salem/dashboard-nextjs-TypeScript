@@ -27,28 +27,27 @@ const Index = ({ data }: { data: ITableApiData[] }) => {
   const getTechRate = () => {
     const rateOfTech = data
       .map((a: ITableApiData) => parseInt(a.allText.techNumber, 10))
-      .reduce((a: number, b: number) => a + b);
+      .reduce((a: number, b: number) => a + b, 0);
     dispatch(setTechRate(rateOfTech));
   };
 
   const getMosadRate = () => {
     const rateOfMosad = data
       .map((a: ITableApiData) => parseInt(a.allText.mosadNumber, 10))
-      .reduce((a: number, b: number) => a + b);
+      .reduce((a: number, b: number) => a + b, 0);
     dispatch(setMosadRate(rateOfMosad));
   };
 
   useEffect(() => {
-    getTechRate();
-    getMosadRate();
+    if (data) {
+      getTechRate();
+      getMosadRate();
+    }
   }, [data]);
 
   useEffect(() => {
     const userLocal = localStorage.getItem('user');
     const dataParse = JSON.parse(userLocal as string);
-    // if (!userData || !userLocal) {
-    //   router.push('/login');
-    // }
     dispatch(setUserData(dataParse));
     dispatch(setTableData(data));
   }, []);

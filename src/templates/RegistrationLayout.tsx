@@ -14,7 +14,7 @@ const RegistrationLayout = ({
   return (
     <section className="relative mx-auto  h-screen w-full overflow-hidden ">
       <div className="flex h-screen flex-row items-center justify-center lg:justify-start ">
-        <div className="z-[999] flex w-[80%] flex-col rounded-b-3xl border-t-2 border-red-500 bg-white/60  px-10 shadow-md shadow-black lg:h-screen lg:w-[40%] lg:justify-start lg:rounded-b-none lg:bg-white">
+        <div className="z-[999] flex  max-h-[90%] w-[80%] flex-col rounded-b-3xl border-t-2 border-red-500 bg-white  px-10 shadow-lg shadow-red-500/75 lg:h-screen lg:max-h-screen lg:w-[40%] lg:justify-start lg:rounded-b-none lg:bg-white">
           <div className="flex justify-center gap-20 pt-2">
             <Link href={'/'}>
               <p
@@ -50,7 +50,7 @@ const RegistrationLayout = ({
           </div>
         </div>
       </div>
-      <div className="absolute top-0 z-10 h-screen w-screen bg-black/60"></div>
+      <div className="absolute top-0 z-10 h-screen w-screen bg-white md:bg-black/60"></div>
 
       <video
         autoPlay
