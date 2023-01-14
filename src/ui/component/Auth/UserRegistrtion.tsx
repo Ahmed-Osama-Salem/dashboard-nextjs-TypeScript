@@ -143,7 +143,7 @@ const UserRegistrtion = () => {
                     )}
                   </ImageUploading>
                 </div>
-                <div className=" flex w-full flex-col lg:mt-[5px]  ">
+                <div className="flex w-full flex-col lg:mt-[5px]  ">
                   <div className=" mx-auto">
                     <TextFeild
                       width={'w-[100%] md:w-[25rem]'}
