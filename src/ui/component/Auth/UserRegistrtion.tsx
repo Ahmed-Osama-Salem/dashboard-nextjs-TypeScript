@@ -52,12 +52,10 @@ const UserRegistrtion = () => {
         if (data.data.status === 500) {
           errorNotify('Server Time out , please press on sign up again');
         }
-        console.log(data, 'local');
 
         return data.data;
       })
       .catch((err) => {
-        console.log(err.response, 'err local');
         if (err.response.status === 422) {
           errorNotify(err.response.data);
         }

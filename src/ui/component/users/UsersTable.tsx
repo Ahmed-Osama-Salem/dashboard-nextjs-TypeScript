@@ -81,8 +81,6 @@ const UsersTabel = () => {
         return data.data;
       })
       .catch((err) => {
-        console.log(err);
-
         return err;
       });
   };
@@ -95,9 +93,7 @@ const UsersTabel = () => {
         initialValues={initialValues}
         onSubmit={handelInsertData}
       >
-        {({ setFieldValue, values, errors, isValid, isSubmitting }) => {
-          console.log(errors);
-
+        {({ setFieldValue, values, isValid, isSubmitting }) => {
           return (
             <Form className="px-10 print:hidden">
               <section className="mt-12 flex w-full flex-col gap-10 dark:bg-dark-gray md:flex-col xl:flex-row-reverse">

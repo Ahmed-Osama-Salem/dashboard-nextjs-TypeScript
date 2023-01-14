@@ -51,13 +51,11 @@ const Login = () => {
         if (data.data.status === 500) {
           errorNotify('Server Time out , please press on sign in again');
         }
-        console.log(data, 'local');
         setIsLoading(false);
 
         return data.data;
       })
       .catch((err) => {
-        console.log(err, 'err local');
         if (err.response.status === 422) {
           errorNotify(err.response.data);
         }
