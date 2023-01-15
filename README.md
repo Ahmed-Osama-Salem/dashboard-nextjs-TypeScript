@@ -72,7 +72,11 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 
 ## Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+ <p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=vscode,tailwind,ts,react,nextjs,redux,jest,nodejs,express,mongodb" />
+  </a>
+</p>
 
 ## Getting Started
 
