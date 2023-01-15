@@ -21,7 +21,7 @@ const RegistrationLayout = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
           >
-            <h3 className="font-poppins text-3xl font-semibold text-red-500 lg:text-[6rem]">
+            <h3 className="font-poppins text-3xl font-semibold text-red-500 drop-shadow-2xl lg:text-[6rem]">
               EL-FiT Group
             </h3>
           </motion.div>

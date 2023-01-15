@@ -41,13 +41,24 @@ creating account to in the system to have access to login and access dashboard ,
 ![Screen Shot](https://i.ibb.co/LPJ0mmT/Screenshot-from-2023-01-13-21-37-38.png
 )
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
+This is a great Full stack project [Crud system] available on GitHub, however, I build this system based on Contracting company Table sheets,
+and suitable for any company that thier jobs based on sheets and note every daily,weekly,mounthly state and provide Reports Prints,
+storing data of table in the database with mongoodb and storing user data. 
 
-Here's why:
-
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+## Features:
+* Three times faster than the previous system.
+* Build by Using new technologies Next js , TypeScript to provide better 
+  web with no errors.
+* Simple and easy Form to fill.
+* Responsive design for XL , Lg , md and mobile.
+* More smooth in using the table than the previous system.
+* You can Create , Edit , Delete in simple way with no confilicts inside 
+  table.
+* Print your weekly , mounthly Sheet with simple click.
+* Filter your table by using a smart Date Filters.
+* Statistics Widgets & charts thats follow your Changes of table Cells 
+  and help you to provide a professional experience.
+* Dark and Light mode for better reading your docs.
 
 Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
 
