@@ -38,8 +38,7 @@ creating account to in the system to have access to login and access dashboard ,
 
 ## About The Project
 
-![Screen Shot](https://i.ibb.co/LPJ0mmT/Screenshot-from-2023-01-13-21-37-38.png
-)
+![Screen Shot](https://i.ibb.co/LPJ0mmT/Screenshot-from-2023-01-13-21-37-38.png)
 
 This is a great Full stack project [Crud system] available on GitHub, however, I build this system based on Contracting company Table sheets,
 and suitable for any company that thier jobs based on sheets and note every daily,weekly,mounthly state and provide Reports Prints,
@@ -60,7 +59,14 @@ storing data of table in the database with mongoodb and storing user data.
   and help you to provide a professional experience.
 * Dark and Light mode for better reading your docs.
 
+![Screen Shot](https://i.ibb.co/0hVmJY0/darkprofile.png)
+
+
 Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
+
+
+![Screen Shot](https://i.ibb.co/ft7HyTD/auth.png)
+
 
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
