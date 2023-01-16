@@ -33,7 +33,7 @@ const TextFeild = ({
     >
       <label
         htmlFor={name}
-        className="mb-[7px] flex justify-between gap-3 text-[14px] font-medium text-black dark:text-white lg:text-[15px] xl:text-[18px]"
+        className="mb-[7px] flex justify-between gap-3 text-[14px] font-medium text-black  lg:text-[15px] xl:text-[18px]"
         data-testid="field-label"
       >
         {label}
@@ -48,13 +48,12 @@ const TextFeild = ({
 
       <Field
         type={!showPassword ? type : 'text'}
-        // as={type}
         name={name}
         className={`${
           showError
             ? 'border-red-500 focus:outline-red-500'
             : 'border-[#E2E2E2] focus:outline-blue-600'
-        } h-[33px] lg:h-[45px] ${width} min-w-[250px] rounded-lg border-2 border-[#E2E2E2] bg-white  px-4 pl-10 text-[18px] text-[#524c4c]  dark:text-white  `}
+        } h-[33px] lg:h-[45px] ${width} min-w-[250px] rounded-lg border-2 border-[#E2E2E2] bg-white  px-4 pl-10 text-[18px] text-[#524c4c]`}
         placeholder={placeholder}
       />
       {type === 'password' ? (
