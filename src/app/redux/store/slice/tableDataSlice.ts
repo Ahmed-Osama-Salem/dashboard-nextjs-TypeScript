@@ -12,6 +12,7 @@ const initialState: {
   cellData: object | any;
   techRate: number;
   mosadRate: number;
+  lastDate: string[];
 } = {
   table: [
     {
@@ -54,6 +55,7 @@ const initialState: {
   cellData: {},
   techRate: 0,
   mosadRate: 0,
+  lastDate: [],
 };
 
 /**
@@ -122,6 +124,13 @@ export const tableDataSlice = createSlice({
       // eslint-disable-next-line no-param-reassign
       state.mosadRate = action.payload;
     },
+    setLastDate: (
+      state: Draft<typeof initialState>,
+      action: PayloadAction<typeof initialState.lastDate>
+    ) => {
+      // eslint-disable-next-line no-param-reassign
+      state.lastDate = action.payload;
+    },
   },
 });
 
@@ -134,6 +143,7 @@ export const {
   setCellData,
   setTechRate,
   setMosadRate,
+  setLastDate,
 } = tableDataSlice.actions;
 
 export default tableDataSlice.reducer;

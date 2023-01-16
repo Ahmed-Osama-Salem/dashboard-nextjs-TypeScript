@@ -4,10 +4,12 @@ const Card = ({
   icon,
   cardLabel,
   staticticsRate,
+  date,
 }: {
   icon: ReactNode;
   cardLabel: string;
   staticticsRate: number | string;
+  date: string[] | any;
 }) => {
   return (
     <div className="w-full p-2 print:hidden">
@@ -26,7 +28,10 @@ const Card = ({
           {staticticsRate}
         </h1>
         <div className="flex flex-row justify-between transition-all duration-300 ease-linear group-hover:text-gray-200">
-          <p>{cardLabel}</p>
+          <p>
+            {cardLabel} بتاريخ
+            {''} {date}
+          </p>
         </div>
       </div>
     </div>

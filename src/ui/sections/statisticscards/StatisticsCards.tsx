@@ -7,25 +7,29 @@ import type { RootState } from '@/app/redux/store/store';
 import Card from '@/ui/component/statistics/Card';
 
 const StatisticsCards = () => {
-  const { techRate, mosadRate, table } = useSelector(
+  const { techRate, mosadRate, table, lastDate } = useSelector(
     (state: RootState) => state.tableData
   );
+  console.log(lastDate[0], 'dasd');
 
   const statisticData = [
     {
       icon: <GrUserWorker size={30} />,
       cardLabel: 'اعداد الفنين',
       staticticsRate: techRate,
+      date: lastDate[0],
     },
     {
       icon: <HiUserGroup size={30} />,
       cardLabel: 'اعداد المساعدين',
       staticticsRate: mosadRate,
+      date: lastDate[0],
     },
     {
       icon: <BsTable size={30} />,
       cardLabel: 'اعداد خلايا الجدول',
       staticticsRate: table.length,
+      date: lastDate[0],
     },
   ];
 
@@ -39,6 +43,7 @@ const StatisticsCards = () => {
               icon={card.icon}
               cardLabel={card.cardLabel}
               staticticsRate={card.staticticsRate}
+              date={card.date}
             />
           );
         })}

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 import type { ITableApiData } from '@/app/interface/tableApiData';
 import {
+  setLastDate,
   setMosadRate,
   setTableData,
   setTechRate,
@@ -24,6 +25,11 @@ const Index = ({ data }: { data: ITableApiData[] }) => {
   const dispatch = useDispatch();
   const { isHelpModal } = useSelector((state: RootState) => state.modal);
   const { userData } = useSelector((state: RootState) => state.userData);
+  const lastDateState = useSelector(
+    (state: RootState) => state.tableData.lastDate
+  );
+  console.log(lastDateState);
+
   const getTechRate = () => {
     const rateOfTech = data
       .map((a: ITableApiData) => parseInt(a.allText.techNumber, 10))
@@ -37,11 +43,16 @@ const Index = ({ data }: { data: ITableApiData[] }) => {
       .reduce((a: number, b: number) => a + b, 0);
     dispatch(setMosadRate(rateOfMosad));
   };
+  const getLastDate = () => {
+    const lastDate = data.map((d) => d.allText.dateNow);
+    dispatch(setLastDate(lastDate.slice(-1)));
+  };
 
   useEffect(() => {
     if (data) {
       getTechRate();
       getMosadRate();
+      getLastDate();
     }
   }, [data]);
 
