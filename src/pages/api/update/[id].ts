@@ -52,7 +52,7 @@ export default async function handler(
     topicsUpdate,
     contractTypeUpdate
   );
-  console.log(updateOfCells);
+  // console.log(updateOfCells);
 
   res.status(200).json({ updateOfCells });
 }

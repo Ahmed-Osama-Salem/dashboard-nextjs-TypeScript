@@ -14,11 +14,9 @@ export const insertFormData = async ({
     textMosad,
   })
     .then((data) => {
-      console.log(data.data);
-
       return data.data;
     })
     .catch((error) => {
-      console.log(error);
+      return error;
     });
 };

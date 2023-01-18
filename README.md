@@ -99,6 +99,7 @@ to increase his knowledge in :
 * Learn how to use database like mongoodb.
 * improve your coding skills by using typescript.
 * improve your knowledge of React framework by using Nextjs and understand server side and Api handlers.
+* state mangement with Redux Toolkit.
 * improve your styling skills by using tailwind css classes.
 
 ## Getting Started

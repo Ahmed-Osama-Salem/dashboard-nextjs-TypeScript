@@ -25,10 +25,9 @@ const Index = ({ data }: { data: ITableApiData[] }) => {
   const dispatch = useDispatch();
   const { isHelpModal } = useSelector((state: RootState) => state.modal);
   const { userData } = useSelector((state: RootState) => state.userData);
-  const lastDateState = useSelector(
-    (state: RootState) => state.tableData.lastDate
-  );
-  console.log(lastDateState);
+  // const lastDateState = useSelector(
+  //   (state: RootState) => state.tableData.lastDate
+  // );
 
   const getTechRate = () => {
     const rateOfTech = data

@@ -18,7 +18,6 @@ export default async function handler(
   const { time, allText, text, textMosad } = req.body;
 
   const insertData = await insertFormData({ time, allText, text, textMosad });
-  console.log(insertData);
 
   res.status(200).json({ insertData });
 }

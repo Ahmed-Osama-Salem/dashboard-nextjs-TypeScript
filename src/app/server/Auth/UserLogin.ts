@@ -6,13 +6,10 @@ export const userLogin = async ({ email, password }: any) => {
     password,
   })
     .then((data) => {
-      console.log(data.data);
-
       return data.data;
     })
     .catch((err) => {
       return {
-        // code: err.code,
         message: err.response.data.message,
         status: err.response.status,
       };

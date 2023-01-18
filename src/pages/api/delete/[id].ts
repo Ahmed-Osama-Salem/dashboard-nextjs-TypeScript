@@ -13,12 +13,12 @@ export default async function handler(
 
   connectDB().catch((err) => {
     console.log(err);
+    return err;
   });
 
   const { id } = req.query;
 
   const deleteCell = await deleteTableCell(id);
-  console.log(deleteCell);
 
   res.status(200).json({ deleteCell });
 }
