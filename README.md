@@ -29,6 +29,7 @@ creating account to in the system to have access to login and access dashboard ,
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
+* [This project for](#This-project-for)
 * [Usage](#usage)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
@@ -58,14 +59,23 @@ storing data of table in the database with mongoodb and storing user data.
 * Statistics Widgets & charts thats follow your Changes of table Cells 
   and help you to provide a professional experience.
 * Dark and Light mode for better reading your docs.
+* Notifications for every action and feedback.
+
+## Project cycle
+ * Sign up Page
+![Screen Shot](https://i.ibb.co/k2dLMhs/Screenshot-from-2023-01-18-21-04-56.png)
+
+This page for creating a new user or employee to have access on the system by posting [name,email,phone,password,job and upload image] , i handle this process in backend [server] using express then store users data with password hashed in mongoodb.
+
+ * Sign in Page
+![Screen Shot](https://i.ibb.co/ft7HyTD/auth.png)
+
+After creating new account and successfully signed up , user will route to the login page to login the system by his email and password ,i handle this process in backend [server] by firstly checking the email if exist in database then will check the matching of password if matched 
+you have successfully sign in.
 
 ![Screen Shot](https://i.ibb.co/0hVmJY0/darkprofile.png)
 
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
-
-
-![Screen Shot](https://i.ibb.co/ft7HyTD/auth.png)
+Finally , user can access dashboard system and check his profile and starting creating data.
 
 
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
@@ -77,6 +87,19 @@ A list of commonly used resources that I find helpful are listed in the acknowle
     <img src="https://skillicons.dev/icons?i=vscode,tailwind,ts,react,nextjs,redux,jest,nodejs,express,mongodb" />
   </a>
 </p>
+
+## This project for
+this project for every front-end dev that Starting his first journey in backend and want be full-stack dev
+to increase his knowledge in :
+* HTTP Requests [GET , POST , PUT , DELETE].
+* Handle and creating Api's.
+* How to build full cycle of authintication and authorization system
+  in client and server side.
+* express and nodejs to creating your server and handle requests and connecting to database.  
+* Learn how to use database like mongoodb.
+* improve your coding skills by using typescript.
+* improve your knowledge of React framework by using Nextjs and understand server side and Api handlers.
+* improve your styling skills by using tailwind css classes.
 
 ## Getting Started
 
