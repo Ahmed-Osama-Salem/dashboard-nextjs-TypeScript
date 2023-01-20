@@ -9,6 +9,7 @@ import { HiOutlineMail } from 'react-icons/hi';
 import type { ImageListType } from 'react-images-uploading';
 import ImageUploading from 'react-images-uploading';
 
+import { SignUpFormSchema } from '@/app/forms/auth/signUpSchema';
 import { errorNotify, successNotify } from '@/app/server/notify/setNotify';
 import ApiClientLocal from '@/app/utils/ApiClientLocal';
 
@@ -74,7 +75,7 @@ const UserRegistrtion = () => {
       transition={{ duration: 0.5 }}
     >
       <Formik
-        // validationSchema={SignUpFormSchema}
+        validationSchema={SignUpFormSchema}
         initialValues={initialValuesSignUp}
         onSubmit={handleRegsiterSubmit}
       >
@@ -95,6 +96,7 @@ const UserRegistrtion = () => {
                     onChange={onChange}
                     maxNumber={maxNumber}
                     dataURLKey="data_url"
+                    maxFileSize={100000}
                   >
                     {({
                       imageList,
@@ -103,6 +105,8 @@ const UserRegistrtion = () => {
                       onImageRemove,
                       isDragging,
                       dragProps,
+                      // eslint-disable-next-line @typescript-eslint/no-shadow
+                      errors,
                     }) => (
                       <div>
                         <div
@@ -138,6 +142,19 @@ const UserRegistrtion = () => {
                               </div>
                             </div>
                           ))}
+
+                          {errors && (
+                            <div>
+                              {errors.acceptType && (
+                                <span>
+                                  Your selected file type is not allow
+                                </span>
+                              )}
+                              {errors.maxFileSize && (
+                                <span>Selected file size exceed 100kb</span>
+                              )}
+                            </div>
+                          )}
                         </div>
                       </div>
                     )}

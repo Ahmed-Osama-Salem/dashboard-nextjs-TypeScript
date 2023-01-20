@@ -8,6 +8,7 @@ import { BiLockOpenAlt } from 'react-icons/bi';
 import { BsFacebook, BsGithub, BsGoogle, BsLinkedin } from 'react-icons/bs';
 import { HiOutlineMail } from 'react-icons/hi';
 
+import { LoginFromSchema } from '@/app/forms/auth/loginSchema';
 import type { IUserData } from '@/app/redux/store/slice/userDataSlice';
 import { errorNotify, successNotify } from '@/app/server/notify/setNotify';
 import ApiClientLocal from '@/app/utils/ApiClientLocal';
@@ -78,7 +79,7 @@ const Login = () => {
       className=""
     >
       <Formik
-        // validationSchema={LoginFromSchema}
+        validationSchema={LoginFromSchema}
         initialValues={initialValues}
         onSubmit={handleLoginSubmit}
       >
@@ -177,19 +178,19 @@ const Login = () => {
                   <div className="flex translate-y-[17rem] justify-center gap-8">
                     <BsFacebook
                       size={40}
-                      className="transalate-y-0 cursor-pointer text-red-500 transition-all duration-200 ease-linear hover:-translate-y-1 "
+                      className="translate-y-0 cursor-pointer text-red-500 transition-all duration-200 ease-linear hover:-translate-y-1 "
                     />
                     <BsGithub
                       size={40}
-                      className="transalate-y-0 cursor-pointer text-red-500 transition-all duration-200 ease-linear hover:-translate-y-1 "
+                      className="translate-y-0 cursor-pointer text-red-500 transition-all duration-200 ease-linear hover:-translate-y-1 "
                     />
                     <BsLinkedin
                       size={40}
-                      className="transalate-y-0 cursor-pointer text-red-500 transition-all duration-200 ease-linear hover:-translate-y-1 "
+                      className="translate-y-0 cursor-pointer text-red-500 transition-all duration-200 ease-linear hover:-translate-y-1 "
                     />
                     <BsGoogle
                       size={40}
-                      className="transalate-y-0 cursor-pointer text-red-500 transition-all duration-200 ease-linear hover:-translate-y-1 "
+                      className="translate-y-0 cursor-pointer text-red-500 transition-all duration-200 ease-linear hover:-translate-y-1 "
                     />
                   </div>
                 </div>

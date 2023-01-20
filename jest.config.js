@@ -6,6 +6,8 @@ const createJestConfig = nextJest({
 });
 
 const customJestConfig = {
+  preset: '@shelf/jest-mongodb',
+
   moduleNameMapper: {
     // Handle module aliases (this will be automatically configured for you soon)
     '^@/(.*)$': '<rootDir>/src/$1',
