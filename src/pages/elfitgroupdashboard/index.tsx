@@ -67,7 +67,7 @@ const Index = ({ data }: { data: ITableApiData[] }) => {
     <Main
       meta={
         <Meta
-          title="EL-FiT Group | system"
+          title="EL-FiT Group | Dashboard"
           description="EL-FiT GROUP has been established since 2017 , in engineering training sector and general contracting ,the CEO & the founder of this company called Eng/ Mohamed Osama EL-FiT, we are providing engineering courses for training students and also providing concrete works items for genral contracting services. "
         />
       }

@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import type { ITableApiData } from '@/app/interface/tableApiData';
@@ -9,7 +10,7 @@ const ReactApexChart = dynamic(() => import('react-apexcharts'), {
 });
 const LineChart = () => {
   const { table } = useSelector((state: RootState) => state.tableData);
-
+  const [lineRange, setLineRange] = useState(30);
   const chart = {
     series: [
       {
@@ -144,14 +145,14 @@ const LineChart = () => {
       },
       yaxis: {
         min: 0,
-        max: 30,
+        max: lineRange,
         tickAmount: 10,
       },
     },
   };
 
   return (
-    <div className="h-[378.62px] w-full rounded-3xl bg-white p-[20px] dark:bg-light-gray dark:text-white lg:w-[50%]">
+    <div className="relative h-[378.62px] w-full rounded-3xl bg-white p-[20px] dark:bg-light-gray dark:text-white lg:w-[50%]">
       <div id="chart" className="text-white">
         <ReactApexChart
           options={chart.options}
@@ -159,6 +160,20 @@ const LineChart = () => {
           type="line"
           height={350}
         />
+      </div>
+      <div className="absolute top-16 left-3 flex flex-col gap-2">
+        <button
+          onClick={() => setLineRange(lineRange + 10)}
+          className="flex h-4 w-4 items-center justify-center rounded-lg  text-black transition-all duration-150 ease-linear hover:scale-[1.08] dark:bg-[#e5d3d3]"
+        >
+          +
+        </button>
+        <button
+          onClick={() => setLineRange(lineRange - 10)}
+          className="flex h-4 w-4 items-center justify-center rounded-lg text-black transition-all duration-150 ease-linear hover:scale-[1.08] dark:bg-[#e5d3d3]"
+        >
+          -
+        </button>
       </div>
     </div>
   );

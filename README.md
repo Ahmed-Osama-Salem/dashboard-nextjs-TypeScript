@@ -77,6 +77,8 @@ you have successfully sign in.
 
 Finally , user can access dashboard system and check his profile and starting creating data.
 
+Post data | Create
+![Screen Shot](https://i.ibb.co/0cnDDVq/create.gif)
 
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
@@ -100,6 +102,7 @@ to increase his knowledge in :
 * improve your coding skills by using typescript.
 * improve your knowledge of React framework by using Nextjs and understand server side and Api handlers.
 * state mangement with Redux Toolkit.
+* How to improve your React Components and create Dynamic components.
 * improve your styling skills by using tailwind css classes.
 
 ## Getting Started

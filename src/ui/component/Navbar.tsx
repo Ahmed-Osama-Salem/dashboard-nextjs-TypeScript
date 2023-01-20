@@ -44,7 +44,9 @@ const Navbar = () => {
                     : 'text-xl font-bold capitalize tracking-[0.06rem] text-red-700  transition-all duration-300 ease-linear lg:text-3xl'
                 }
               >
-                EL-FiT Group system
+                EL-FiT Group{' '}
+                <span className="text-gray-700/50 dark:text-white/50">|</span>{' '}
+                <span className="font-medium text-red-600/70">Dashboard</span>
               </a>
             </li>
           </ol>

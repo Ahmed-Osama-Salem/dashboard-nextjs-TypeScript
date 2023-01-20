@@ -149,14 +149,11 @@ const HelpModal = () => {
             specialNote="Note: you must fill these three Fields cause the statistics widget works depends on there values so if no values kindly set 0 [zero] as number"
           />
           <div className="my-4 flex flex-row-reverse justify-center gap-5">
-            <button className="cursor-pointer rounded-lg border-2 border-red-600 px-3 py-2 text-red-400 transition-all duration-200 ease-linear hover:bg-red-600 hover:text-red-200">
-              نعم متاكد
-            </button>
             <button
               onClick={() => dispatch(setIsHelpModal(false))}
               className="cursor-pointer rounded-lg border-2 border-green-600 px-3 py-2 text-green-400 transition-all duration-200 ease-linear hover:bg-green-600 hover:text-green-200"
             >
-              لا
+              خروج
             </button>
           </div>
         </motion.div>
