@@ -10,7 +10,6 @@ const StatisticsCards = () => {
   const { techRate, mosadRate, table, lastDate } = useSelector(
     (state: RootState) => state.tableData
   );
-  console.log(lastDate[0], 'dasd');
 
   const statisticData = [
     {

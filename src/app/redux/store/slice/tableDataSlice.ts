@@ -13,6 +13,8 @@ const initialState: {
   techRate: number;
   mosadRate: number;
   lastDate: string[];
+  mosadRange: string;
+  techRange: string;
 } = {
   table: [
     {
@@ -56,6 +58,8 @@ const initialState: {
   techRate: 0,
   mosadRate: 0,
   lastDate: [],
+  mosadRange: '',
+  techRange: '',
 };
 
 /**
@@ -131,6 +135,20 @@ export const tableDataSlice = createSlice({
       // eslint-disable-next-line no-param-reassign
       state.lastDate = action.payload;
     },
+    setMosadRange: (
+      state: Draft<typeof initialState>,
+      action: PayloadAction<typeof initialState.mosadRange>
+    ) => {
+      // eslint-disable-next-line no-param-reassign
+      state.mosadRange = action.payload;
+    },
+    setTechRange: (
+      state: Draft<typeof initialState>,
+      action: PayloadAction<typeof initialState.techRange>
+    ) => {
+      // eslint-disable-next-line no-param-reassign
+      state.techRange = action.payload;
+    },
   },
 });
 
@@ -144,6 +162,8 @@ export const {
   setTechRate,
   setMosadRate,
   setLastDate,
+  setMosadRange,
+  setTechRange,
 } = tableDataSlice.actions;
 
 export default tableDataSlice.reducer;

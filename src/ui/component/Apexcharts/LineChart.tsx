@@ -8,9 +8,7 @@ const ReactApexChart = dynamic(() => import('react-apexcharts'), {
   ssr: false,
 });
 const LineChart = () => {
-  // const { theme } = useSelector((state: RootState) => state.theme);
   const { table } = useSelector((state: RootState) => state.tableData);
-  // console.log(table, 'datas');
 
   const chart = {
     series: [
@@ -146,7 +144,7 @@ const LineChart = () => {
       },
       yaxis: {
         min: 0,
-        max: 20,
+        max: 30,
         tickAmount: 10,
       },
     },

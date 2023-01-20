@@ -62,12 +62,12 @@ storing data of table in the database with mongoodb and storing user data.
 * Notifications for every action and feedback.
 
 ## Project cycle
- * Sign up Page
+ Sign up Page
 ![Screen Shot](https://i.ibb.co/k2dLMhs/Screenshot-from-2023-01-18-21-04-56.png)
 
 This page for creating a new user or employee to have access on the system by posting [name,email,phone,password,job and upload image] , i handle this process in backend [server] using express then store users data with password hashed in mongoodb.
 
- * Sign in Page
+ Sign in Page
 ![Screen Shot](https://i.ibb.co/ft7HyTD/auth.png)
 
 After creating new account and successfully signed up , user will route to the login page to login the system by his email and password ,i handle this process in backend [server] by firstly checking the email if exist in database then will check the matching of password if matched 

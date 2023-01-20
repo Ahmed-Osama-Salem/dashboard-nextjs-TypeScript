@@ -24,9 +24,12 @@ const Card = ({
             </p>
           </div>
         </div>
-        <h1 className="mt-12 text-3xl font-bold text-gray-700 transition-all duration-300 ease-linear group-hover:text-gray-50 sm:text-4xl xl:text-5xl">
-          {staticticsRate}
-        </h1>
+        <div className="flex justify-between">
+          <h1 className="mt-12 text-3xl font-bold text-gray-700 transition-all duration-300 ease-linear group-hover:text-gray-50 sm:text-4xl xl:text-5xl">
+            {staticticsRate}
+          </h1>
+        </div>
+
         <div className="flex flex-row justify-between transition-all duration-300 ease-linear group-hover:text-gray-200">
           <p>
             {cardLabel} بتاريخ

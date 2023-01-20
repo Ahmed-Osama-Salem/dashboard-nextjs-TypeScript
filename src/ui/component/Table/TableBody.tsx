@@ -97,12 +97,12 @@ const TableBody = () => {
                   item.allText.to
                 )}:${subtractMin(item.allText.from, item.allText.to)}`}
               </td>
-              <td className="py-8 px-24">{item.allText.noteAdd}</td>
+              <td className="py-8 px-12">{item.allText.noteAdd}</td>
               <td className="py-8 px-12">{item.allText.kmiatMon}</td>
               <td className="py-8 ">{item.allText.tnfizState}</td>
               <td className="py-8 px-24">{item.allText.angaz} %</td>
               <td className="py-8 ">{item.allText.notes}</td>
-              <td className="py-8 px-24">{item.allText.twqi3}</td>
+              <td className="py-8 px-12">{item.allText.twqi3}</td>
               {userData && userData.role === 'Admin' ? (
                 <td className="flex items-center justify-between space-x-3 py-8 px-24 print:hidden">
                   <button
