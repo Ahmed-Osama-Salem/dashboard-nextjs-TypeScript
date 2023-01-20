@@ -78,7 +78,9 @@ you have successfully sign in.
 Finally , user can access dashboard system and check his profile and starting creating data.
 
 Post data | Create
-![Screen Shot](https://i.ibb.co/0cnDDVq/create.gif)
+<br/>
+<img align="center" src="https://i.ibb.co/0cnDDVq/create.gif" />
+
 
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
