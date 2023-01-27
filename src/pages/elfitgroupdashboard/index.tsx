@@ -17,7 +17,7 @@ import { Main } from '@/templates/Main';
 import Error404 from '@/ui/component/Error404';
 import HelpModal from '@/ui/component/Modal/HelpModal';
 import TableConstract from '@/ui/component/Table/TableConstract';
-import UsersTabel from '@/ui/component/users/UsersTable';
+import DashboardTable from '@/ui/component/users/DashboardTable';
 import ChartSection from '@/ui/sections/ChartSection';
 import StatisticsCards from '@/ui/sections/statisticscards/StatisticsCards';
 
@@ -25,10 +25,6 @@ const Index = ({ data }: { data: ITableApiData[] }) => {
   const dispatch = useDispatch();
   const { isHelpModal } = useSelector((state: RootState) => state.modal);
   const { userData } = useSelector((state: RootState) => state.userData);
-
-  // const lastDateState = useSelector(
-  //   (state: RootState) => state.tableData.lastDate
-  // );
 
   const getTechRate = () => {
     const rateOfTech = data
@@ -77,7 +73,7 @@ const Index = ({ data }: { data: ITableApiData[] }) => {
           <Dashboard>
             <ChartSection />
             <StatisticsCards />
-            <UsersTabel />
+            <DashboardTable />
             <TableConstract />
           </Dashboard>
           {isHelpModal ? <HelpModal /> : null}
@@ -92,7 +88,7 @@ const Index = ({ data }: { data: ITableApiData[] }) => {
 export default Index;
 
 export async function getServerSideProps() {
-  const data = await getTableData();
+  const data: ITableApiData[] = await getTableData();
 
   return {
     props: { data },

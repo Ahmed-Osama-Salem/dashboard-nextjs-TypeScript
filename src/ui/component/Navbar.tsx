@@ -2,12 +2,14 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { BiLogIn } from 'react-icons/bi';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdOutlineHelp } from 'react-icons/md';
 
 import { setIsHelpModal } from '@/app/redux/store/slice/modalSlice';
 import type { RootState } from '@/app/redux/store/store';
 import { useDispatch, useSelector } from '@/app/redux/store/store';
 
+import SideBar from './SideBar';
 import ToogleBtn from './toggleBtn/ToggleBtn';
 import UserProfile from './users/UserProfile';
 
@@ -16,7 +18,7 @@ const Navbar = () => {
   const [openNav, setOpenNav] = useState(false);
   const [showLabel, setShowLabel] = useState(false);
   const [showLabelHelp, setShowLabelHelp] = useState(false);
-
+  const [openSideBar, setOpenSideBar] = useState<boolean>(false);
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -34,7 +36,11 @@ const Navbar = () => {
             : 'mx-6 flex h-[16vh] items-center rounded-2xl  bg-white px-0 py-2 shadow-lg shadow-red-600/20 transition-all duration-300 ease-linear dark:bg-light-gray  lg:relative lg:h-[7vh] lg:flex-row lg:flex-wrap lg:justify-between   xl:flex-nowrap xl:justify-start'
         }
       >
-        <div className="mx-auto flex w-full flex-wrap items-center justify-between px-4 py-1">
+        <div className="mx-auto flex w-full flex-wrap items-center justify-between gap-3 px-4 py-1">
+          <GiHamburgerMenu
+            onClick={() => setOpenSideBar(true)}
+            className="cursor-pointer text-2xl dark:text-white"
+          />
           <ol className="mr-12 flex flex-wrap rounded-lg bg-transparent pt-1 sm:mr-16">
             <li className="text-sm leading-normal">
               <a
@@ -124,6 +130,7 @@ const Navbar = () => {
           <ProfileCard user={userData} />
         </div>
       ) : null} */}
+
       <div
         className={
           openNav
@@ -131,6 +138,7 @@ const Navbar = () => {
             : 'flex h-0 flex-wrap items-center justify-center backdrop-blur-0 transition-all duration-300 ease-linear '
         }
       ></div>
+      <SideBar setOpenSideBar={setOpenSideBar} openSideBar={openSideBar} />
     </div>
   );
 };

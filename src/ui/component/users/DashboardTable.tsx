@@ -22,7 +22,7 @@ import SuccessNotify from '../notify/SuccessNotify';
 import Preloader from '../preloader/PreLoader';
 import DynamicButton from '../toggleBtn/DynamicButton';
 
-const UsersTabel = () => {
+const DashboardTable = () => {
   const currentDate = new Date();
   const time = currentDate.toLocaleTimeString();
   const [isLoading, setIsLoading] = useState(false);
@@ -235,4 +235,4 @@ const UsersTabel = () => {
   );
 };
 
-export default UsersTabel;
+export default DashboardTable;

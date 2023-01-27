@@ -3,9 +3,11 @@ import { BsCheckCircleFill } from 'react-icons/bs';
 import { FaCircle, FaUserEdit } from 'react-icons/fa';
 import { RiUserFollowFill } from 'react-icons/ri';
 
+import type { IUserData } from '@/app/redux/store/slice/userDataSlice';
+
 import DynamicButton from '../toggleBtn/DynamicButton';
 
-const UserProfile = ({ user }: any) => {
+const UserProfile = ({ user }: { user: IUserData }) => {
   const { image, name, email, job, role } = user;
   return (
     <section className="flex w-full flex-col-reverse items-center justify-center lg:flex-row lg:items-center lg:justify-start ">
