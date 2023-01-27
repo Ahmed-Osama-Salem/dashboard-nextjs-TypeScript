@@ -36,12 +36,12 @@ const Navbar = () => {
             : 'mx-6 flex h-[16vh] items-center rounded-2xl  bg-white px-0 py-2 shadow-lg shadow-red-600/20 transition-all duration-300 ease-linear dark:bg-light-gray  lg:relative lg:h-[7vh] lg:flex-row lg:flex-wrap lg:justify-between   xl:flex-nowrap xl:justify-start'
         }
       >
-        <div className="mx-auto flex w-full flex-wrap items-center justify-between gap-3 px-4 py-1">
+        <div className="mx-auto flex w-full flex-wrap items-center justify-between px-4 py-1 lg:gap-3">
           <GiHamburgerMenu
             onClick={() => setOpenSideBar(true)}
             className="cursor-pointer text-2xl dark:text-white"
           />
-          <ol className="mr-12 flex flex-wrap rounded-lg bg-transparent pt-1 sm:mr-16">
+          <ol className="flex flex-wrap rounded-lg bg-transparent pt-1 sm:mr-16 lg:mr-12">
             <li className="text-sm leading-normal">
               <a
                 className={

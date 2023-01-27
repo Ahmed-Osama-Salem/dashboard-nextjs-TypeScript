@@ -67,7 +67,7 @@ const SideBar = ({
       <div
         className={`absolute top-0 left-0 h-screen bg-white p-6 transition-all duration-300 ease-linear dark:bg-light-gray ${
           openSideBar
-            ? 'visible w-[23%] shadow-xl dark:shadow-red-600/40'
+            ? 'visible w-[70%] shadow-xl dark:shadow-red-600/40 lg:w-[23%]'
             : 'invisible w-[0%]'
         }`}
       >
@@ -100,7 +100,7 @@ const SideBar = ({
               stiffness: 200,
               delay: 0.3,
             }}
-            className="my-4 flex h-[200px] items-center justify-center gap-3 rounded-2xl bg-gray-200/50 dark:bg-gray-800/20"
+            className="my-4 flex h-[200px] flex-col items-center justify-center gap-3 rounded-2xl bg-gray-200/50 dark:bg-gray-800/20 lg:flex-row"
           >
             <img
               src={userData.image}
@@ -117,7 +117,7 @@ const SideBar = ({
         )}
         {openSideBar && (
           <div>
-            <div className="my-10 flex flex-col gap-8 text-xl">
+            <div className="my-3 flex flex-col gap-8 text-xl lg:my-10">
               {sideBarMenu.map((item, i) => {
                 return (
                   <motion.div
@@ -155,8 +155,8 @@ const SideBar = ({
       <div
         className={
           openSideBar
-            ? ' absolute left-[23%] top-0 h-screen w-[77%] backdrop-blur-sm transition-all duration-300 ease-linear '
-            : 'h-0  w-[77%] backdrop-blur-0 transition-all duration-300 ease-linear '
+            ? ' absolute left-[70%] top-0 h-screen w-[40%] backdrop-blur-sm transition-all duration-300 ease-linear lg:left-[23%] lg:w-[77%] '
+            : 'h-0 w-[40%] backdrop-blur-0 transition-all duration-300 ease-linear lg:w-[77%] '
         }
       ></div>
     </div>
