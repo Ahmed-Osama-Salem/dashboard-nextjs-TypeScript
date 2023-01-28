@@ -21,7 +21,6 @@ const Index = ({ users }: { users: IUserData[] }) => {
     const dataParse = JSON.parse(userLocal as string);
     dispatch(setUserData(dataParse));
   }, []);
-  console.log(users);
 
   return (
     <Main
@@ -35,8 +34,7 @@ const Index = ({ users }: { users: IUserData[] }) => {
       {userData ? (
         <div className="overflow-x-hidden">
           <Dashboard>
-            <div className="mt-24 flex w-full items-center justify-center px-10">
-              {/* <UserCharts users={users} /> */}
+            <div className="mt-11 flex w-full items-center justify-center px-10">
               <UsersCard users={users} />
             </div>
             <UsersTable users={users} />
