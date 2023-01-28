@@ -1,20 +1,23 @@
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BiLogIn } from 'react-icons/bi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdOutlineHelp } from 'react-icons/md';
 
 import { setIsHelpModal } from '@/app/redux/store/slice/modalSlice';
+import { setRouteLoading } from '@/app/redux/store/slice/spinnerLoader';
 import type { RootState } from '@/app/redux/store/store';
 import { useDispatch, useSelector } from '@/app/redux/store/store';
 
+import LoaderRoutes from './preloader/LoaderRoutes';
 import SideBar from './SideBar';
 import ToogleBtn from './toggleBtn/ToggleBtn';
 import UserProfile from './users/UserProfile';
 
 const Navbar = () => {
   const { userData } = useSelector((state: RootState) => state.userData);
+  const { routeLoading } = useSelector((state: RootState) => state.spinner);
   const [openNav, setOpenNav] = useState(false);
   const [showLabel, setShowLabel] = useState(false);
   const [showLabelHelp, setShowLabelHelp] = useState(false);
@@ -26,6 +29,21 @@ const Navbar = () => {
     router.push('/login');
     localStorage.removeItem('user');
   };
+
+  useEffect(() => {
+    const handleStart = () => {
+      dispatch(setRouteLoading(true));
+    };
+    const handleEnd = () => {
+      dispatch(setRouteLoading(false));
+    };
+    router.events.on('routeChangeStart', handleStart);
+    router.events.on('routeChangeComplete', handleEnd);
+    return () => {
+      router.events.off('routeChangeStart', handleStart);
+      router.events.off('routeChangeComplete', handleEnd);
+    };
+  }, []);
 
   return (
     <div className="font-poppins">
@@ -52,7 +70,11 @@ const Navbar = () => {
               >
                 EL-FiT Group{' '}
                 <span className="text-gray-700/50 dark:text-white/50">|</span>{' '}
-                <span className="font-medium text-red-600/70">Dashboard</span>
+                <span className="font-medium text-red-600/70">
+                  {router.pathname === '/elfitgroupdashboard'
+                    ? 'Dashboard'
+                    : router.pathname.split('/')}
+                </span>
               </a>
             </li>
           </ol>
@@ -138,7 +160,12 @@ const Navbar = () => {
             : 'flex h-0 flex-wrap items-center justify-center backdrop-blur-0 transition-all duration-300 ease-linear '
         }
       ></div>
-      <SideBar setOpenSideBar={setOpenSideBar} openSideBar={openSideBar} />
+      <SideBar
+        setOpenSideBar={setOpenSideBar}
+        openSideBar={openSideBar}
+        logOut={logOut}
+      />
+      {routeLoading ? <LoaderRoutes /> : null}
     </div>
   );
 };

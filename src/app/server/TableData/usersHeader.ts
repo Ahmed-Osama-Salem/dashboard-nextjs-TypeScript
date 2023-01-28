@@ -41,4 +41,9 @@ export const userHeader: ITableHeader[] = [
     title: ' نوع الاستخدام',
     classname: 'py-3 px-11 text-center text-lg !sticky top-0 ',
   },
+  {
+    id: 8,
+    title: 'تعديلات',
+    classname: 'py-3 px-11 text-center text-lg !sticky top-0 ',
+  },
 ];

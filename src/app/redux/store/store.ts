@@ -12,6 +12,8 @@ import filterSlice from './slice/filterSlice';
 // eslint-disable-next-line import/no-named-as-default
 import modalSlice from './slice/modalSlice';
 // eslint-disable-next-line import/no-named-as-default
+import spinnerSlice from './slice/spinnerLoader';
+// eslint-disable-next-line import/no-named-as-default
 import tableDataSlice from './slice/tableDataSlice';
 // eslint-disable-next-line import/no-named-as-default
 import userDataSlice from './slice/userDataSlice';
@@ -26,6 +28,7 @@ export const store = configureStore({
     filter: filterSlice,
     theme: darkThemeSlice,
     userData: userDataSlice,
+    spinner: spinnerSlice,
   },
 });
 

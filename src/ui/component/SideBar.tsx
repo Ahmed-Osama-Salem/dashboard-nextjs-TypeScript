@@ -14,9 +14,11 @@ import type { RootState } from '@/app/redux/store/store';
 const SideBar = ({
   setOpenSideBar,
   openSideBar,
+  logOut,
 }: {
   setOpenSideBar: (args: boolean) => void;
   openSideBar: boolean;
+  logOut: () => void;
 }) => {
   const { userData } = useSelector((state: RootState) => state.userData);
 
@@ -100,24 +102,24 @@ const SideBar = ({
               stiffness: 200,
               delay: 0.3,
             }}
-            className="my-4 flex h-[200px] flex-col items-center justify-center gap-3 rounded-2xl bg-gray-200/50 dark:bg-gray-800/20 lg:flex-row"
+            className="my-4 flex flex-col items-center justify-center gap-3 rounded-2xl bg-gray-200/50 p-2 dark:bg-gray-800/20 lg:h-[200px] lg:flex-row lg:p-0"
           >
             <img
               src={userData.image}
               alt=""
-              className="w-[7rem] rounded-full shadow-2xl lg:w-[7rem]"
+              className="w-[5rem] rounded-full shadow-2xl lg:w-[7rem]"
             />
             <div>
-              <h2 className="text-xl font-semibold text-red-500">
+              <h2 className="text-lg font-semibold text-red-500 lg:text-xl">
                 {userData.name}
               </h2>
-              <p className="text-lg dark:text-gray-400">{userData.job}</p>
+              <p className="dark:text-gray-400 lg:text-lg">{userData.job}</p>
             </div>
           </motion.div>
         )}
         {openSideBar && (
           <div>
-            <div className="my-3 flex flex-col gap-8 text-xl lg:my-10">
+            <div className="my-3 flex flex-col gap-1 text-xl lg:my-10 lg:gap-8">
               {sideBarMenu.map((item, i) => {
                 return (
                   <motion.div
@@ -146,7 +148,10 @@ const SideBar = ({
         )}
         {openSideBar && (
           <div className="flex h-[60px] items-center justify-center rounded-2xl bg-gray-200/50 dark:bg-gray-800/20">
-            <button className="capitalize transition-all duration-150 ease-linear hover:font-semibold dark:hover:text-red-500/40">
+            <button
+              onClick={logOut}
+              className="capitalize transition-all duration-150 ease-linear hover:font-semibold hover:shadow-xl dark:hover:text-red-500/40"
+            >
               sign out
             </button>
           </div>

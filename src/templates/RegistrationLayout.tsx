@@ -2,7 +2,13 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import type { ReactNode } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import { setRouteLoading } from '@/app/redux/store/slice/spinnerLoader';
+import type { RootState } from '@/app/redux/store/store';
+import { useDispatch } from '@/app/redux/store/store';
+import LoaderRoutes from '@/ui/component/preloader/LoaderRoutes';
 
 const RegistrationLayout = ({
   authComponent,
@@ -11,6 +17,22 @@ const RegistrationLayout = ({
 }) => {
   const router = useRouter();
   const [pathUrl, setPathUrl] = useState(router.pathname);
+  const { routeLoading } = useSelector((state: RootState) => state.spinner);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const handleStart = () => {
+      dispatch(setRouteLoading(true));
+    };
+    const handleEnd = () => {
+      dispatch(setRouteLoading(false));
+    };
+    router.events.on('routeChangeStart', handleStart);
+    router.events.on('routeChangeComplete', handleEnd);
+    return () => {
+      router.events.off('routeChangeStart', handleStart);
+      router.events.off('routeChangeComplete', handleEnd);
+    };
+  }, []);
 
   return (
     <section className="relative mx-auto h-screen w-full overflow-hidden ">
@@ -73,6 +95,7 @@ const RegistrationLayout = ({
       </div>
 
       <div className="absolute top-0 z-10 h-screen w-screen bg-white md:bg-black/60"></div>
+
       <video
         autoPlay
         muted
@@ -81,6 +104,7 @@ const RegistrationLayout = ({
       >
         <source src="/assets/vedio/authbackground.mp4" type="video/mp4" />
       </video>
+      {routeLoading ? <LoaderRoutes /> : null}
     </section>
   );
 };

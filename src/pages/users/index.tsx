@@ -10,6 +10,7 @@ import { Meta } from '@/layouts/Meta';
 import { Dashboard } from '@/templates/Dashboard';
 import { Main } from '@/templates/Main';
 import Error404 from '@/ui/component/Error404';
+import UsersCard from '@/ui/sections/statisticscards/UsersCard';
 import UsersTable from '@/ui/sections/usersTableSection/UsersTable';
 
 const Index = ({ users }: { users: IUserData[] }) => {
@@ -34,7 +35,11 @@ const Index = ({ users }: { users: IUserData[] }) => {
       {userData ? (
         <div className="overflow-x-hidden">
           <Dashboard>
-            <UsersTable />
+            <div className="mt-24 flex w-full items-center justify-center px-10">
+              {/* <UserCharts users={users} /> */}
+              <UsersCard users={users} />
+            </div>
+            <UsersTable users={users} />
           </Dashboard>
         </div>
       ) : (
