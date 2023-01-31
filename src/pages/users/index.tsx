@@ -5,7 +5,7 @@ import type { IUserData } from '@/app/redux/store/slice/userDataSlice';
 import { setUserData } from '@/app/redux/store/slice/userDataSlice';
 import type { RootState } from '@/app/redux/store/store';
 import { useDispatch } from '@/app/redux/store/store';
-import ApiClientLocal from '@/app/utils/ApiClientLocal';
+import { getUsersData } from '@/app/server/users/getUsersData';
 import { Meta } from '@/layouts/Meta';
 import { Dashboard } from '@/templates/Dashboard';
 import { Main } from '@/templates/Main';
@@ -49,13 +49,7 @@ const Index = ({ users }: { users: IUserData[] }) => {
 
 export default Index;
 export async function getServerSideProps() {
-  const users: IUserData[] = await ApiClientLocal.get('/api/users')
-    .then((data) => {
-      return data.data.getUsers.result;
-    })
-    .catch((err) => {
-      return err;
-    });
+  const users: IUserData[] = await getUsersData();
 
   return {
     props: {
