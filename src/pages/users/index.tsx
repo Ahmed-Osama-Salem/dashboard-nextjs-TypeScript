@@ -34,7 +34,7 @@ const Index = ({ users }: { users: IUserData[] }) => {
       {userData ? (
         <div className="overflow-x-hidden">
           <Dashboard>
-            <div className="mt-11 flex w-full items-center justify-center px-10">
+            <div className="mt-20 flex w-full items-center justify-center px-10">
               <UsersCard users={users} />
             </div>
             <UsersTable users={users} />
