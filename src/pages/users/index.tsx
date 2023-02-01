@@ -9,6 +9,7 @@ import { getUsersData } from '@/app/server/users/getUsersData';
 import { Meta } from '@/layouts/Meta';
 import { Dashboard } from '@/templates/Dashboard';
 import { Main } from '@/templates/Main';
+import HorzintalBar from '@/ui/component/Apexcharts/HorzintalBar';
 import Error404 from '@/ui/component/Error404';
 import UsersCard from '@/ui/sections/statisticscards/UsersCard';
 import UsersTable from '@/ui/sections/usersTableSection/UsersTable';
@@ -34,7 +35,8 @@ const Index = ({ users }: { users: IUserData[] }) => {
       {userData ? (
         <div className="overflow-x-hidden">
           <Dashboard>
-            <div className="mt-20 flex w-full items-center justify-center px-10">
+            <div className="mt-24 flex w-full items-center justify-center px-10">
+              <HorzintalBar users={users} />
               <UsersCard users={users} />
             </div>
             <UsersTable users={users} />
