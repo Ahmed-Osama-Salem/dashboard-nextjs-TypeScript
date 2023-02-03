@@ -1,16 +1,21 @@
-const ProfileCard = ({ user }: any) => {
-  const { image, name, email, job } = user;
+import { HiOutlineMail } from 'react-icons/hi';
+import { HiOutlineDevicePhoneMobile } from 'react-icons/hi2';
+
+import type { IUserData } from '@/app/redux/store/slice/userDataSlice';
+
+const ProfileCard = ({ user }: { user: IUserData }) => {
+  const { image, name, email, job, role, phone } = user;
 
   return (
-    <div className="min-h-screen w-full">
-      <div className="border-1 mx-4 mt-20 max-w-screen-md rounded-lg bg-white px-10 py-6 shadow md:mx-auto">
+    <div className=" w-[40%]">
+      <div className="mx-4 max-w-screen-md rounded-b-2xl border-t-2 border-red-500 bg-white px-10 py-6 shadow-lg shadow-red-500/20 dark:bg-light-gray md:mx-auto">
         <div className="m-auto flex w-full flex-col items-start sm:flex-row">
           <div className="mx-auto flex sm:m-0 sm:mr-10">
-            <div className="m-auto mr-4 h-20 w-20 items-center justify-center sm:h-32 sm:w-32">
+            <div className="m-auto mr-4 h-[12rem] w-[12rem] items-center justify-center rounded-full shadow-xl">
               <img
                 alt="profil"
                 src={image}
-                className="mx-auto h-20 w-20 rounded-full object-cover sm:h-32 sm:w-32"
+                className="mx-auto h-[12rem] w-[12rem] rounded-full object-cover"
               />
             </div>
           </div>
@@ -18,11 +23,11 @@ const ProfileCard = ({ user }: any) => {
             <div className="mx-auto flex flex-col sm:mx-0 sm:flex-row ">
               <h2 className="flex pr-4 text-xl font-light text-gray-900 sm:text-3xl"></h2>
               <div className="flex">
-                <a className="flex items-center rounded border border-gray-600 bg-transparent px-1 text-sm font-medium text-gray-900 outline-none hover:border-blue-700 hover:bg-blue-600 hover:text-white focus:outline-none sm:ml-2">
+                <a className="flex items-center rounded border border-gray-600 bg-transparent px-1 text-sm font-medium text-gray-900 outline-none transition-all duration-200 ease-linear hover:border-red-700 hover:bg-red-600 hover:text-white focus:outline-none dark:text-white sm:ml-2">
                   Edit profile
                 </a>
                 <a
-                  className="ml-2 cursor-pointer rounded-full border-transparent p-1 text-gray-700 hover:text-blue-600 focus:text-gray-600 focus:outline-none"
+                  className="ml-2 cursor-pointer rounded-full border-transparent p-1 text-gray-700 hover:text-red-600 focus:text-gray-600 focus:outline-none"
                   aria-label="Notifications"
                 >
                   <svg
@@ -54,11 +59,48 @@ const ProfileCard = ({ user }: any) => {
           </div>
         </div>
         <div className="w-full pt-5">
-          <h1 className="text-lg font-semibold text-gray-800 sm:text-xl">
-            {name}{' '}
+          <h1 className="text-3xl font-semibold capitalize text-gray-800 dark:text-white">
+            {name}
           </h1>
-          <p className="text-sm text-gray-500 md:text-base">{job}</p>
-          <p className="text-sm text-gray-800 md:text-base">{email} </p>
+          <p className="text-xl text-gray-500">{job}</p>
+          {role === 'Admin' ? (
+            <div className="h-6 w-20 rounded-lg bg-[#FDC800] text-center text-white shadow-lg shadow-[#afa113]/30">
+              Admin
+            </div>
+          ) : (
+            <div className="h-6 w-20 rounded-lg bg-blue-400 text-center text-white shadow-lg shadow-blue-600/60">
+              Editor
+            </div>
+          )}
+        </div>
+        <div className="mt-6">
+          <p className="text-xl font-semibold text-red-700">About </p>
+          <p className="text-sm capitalize text-gray-800 dark:text-gray-500 md:text-base">
+            {role === 'Admin'
+              ? ' I am Eng/ Mohamed Osama EL-FiT CEO & founder of EL-FiT Group company, we are providing engineering courses for training students and also providing concrete works items for genral contracting services'
+              : `I am ${name} work as ${job}`}
+          </p>
+        </div>
+        <div className="mt-6">
+          <p className="text-xl font-semibold text-red-700">Details </p>
+          <div className="flex items-center gap-3">
+            <HiOutlineMail />
+            <p className="text-sm text-gray-800 dark:text-gray-500 md:text-base">
+              {email}
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <HiOutlineDevicePhoneMobile />
+            <p className="text-sm text-gray-800 dark:text-gray-500 md:text-base">
+              {phone}
+            </p>
+          </div>
+        </div>
+        <div className="mt-6 flex items-center gap-4">
+          <p className="text-xl font-semibold text-red-700">Status </p>
+          <div className="h-6 w-20 rounded-lg bg-green-400 text-center text-white shadow-lg shadow-green-600/60">
+            Active
+          </div>
         </div>
       </div>
     </div>

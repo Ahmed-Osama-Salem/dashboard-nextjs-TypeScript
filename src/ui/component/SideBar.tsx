@@ -56,6 +56,7 @@ const SideBar = ({
       label: 'Profile',
       icon: <FaUserCircle />,
       delay: 0.7,
+      path: '/profile',
     },
     {
       label: 'Settings',
