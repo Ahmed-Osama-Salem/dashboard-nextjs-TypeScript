@@ -102,7 +102,7 @@ const RegistrationLayout = ({
         loop
         className="absolute top-0  min-h-full min-w-full max-w-none  backdrop-brightness-100 "
       >
-        <source src="/assets/vedio/authbackground.mp4" type="video/mp4" />
+        <source src="/assets/vedio/newauth.mp4" type="video/mp4" />
       </video>
       {routeLoading ? <LoaderRoutes /> : null}
     </section>

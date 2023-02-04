@@ -7,6 +7,8 @@ import { useDispatch } from '@/app/redux/store/store';
 import { Meta } from '@/layouts/Meta';
 import { Dashboard } from '@/templates/Dashboard';
 import { Main } from '@/templates/Main';
+import HeatMapChart from '@/ui/component/Apexcharts/HeatMapChart';
+import RedialChart from '@/ui/component/Apexcharts/RedialChart';
 import SplineChart from '@/ui/component/Apexcharts/SplineChart';
 import Error404 from '@/ui/component/Error404';
 import ProfileCard from '@/ui/component/users/ProfileCard';
@@ -34,7 +36,13 @@ const Index = () => {
           <Dashboard>
             <div className="mt-28 flex w-full items-start justify-start gap-10 px-10 ">
               <ProfileCard user={userData} />
-              <SplineChart />
+              <div className="flex w-full flex-col items-start gap-6 ">
+                <SplineChart />
+                <div className="flex w-full justify-start gap-6">
+                  <HeatMapChart />
+                  <RedialChart />
+                </div>
+              </div>
             </div>
           </Dashboard>
         </div>

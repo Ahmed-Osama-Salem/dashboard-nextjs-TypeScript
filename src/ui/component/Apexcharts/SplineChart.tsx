@@ -7,11 +7,11 @@ const SplineChart = () => {
   const chart = {
     series: [
       {
-        name: 'series1',
+        name: 'Followers',
         data: [31, 40, 28, 51, 42, 109, 100],
       },
       {
-        name: 'series2',
+        name: 'Following',
         data: [11, 32, 45, 32, 34, 52, 41],
       },
     ],
@@ -49,13 +49,13 @@ const SplineChart = () => {
   };
 
   return (
-    <div className="h-[378.62px] w-[60%] rounded-3xl bg-white p-[20px] shadow-lg shadow-red-500/20 dark:bg-light-gray  lg:w-[50%]">
+    <div className="h-[340px] w-[100%] rounded-3xl bg-white p-[20px] shadow-lg shadow-red-500/20 dark:bg-light-gray  lg:w-[100%]">
       <div id="chart">
         <ReactApexChart
           options={chart.options}
           series={chart.series}
           type="area"
-          height={350}
+          height={300}
         />
       </div>
     </div>
