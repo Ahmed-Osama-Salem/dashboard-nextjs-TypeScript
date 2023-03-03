@@ -62,7 +62,9 @@ const TableBody = () => {
                 {item.time !== undefined ? item.time : currentTime}
               </td>
               <td className="py-8 px-24">{item.allText.rkmElw7da}</td>
-              <td className="py-10 px-12">{item.allText.elbnd}</td>
+              <td className="py-10 px-12" data-testid="band">
+                {item.allText.elbnd}
+              </td>
               <td className="py-8 px-24">{item.allText.topics}</td>
               <td className="py-8 px-24">{item.allText.contractType}</td>
               <td className="py-8 px-24">{item.allText.techNumber}</td>
